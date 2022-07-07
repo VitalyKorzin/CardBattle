@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform))]
-public class CardView : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private float _movementSpeed = 2f;
     [SerializeField] private float _rotationSpeed = 2f;
@@ -14,8 +14,8 @@ public class CardView : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Coroutine _movementJob;
     private Coroutine _rotationJob;
 
-    public event UnityAction<CardView> Destroyed;
-    public event UnityAction<CardView> Selected;
+    public event UnityAction<Card> Destroyed;
+    public event UnityAction<Card> Selected;
 
     private void Awake()
     {

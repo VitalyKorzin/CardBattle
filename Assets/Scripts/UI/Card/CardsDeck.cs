@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class CardsDeckView : MonoBehaviour
+public class CardsDeck : MonoBehaviour
 {
     [SerializeField] private int _maximumCount = 5;
     [SerializeField] private float _rotationSpeed = 3f;
@@ -12,7 +12,7 @@ public class CardsDeckView : MonoBehaviour
 
     private readonly float _offsetSum = 0.5f;
     private List<Vector3> _targetCardsPositions = new List<Vector3>();
-    private List<CardView> _cards = new List<CardView>();
+    private List<Card> _cards = new List<Card>();
     private RectTransform _rectTransform;
     private Coroutine _rotationJob;
     private float _degreeStep;
@@ -37,7 +37,7 @@ public class CardsDeckView : MonoBehaviour
         SetTargetCardsPositions(_maximumCount);
     }
 
-    public void Add(CardView card)
+    public void Add(Card card)
     {
         card.Destroyed += OnCardDestroyed;
         card.Selected += OnCardSelected;
@@ -47,13 +47,13 @@ public class CardsDeckView : MonoBehaviour
         card.StartRotate(-(GetCardAngle(_maximumCount) * _cards.Count));
     }
 
-    private void OnCardSelected(CardView card)
+    private void OnCardSelected(Card card)
     {
         card.Selected -= OnCardSelected;
         card.StartRotate(_selectedCardAngle);
     }
 
-    private void OnCardDestroyed(CardView card)
+    private void OnCardDestroyed(Card card)
     {
         card.Destroyed -= OnCardDestroyed;
         _cards.Remove(card);
