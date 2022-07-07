@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class CardsDispenser : MonoBehaviour
 {
-    [SerializeField] private CardView[] _templates;
-    [SerializeField] private CardsDeckView _cardsDeck;
+    [SerializeField] private Card[] _templates;
+    [SerializeField] private CardsDeck _cardsDeck;
     [SerializeField] private float _delayBetweenDispensing;
 
     public void Start()
