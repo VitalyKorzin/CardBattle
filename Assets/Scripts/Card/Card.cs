@@ -1,74 +1,75 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
-using TMPro;
 using System;
 
 [RequireComponent(typeof(RectTransform), typeof(Image))]
 public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [Min(0)]
-    [SerializeField] private float _selectionOffsetY = 250f;
+    [SerializeField] private float _selectionOffsetY;
     [Min(0)]
-    [SerializeField] private float _colorChangeDuration = 0.7f;
+    [SerializeField] private float _colorChangeDuration;
     [Min(0)]
-    [SerializeField] private float _movementDuration = 0.35f;
+    [SerializeField] private float _movementDuration;
     [Min(0)]
-    [SerializeField] private float _fadingDuration = 0.2f;
+    [SerializeField] private float _fadingDuration;
     [Min(0)]
-    [SerializeField] private float _delayBeforeDestroy = 0.2f;
+    [SerializeField] private float _delayBeforeDestroy;
     [Min(0)]
-    [SerializeField] private float _rotationDuration = 0.6f;
+    [SerializeField] private float _rotationDuration;
     [Min(0)]
-    [SerializeField] private float _sizeOnSelection = 0.9f;
+    [SerializeField] private float _sizeOnSelection;
     [Min(0)]
-    [SerializeField] private float _scalingDuration = 0.15f;
+    [SerializeField] private float _scalingDuration;
     [Min(0)]
-    [SerializeField] private float _movementDurationOnSelection = 0.6f;
-    [SerializeField] private Vector3 _offset = new Vector3(0, 90f, 0);
-    [SerializeField] private Color _selectionColor;
-    [SerializeField] private TMP_Text _text;
+    [SerializeField] private float _movementDurationOnSelection;
+    [SerializeField] private Vector3 _offset;
+    [SerializeField] private Color _selectionBackgroundColor;
+    [SerializeField] private Color _selectionFrameColor;
+    [SerializeField] private Image _icon;
+    [SerializeField] private Image _frame;
 
     private readonly float _fadingEndValue = 0f;
     private readonly float _startSize = 1f;
 
     private RectTransform _rectTransform;
-    private Image _image;
+    private Image _background;
 
     public event UnityAction<Card> Selected;
     public event UnityAction<Card> Destroyed;
 
-    private void Awake()
+    private void OnEnable()
     {
-        _rectTransform = GetComponent<RectTransform>();
-        _image = GetComponent<Image>();
-        _rectTransform.localRotation = transform.parent.localRotation;
-    }
-
-    public void Use(List<Stickman> stickmen)
-    {
-        if (stickmen == null)
-            throw new ArgumentNullException(nameof(stickmen));
-
-        foreach (var stickman in stickmen)
+        try
         {
-            if (stickman == null)
-                throw new ArgumentNullException(nameof(stickman));
-
-            Action(stickman);
+            Validate();
+        }
+        catch (Exception exception)
+        {
+            enabled = false;
+            throw exception;
         }
     }
 
-    protected abstract void Action(Stickman stickman);
+    private void Awake()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+        _background = GetComponent<Image>();
+        _rectTransform.localRotation = transform.parent.localRotation;
+    }
+
+    public abstract void Use(CardActionArea actionArea);
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        transform.parent = transform.parent.parent.parent;
-        _image.DOColor(_selectionColor, _colorChangeDuration);
+        if (transform.parent.parent != null)
+            transform.parent = transform.parent.parent;
+
+        ChangeColor();
         ChangeSize();
         MoveOnSelection();
         Rotate();
@@ -91,8 +92,9 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void Fade()
     {
-        _image.DOFade(_fadingEndValue, _fadingDuration);
-        _text.DOFade(_fadingEndValue, _fadingDuration);
+        _background.DOFade(_fadingEndValue, _fadingDuration);
+        _icon.DOFade(_fadingEndValue, _fadingDuration);
+        _frame.DOFade(_fadingEndValue, _fadingDuration);
     }
 
     private void MoveOnSelection()
@@ -112,9 +114,23 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         sequence.Append(transform.DOScale(_startSize, _scalingDuration));
     }
 
+    private void ChangeColor()
+    {
+        _background.DOColor(_selectionBackgroundColor, _colorChangeDuration);
+        _frame.DOColor(_selectionFrameColor, _colorChangeDuration);
+    }
     private IEnumerator Destroy()
     {
         yield return new WaitForSeconds(_delayBeforeDestroy);
         Destroy(gameObject);
+    }
+
+    private void Validate()
+    {
+        if (_icon == null)
+            throw new InvalidOperationException();
+
+        if (_frame == null)
+            throw new InvalidOperationException();
     }
 }

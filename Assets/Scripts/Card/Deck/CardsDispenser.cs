@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CardsDispenser : MonoBehaviour
 {
-    [SerializeField] private Card[] _cards;
-    [SerializeField] private CardsDeck _cardsDeck;
     [Min(0)]
     [SerializeField] private float _secondsBetweenDispensing;
+    [SerializeField] private Card[] _cards;
+    [SerializeField] private CardsDeck _cardsDeck;
 
     private void OnEnable()
     {

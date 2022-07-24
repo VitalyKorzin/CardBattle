@@ -36,6 +36,12 @@ public abstract class StickmenSpawner : MonoBehaviour
 
     public void Initialize(List<PlaceInSquad> places)
     {
+        if (places == null)
+            throw new ArgumentNullException(nameof(places));
+
+        if (places.Count == 0)
+            throw new ArgumentOutOfRangeException(nameof(places));
+
         _places = places;
 
         foreach (var place in places)
@@ -58,13 +64,14 @@ public abstract class StickmenSpawner : MonoBehaviour
             multiplierCard.Used += OnMultiplierCardUsed;
     }
 
-    private void OnMultiplierCardUsed(MultiplierCard card, Stickman stickman)
+    private void OnMultiplierCardUsed(MultiplierCard card, CardActionArea actionArea)
     {
         card.Used -= OnMultiplierCardUsed;
 
-        if (_squad.Stickmen.Contains(stickman))
-            for (var i = 0; i < GetSickmenCount(card); i++)
-                SpawnInNearestPlace(stickman);
+        foreach (var stickman in actionArea.Stickmen)
+            if (_squad.Stickmen.Contains(stickman))
+                for (var i = 0; i < GetSickmenCount(card); i++)
+                    SpawnInNearestPlace(stickman);
     }
 
     private void SpawnInNearestPlace(Stickman stickman)

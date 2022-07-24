@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     [Min(0)]
-    [SerializeField] private float _fillingSpeed;
+    [SerializeField] private float _fillingDuration;
     [SerializeField] private TMP_Text _valueText;
     [SerializeField] private Stickman _stickmen;
 
@@ -58,7 +58,7 @@ public class HealthBar : MonoBehaviour
 
     private IEnumerator Fill(int newValue)
     {
-        var delay = new WaitForSeconds(_fillingSpeed);
+        var delay = new WaitForSeconds(_fillingDuration);
 
         while (_currentTextValue != newValue)
         {

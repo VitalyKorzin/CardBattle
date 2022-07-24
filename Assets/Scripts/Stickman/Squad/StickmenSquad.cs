@@ -59,6 +59,7 @@ public abstract class StickmenSquad : MonoBehaviour
     {
         stickman.Died -= OnStickmanDied;
         _stickmen.Remove(stickman);
+        Destroy(stickman.gameObject);
 
         if (_stickmen.Count == 0)
             Died?.Invoke();

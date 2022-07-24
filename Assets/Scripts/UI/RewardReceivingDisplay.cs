@@ -9,13 +9,19 @@ public class RewardReceivingDisplay : MonoBehaviour
     [Min(0)]
     [SerializeField] private float _movementSpeed;
     [Min(0)]
-    [SerializeField] private float _lifetime;
+    [SerializeField] private float _appearanceDuration;
+    [Min(0)]
+    [SerializeField] private float _deleyBeforeFading;
+    [Min(0)]
+    [SerializeField] private float _fadingDuration;
     [SerializeField] private TMP_Text _valueText;
 
     private readonly float _fadingEndValue = 0f;
+    private readonly float _appearanceEndValue = 1f;
+    private readonly string _currencySymbol = "$";
 
     private Camera _camera;
-    private int _value;
+    private float _lifetime;
 
     private void OnEnable()
     {
@@ -25,8 +31,12 @@ public class RewardReceivingDisplay : MonoBehaviour
             throw new InvalidOperationException();
         }
     }
-
-    private void Start() => _camera = Camera.main;
+    
+    private void Awake()
+    {
+        _camera = Camera.main;
+        _lifetime = _appearanceDuration + _fadingDuration + _deleyBeforeFading;
+    }
 
     private void Update()
     {
@@ -34,11 +44,8 @@ public class RewardReceivingDisplay : MonoBehaviour
         Move();
     }
 
-    public void Initialize(int value)
-    {
-        _value = value;
-        StartCoroutine(Display());
-    }
+    public void Initialize(int value) 
+        => StartCoroutine(Display(value));
 
     private void LookAtCamera()
     {
@@ -50,10 +57,11 @@ public class RewardReceivingDisplay : MonoBehaviour
     private void Move()
         => transform.Translate(_movementSpeed * Time.deltaTime * Vector3.up);
 
-    private IEnumerator Display()
+    private IEnumerator Display(int value)
     {
-        _valueText.text = _value.ToString() + "$";
-        _valueText.DOFade(_fadingEndValue, _lifetime);
+        _valueText.text = value.ToString() + _currencySymbol;
+        _valueText.DOFade(_appearanceEndValue, _appearanceDuration);
+        _valueText.DOFade(_fadingEndValue, _fadingDuration).SetDelay(_deleyBeforeFading);
         yield return new WaitForSeconds(_lifetime);
         Destroy(gameObject);
     }

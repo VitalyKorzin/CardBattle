@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,24 +6,16 @@ public class MultiplierCard : Card
 {
     [Min(1)]
     [SerializeField] private int _value;
-    [SerializeField] private TMP_Text _valueText;
 
     public int SitckmenCount => _value - 1;
 
-    public event UnityAction<MultiplierCard, Stickman> Used;
+    public event UnityAction<MultiplierCard, CardActionArea> Used;
 
-    private void OnEnable()
+    public override void Use(CardActionArea actionArea)
     {
-        if (_valueText == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
+        if (actionArea == null)
+            throw new ArgumentNullException(nameof(actionArea));
+
+        Used?.Invoke(this, actionArea);
     }
-
-    private void Start()
-        => _valueText.text += _value.ToString();
-
-    protected override void Action(Stickman stickman)
-        => Used?.Invoke(this, stickman);
 }

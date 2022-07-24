@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,12 @@ public class CoinsIcon : ResultDisplayElement
 
     public override void Appear(float endValue, float duration)
     {
+        if (endValue < 0)
+            throw new ArgumentOutOfRangeException(nameof(endValue));
+
+        if (duration < 0)
+            throw new ArgumentOutOfRangeException(nameof(duration));
+
         GetComponent<Image>().DOFade(endValue, duration);
         Pulsate();
     }

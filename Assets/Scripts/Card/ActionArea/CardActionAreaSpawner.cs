@@ -5,7 +5,6 @@ public class CardActionAreaSpawner : MonoBehaviour
 {
     [SerializeField] private CardsDeck _cardsDeck;
     [SerializeField] private CardActionArea _template;
-
     private void OnEnable()
     {
         try

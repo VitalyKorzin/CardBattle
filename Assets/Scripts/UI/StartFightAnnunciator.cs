@@ -1,20 +1,14 @@
-using DG.Tweening;
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class StartFightAnnunciator : MonoBehaviour
 {
-    [SerializeField] private CardsDeck _cardsDeck;
-    [SerializeField] private TMP_Text _text;
-    [Min(0)]
-    [SerializeField] private float _textFadingDuration;
     [Min(0)]
     [SerializeField] private float _secondsBetweenFightStart;
-
-    private readonly float _fadingEndValue = 0f;
+    [SerializeField] private StartFightTextDisplay _textDisplay;
+    [SerializeField] private CardsDeck _cardsDeck;
 
     public event UnityAction FightStarted;
 
@@ -36,16 +30,14 @@ public class StartFightAnnunciator : MonoBehaviour
     private void OnDisable()
         => _cardsDeck.Ended -= OnCardsDeckEnded;
 
-    private void Start() => _text.enabled = false;
-
     private void OnCardsDeckEnded()
         => StartCoroutine(Annunce());
 
     private IEnumerator Annunce()
     {
-        _text.enabled = true;
+        _textDisplay.Appear();
         yield return new WaitForSeconds(_secondsBetweenFightStart);
-        _text.DOFade(_fadingEndValue, _textFadingDuration);
+        _textDisplay.Fade();
         FightStarted?.Invoke();
     }
 
@@ -54,7 +46,7 @@ public class StartFightAnnunciator : MonoBehaviour
         if (_cardsDeck == null)
             throw new InvalidOperationException();
 
-        if (_text == null)
+        if (_textDisplay == null)
             throw new InvalidOperationException();
     }
 }
