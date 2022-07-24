@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Stickman), typeof(TargetSearchState), typeof(AttackState))]
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class MovementState : MonoBehaviour
 {
     [Min(0)]
@@ -12,6 +12,7 @@ public class MovementState : MonoBehaviour
 
     private readonly float _neededDistanceToPlaceInSquad = 0.1f;
 
+    private Animator _animator;
     private NavMeshAgent _navMeshAgent;
     private PlaceInSquad _placeInSquad;
     private Stickman _stickman;
@@ -19,10 +20,11 @@ public class MovementState : MonoBehaviour
     private AttackState _attackState;
     private Coroutine _movementJob;
     private Vector3 _lastPosition;
-    private Vector3 _direction;
 
     public event UnityAction<Stickman> TargetApproached;
     public event UnityAction TargetDied;
+    public event UnityAction<Vector3> PositionChanged;
+    public event UnityAction<Quaternion> CameToPlace;
 
     private void OnDisable()
     {
@@ -38,6 +40,7 @@ public class MovementState : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         _navMeshAgent.updateRotation = false;
+        _animator = GetComponent<Animator>();
         _stickman = GetComponent<Stickman>();
         _targetSearchState = GetComponent<TargetSearchState>();
         _attackState = GetComponent<AttackState>();
@@ -66,12 +69,13 @@ public class MovementState : MonoBehaviour
     private void OnNeedMoveToPlaceInSquad() 
         => StartMove(Move(_placeInSquad));
 
-    private void StartMove(IEnumerator move)
+    private void StartMove(IEnumerator movement)
     {
         if (_movementJob != null)
             StopCoroutine(_movementJob);
 
-        _movementJob = StartCoroutine(move);
+        _animator.SetBool(StickmanAnimator.Params.IsRunning, true);
+        _movementJob = StartCoroutine(movement);
     }
 
     private IEnumerator Move(Stickman target)
@@ -81,6 +85,8 @@ public class MovementState : MonoBehaviour
             Move(target.transform.position);
             yield return null;
         }
+
+        _animator.SetBool(StickmanAnimator.Params.IsRunning, false);
 
         if (target == null)
             TargetDied?.Invoke();
@@ -96,7 +102,8 @@ public class MovementState : MonoBehaviour
             yield return null;
         }
 
-        transform.rotation = _placeInSquad.transform.rotation;
+        _animator.SetBool(StickmanAnimator.Params.IsRunning, false);
+        CameToPlace?.Invoke(_placeInSquad.transform.rotation);
     }
 
     private bool DidNotReachTo(Stickman target)
@@ -107,17 +114,13 @@ public class MovementState : MonoBehaviour
 
     private void Move(Vector3 targetPosition)
     {
-        _navMeshAgent.SetDestination(targetPosition);
-        RotateInDirectionMove();
+        if (_navMeshAgent.isActiveAndEnabled)
+            _navMeshAgent.SetDestination(targetPosition);
+
+        PositionChanged?.Invoke(transform.position - _lastPosition);
         _lastPosition = transform.position;
     }
 
     private float GetDistanceToTarget(Vector3 targetPosition)
         => Vector3.Distance(transform.position, targetPosition);
-
-    private void RotateInDirectionMove()
-    {
-        _direction = transform.position - _lastPosition;
-        transform.rotation = Quaternion.LookRotation(_direction);
-    }
 }

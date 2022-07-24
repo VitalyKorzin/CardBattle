@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(MovementState), typeof(Stickman))]
+[RequireComponent(typeof(MovementState), typeof(Stickman), typeof(Animator))]
 public class AttackState : MonoBehaviour
 {
     [Min(0)]
@@ -12,10 +12,11 @@ public class AttackState : MonoBehaviour
 
     private MovementState _movementState;
     private Stickman _stickman;
-    private Stickman _target;
     private Coroutine _attackJob;
+    private Animator _animator;
 
     public event UnityAction TargetDied;
+    public event UnityAction<Transform> TargetAttacked;
     public event UnityAction<Stickman> TargetGone;
 
     private void OnDisable()
@@ -23,61 +24,52 @@ public class AttackState : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _movementState = GetComponent<MovementState>();
         _stickman = GetComponent<Stickman>();
         _movementState.TargetApproached += OnTargetApproached;
     }
 
-    private void Update()
-    {
-        if (_target != null)
-            transform.LookAt(_target.transform);
-    }
-
     private void OnTargetApproached(Stickman stickman)
     {
-        _target = stickman;
-        _target.Died += OnTargetDied;
+        stickman.Died += OnTargetDied;
 
         if (_attackJob != null)
             StopCoroutine(_attackJob);
 
-        _attackJob = StartCoroutine(Attack());
+        _attackJob = StartCoroutine(Attack(stickman));
     }
 
-    private IEnumerator Attack()
+    private IEnumerator Attack(Stickman stickman)
     {
         var delay = new WaitForSeconds(_secondsBetweenAttack);
+        TargetAttacked?.Invoke(stickman.transform);
 
-        while (TargetInAttackZone())
+        while (TargetInAttackZone(stickman))
         {
-            _target.Apply(_stickman.Damage);
+            _animator.SetTrigger(StickmanAnimator.Params.IsAttacking);
             yield return delay;
+            stickman.Apply(_stickman.Damage);
         }
 
-        if (EnemyGone())
+        if (EnemyGone(stickman))
         {
-            _target.Died -= OnTargetDied;
-            TargetGone?.Invoke(_target);
-            _target = null;
+            stickman.Died -= OnTargetDied;
+            TargetGone?.Invoke(stickman);
         }
     }
 
     private void OnTargetDied(Stickman target)
     {
-        _target.Died -= OnTargetDied;
-
-        if (_attackJob != null)
-            StopCoroutine(_attackJob);
-
+        target.Died -= OnTargetDied;
         TargetDied?.Invoke();
     }
 
-    private bool TargetInAttackZone()
-        => _target != null && GetDistanceToTarget(_target.transform) < _transitionRange;
+    private bool TargetInAttackZone(Stickman stickman)
+        => stickman != null && GetDistanceToTarget(stickman.transform) < _transitionRange;
 
-    private bool EnemyGone()
-        => _target != null && GetDistanceToTarget(_target.transform) > _transitionRange;
+    private bool EnemyGone(Stickman stickman)
+        => stickman != null && GetDistanceToTarget(stickman.transform) > _transitionRange;
 
     private float GetDistanceToTarget(Transform target)
         => Vector3.Distance(transform.position, target.position);

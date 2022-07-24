@@ -9,6 +9,8 @@ public class AdditionalRewardDisplay : ResultDisplayElement
     [SerializeField] private Pointer _pointer;
     [SerializeField] private TMP_Text _text;
 
+    private readonly string _symbol = "+";
+
     private void OnEnable()
     {
         try
@@ -27,11 +29,19 @@ public class AdditionalRewardDisplay : ResultDisplayElement
     private void OnDisable() 
         => _pointer.RewardMultiplied -= OnRewardMultiplied;
 
-    public override void Appear(float endValue, float duration) 
-        => _text.DOFade(endValue, duration);
+    public override void Appear(float endValue, float duration)
+    {
+        if (endValue < 0)
+            throw new ArgumentOutOfRangeException(nameof(endValue));
+
+        if (duration < 0)
+            throw new ArgumentOutOfRangeException(nameof(duration));
+
+        _text.DOFade(endValue, duration);
+    }
 
     private void OnRewardMultiplied(int multiplier)
-        => _text.text = "+" + (_battleReward.Value * multiplier).ToString();
+        => _text.text = _symbol + (_battleReward.Value * multiplier).ToString();
 
     private void Validate()
     {

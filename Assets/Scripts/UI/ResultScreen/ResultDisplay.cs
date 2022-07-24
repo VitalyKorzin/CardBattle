@@ -18,6 +18,8 @@ public class ResultDisplay : MonoBehaviour
 
     private readonly float _appearanceEndValue = 1f;
 
+    private float _scalingDuration;
+
     private void OnEnable()
     {
         try
@@ -32,7 +34,10 @@ public class ResultDisplay : MonoBehaviour
     }
 
     private void Start()
-        => transform.localScale = new Vector3(_startSize, _startSize, _startSize);
+    {
+        transform.localScale = new Vector3(_startSize, _startSize, _startSize);
+        _scalingDuration = _appearanceDuration / 2f;
+    }
 
     public void Display()
     {
@@ -43,8 +48,8 @@ public class ResultDisplay : MonoBehaviour
     private void Appear()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOScale(_peakSize, _appearanceDuration / 2f));
-        sequence.Append(transform.DOScale(_targetSize, _appearanceDuration / 2f));
+        sequence.Append(transform.DOScale(_peakSize, _scalingDuration));
+        sequence.Append(transform.DOScale(_targetSize, _scalingDuration));
     }
 
     private void AppearElements()

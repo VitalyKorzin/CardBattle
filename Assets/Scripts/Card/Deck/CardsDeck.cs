@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 public class CardsDeck : MonoBehaviour
 {
-    [SerializeField] private CardSlot _cardSlot;
     [Min(0)]
     [SerializeField] private int _maximumCount;
     [Min(0)]
     [SerializeField] private float _rangeAngle;
+    [SerializeField] private CardSlot _cardSlot;
 
     private readonly List<CardSlot> _slots = new List<CardSlot>();
 

@@ -1,10 +1,16 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FireballCard : Card
 {
-    [Min(0)]
-    [SerializeField] private int _damage;
+    public event UnityAction<FireballCard, CardActionArea> Used;
 
-    protected override void Action(Stickman stickman)
-        => stickman.Apply(_damage);
+    public override void Use(CardActionArea actionArea)
+    {
+        if (actionArea == null)
+            throw new ArgumentNullException(nameof(actionArea));
+
+        Used?.Invoke(this, actionArea);
+    }
 }

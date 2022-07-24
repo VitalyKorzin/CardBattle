@@ -23,6 +23,14 @@ public class BattleReward : ResultDisplayElement
     private void Start() 
         => _text.text = _value.ToString();
 
-    public override void Appear(float endValue, float duration) 
-        => _text.DOFade(endValue, duration);
+    public override void Appear(float endValue, float duration)
+    {
+        if (endValue < 0)
+            throw new ArgumentOutOfRangeException(nameof(endValue));
+
+        if (duration < 0)
+            throw new ArgumentOutOfRangeException(nameof(duration));
+
+        _text.DOFade(endValue, duration);
+    }
 }

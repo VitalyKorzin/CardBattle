@@ -52,11 +52,7 @@ public class TargetSearchState : MonoBehaviour
     {
         target = _enemies.Stickmen.FirstOrDefault();
 
-        if (target == null)
-        {
-            return false;
-        }
-        else
+        if (target != null)
         {
             float distance = Vector3.Distance(transform.position, target.transform.position);
 
@@ -70,8 +66,8 @@ public class TargetSearchState : MonoBehaviour
                     target = stickman;
                 }
             }
-
-            return true;
         }
+
+        return target != null;
     }
 }

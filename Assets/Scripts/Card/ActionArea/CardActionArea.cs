@@ -4,24 +4,35 @@ using UnityEngine;
 
 public class CardActionArea : MonoBehaviour
 {
-    private readonly List<Stickman> _stickmens = new List<Stickman>();
+    private readonly List<Stickman> _stickmen = new List<Stickman>();
 
     private RaycastHit[] _hits;
+    private Camera _camera;
     private Ray _ray;
+
+    public IReadOnlyList<Stickman> Stickmen => _stickmen;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Stickman stickmen))
-            _stickmens.Add(stickmen);
+        if (other.TryGetComponent(out Stickman stickman))
+        {
+            _stickmen.Add(stickman);
+            stickman.Select();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Stickman stickmen))
-            _stickmens.Remove(stickmen);
+        if (other.TryGetComponent(out Stickman stickman))
+        {
+            _stickmen.Remove(stickman);
+            stickman.Deselect();
+        }
     }
 
-    private void Update() => TrySetPosition();
+    private void Start() => _camera = Camera.main;
+
+    private void Update() => SetPosition();
 
     public void Initialize(Card card)
     {
@@ -31,9 +42,9 @@ public class CardActionArea : MonoBehaviour
         card.Destroyed += OnCardDestroyed;
     }
 
-    private void TrySetPosition()
+    private void SetPosition()
     {
-        _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        _ray = _camera.ScreenPointToRay(Input.mousePosition);
         _hits = Physics.RaycastAll(_ray);
 
         foreach (var hit in _hits)
@@ -45,8 +56,11 @@ public class CardActionArea : MonoBehaviour
 
     private void OnCardDestroyed(Card card)
     {
+        foreach (var stickman in _stickmen)
+            stickman.Deselect();
+
         card.Destroyed -= OnCardDestroyed;
-        card.Use(_stickmens);
+        card.Use(this);
         Destroy(gameObject);
     }
 }
