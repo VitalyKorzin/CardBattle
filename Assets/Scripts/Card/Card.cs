@@ -32,6 +32,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     [SerializeField] private Color _selectionFrameColor;
     [SerializeField] private Image _icon;
     [SerializeField] private Image _frame;
+    [SerializeField] private Image _glow;
 
     private readonly float _fadingEndValue = 0f;
     private readonly float _startSize = 1f;
@@ -69,6 +70,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if (transform.parent.parent != null)
             transform.parent = transform.parent.parent;
 
+        _glow.DOFade(1, _colorChangeDuration);
         ChangeColor();
         ChangeSize();
         MoveOnSelection();
@@ -95,6 +97,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _background.DOFade(_fadingEndValue, _fadingDuration);
         _icon.DOFade(_fadingEndValue, _fadingDuration);
         _frame.DOFade(_fadingEndValue, _fadingDuration);
+        _glow.DOFade(_fadingEndValue, _fadingDuration);
     }
 
     private void MoveOnSelection()

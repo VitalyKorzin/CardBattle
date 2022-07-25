@@ -20,8 +20,8 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
-  m_AmbientEquatorColor: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
+  m_AmbientSkyColor: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
+  m_AmbientEquatorColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientIntensity: 0
   m_AmbientMode: 1
@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0783506d0268f8744a2e93a750337923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _secondsBetweenDispensing: 0.25
   _cards:
   - {fileID: 162185220065847457, guid: a4829cebb364869468f660a8f54e9ab9, type: 3}
   - {fileID: 1838595411830990490, guid: cf66df6cd4b3de147b0c1070f2390239, type: 3}
@@ -416,7 +417,6 @@ MonoBehaviour:
   - {fileID: 8578330602566699610, guid: 8372d392eb4f00a498b38bb5d8b05171, type: 3}
   - {fileID: 3676188056938309563, guid: caefc8f6e0fa62b43bd7ff24905edb99, type: 3}
   _cardsDeck: {fileID: 257124860}
-  _secondsBetweenDispensing: 0.25
 --- !u!114 &257124860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,9 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c5912333274d346b1b2ec4b2d0c3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardSlot: {fileID: 7522618287554007048, guid: 7e6974b48fc86924181865b57db4bf5e, type: 3}
   _maximumCount: 5
   _rangeAngle: 60
+  _cardSlot: {fileID: 7522618287554007048, guid: 7e6974b48fc86924181865b57db4bf5e, type: 3}
 --- !u!1 &258697117
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,13 +475,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cc4573335ad1c4ba96e46d40559782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delay: 1.5
   _blast: {fileID: 817917316081181820, guid: 88e3992eada3d7b44a677c3731c004da, type: 3}
   _shower: {fileID: 475347404}
   _enemiesSquad: {fileID: 714908960}
   _blastPositions:
   - {fileID: 2111100570}
   - {fileID: 367912992}
-  _delay: 1.5
 --- !u!1 &268689213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,7 +2133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738111865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 0, z: -0.3}
+  m_LocalPosition: {x: -1.347, y: 0, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1555613201}
@@ -2920,6 +2920,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9565adcc77aac334ebde41dcb1e60f51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5636757683362152814, guid: 9565adcc77aac334ebde41dcb1e60f51, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5567549040781124650, guid: 9565adcc77aac334ebde41dcb1e60f51, type: 3}
@@ -5693,7 +5697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104607977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 0, z: -0.3}
+  m_LocalPosition: {x: 1.247, y: 0, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1555613201}
