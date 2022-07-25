@@ -34,6 +34,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     [SerializeField] private Image _frame;
     [SerializeField] private Image _glow;
 
+    private readonly float _appearanceEndValue = 1f;
     private readonly float _fadingEndValue = 0f;
     private readonly float _startSize = 1f;
 
@@ -70,7 +71,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if (transform.parent.parent != null)
             transform.parent = transform.parent.parent;
 
-        _glow.DOFade(1, _colorChangeDuration);
+        _glow.DOFade(_appearanceEndValue, _colorChangeDuration);
         ChangeColor();
         ChangeSize();
         MoveOnSelection();
