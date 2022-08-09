@@ -2,19 +2,18 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardActionArea : MonoBehaviour
+public abstract class CardActionArea<T> : MonoBehaviour
+    where T: Stickman
 {
-    private readonly List<Stickman> _stickmen = new List<Stickman>();
+    private readonly List<T> _stickmen = new List<T>();
 
     private RaycastHit[] _hits;
     private Camera _camera;
     private Ray _ray;
 
-    public IReadOnlyList<Stickman> Stickmen => _stickmen;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Stickman stickman))
+        if (other.TryGetComponent(out T stickman))
         {
             _stickmen.Add(stickman);
             stickman.Select();
@@ -23,7 +22,7 @@ public class CardActionArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Stickman stickman))
+        if (other.TryGetComponent(out T stickman))
         {
             _stickmen.Remove(stickman);
             stickman.Deselect();
@@ -60,7 +59,7 @@ public class CardActionArea : MonoBehaviour
             stickman.Deselect();
 
         card.Destroyed -= OnCardDestroyed;
-        card.Use(this);
+        card.Use(_stickmen, transform.position);
         Destroy(gameObject);
     }
 }

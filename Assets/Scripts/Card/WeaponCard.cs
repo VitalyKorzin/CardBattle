@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+
 public class WeaponCard : Card
 {
     [Min(0)]
@@ -17,12 +19,12 @@ public class WeaponCard : Card
         }
     }
 
-    public override void Use(CardActionArea actionArea)
+    public override void Use<T>(List<T> stickmen, Vector3 actionPosition)
     {
-        if (actionArea == null)
-            throw new ArgumentNullException(nameof(actionArea));
+        if (stickmen == null)
+            throw new ArgumentNullException(nameof(stickmen));
 
-        foreach (var stickman in actionArea.Stickmen)
+        foreach (var stickman in stickmen)
             stickman.GiveWeapon(_template, _additionalHealth, _additionalDamage);
     }
 }

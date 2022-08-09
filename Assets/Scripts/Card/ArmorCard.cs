@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ArmorCard : Card
@@ -23,12 +24,12 @@ public class ArmorCard : Card
         }
     }
 
-    public override void Use(CardActionArea actionArea)
+    public override void Use<T>(List<T> stickmen, Vector3 actionPosition)
     {
-        if (actionArea == null)
-            throw new ArgumentNullException(nameof(actionArea));
+        if (stickmen == null)
+            throw new ArgumentNullException(nameof(stickmen));
 
-        foreach (var stickman in actionArea.Stickmen)
+        foreach (var stickman in stickmen)
             stickman.GiveArmor(_shield, _helmet, _additionalHealth, _additionalDamage);
     }
 

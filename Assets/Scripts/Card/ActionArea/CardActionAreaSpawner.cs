@@ -4,7 +4,9 @@ using UnityEngine;
 public class CardActionAreaSpawner : MonoBehaviour
 {
     [SerializeField] private CardsDeck _cardsDeck;
-    [SerializeField] private CardActionArea _template;
+    [SerializeField] private FireballCardActionArea _fireballAreaTemplate;
+    [SerializeField] private PlainCardActionArea _plainAreaTemplate;
+
     private void OnEnable()
     {
         try
@@ -29,15 +31,25 @@ public class CardActionAreaSpawner : MonoBehaviour
     private void OnCardSelected(Card card)
     {
         card.Selected -= OnCardSelected;
-        Instantiate(_template, transform.position, Quaternion.identity).Initialize(card);
+
+        if (card is FireballCard)
+            InstantiateArea(_fireballAreaTemplate, card);
+        else
+            InstantiateArea(_plainAreaTemplate, card);
     }
+
+    private void InstantiateArea<T>(CardActionArea<T> template, Card card) where T: Stickman
+        => Instantiate(template, transform.position, Quaternion.identity).Initialize(card);
 
     private void Validate()
     {
         if (_cardsDeck == null)
             throw new InvalidOperationException();
 
-        if (_template == null)
+        if (_fireballAreaTemplate == null)
+            throw new InvalidOperationException();
+
+        if (_plainAreaTemplate == null)
             throw new InvalidOperationException();
     }
 }

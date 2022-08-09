@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
 using System;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(RectTransform), typeof(Image))]
 public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -64,7 +65,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _rectTransform.localRotation = transform.parent.localRotation;
     }
 
-    public abstract void Use(CardActionArea actionArea);
+    public abstract void Use<T>(List<T> stickmen, Vector3 actionPosition) where T: Stickman;
 
     public void OnPointerDown(PointerEventData eventData)
     {

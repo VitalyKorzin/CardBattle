@@ -38,18 +38,18 @@ public class FireballShooter : MonoBehaviour
             fireballCard.Used += OnFireballCardUsed;
     }
 
-    private void OnFireballCardUsed(FireballCard fireballCard, CardActionArea actionArea)
+    private void OnFireballCardUsed(FireballCard fireballCard, Vector3 actionPosition)
     {
         fireballCard.Used -= OnFireballCardUsed;
-        float velocity = GetVelocity(actionArea);
+        float velocity = GetVelocity(actionPosition);
         Vector3 vector = _shotPoint.forward * velocity;
         Vector3[] path = GetPath(vector);
         Instantiate(_template, _shotPoint.position, Quaternion.identity).StartMove(path);
     }
 
-    private float GetVelocity(CardActionArea actionArea)
+    private float GetVelocity(Vector3 actionPosition)
     {
-        Vector3 direction = actionArea.transform.position - transform.position;
+        Vector3 direction = actionPosition - transform.position;
         Vector3 directionXZ = new Vector3(direction.x, 0f, direction.z);
         transform.rotation = Quaternion.LookRotation(directionXZ, Vector3.up);
         _shotPoint.localEulerAngles = new Vector3(-_shotAngle, 0f, 0f);

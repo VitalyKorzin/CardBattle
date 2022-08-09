@@ -15,9 +15,10 @@ public abstract class Stickman : MonoBehaviour
     [SerializeField] private Transform _shieldPosition;
     [SerializeField] private Transform _helmetPosition;
     [SerializeField] private SkinnedMeshRenderer _renderer;
-    [SerializeField] private Color _highlightColor;
+    [SerializeField] private Material _highlightMaterial;
 
-    private Color _defaultColor;
+    private Material _defaultMaterial;
+
     public int Health => _health;
     public int Damage => _damage;
 
@@ -40,13 +41,13 @@ public abstract class Stickman : MonoBehaviour
     }
 
     private void Start() 
-        => _defaultColor = _renderer.material.color;
+        => _defaultMaterial = _renderer.material;
 
     public void Select() 
-        => _renderer.material.color = _highlightColor;
+        => _renderer.material = _highlightMaterial;
 
     public void Deselect() 
-        => _renderer.material.color = _defaultColor;
+        => _renderer.material = _defaultMaterial;
 
     public void AddToSquad(PlaceInSquad place)
     {

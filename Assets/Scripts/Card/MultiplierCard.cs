@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,13 +10,18 @@ public class MultiplierCard : Card
 
     public int SitckmenCount => _value - 1;
 
-    public event UnityAction<MultiplierCard, CardActionArea> Used;
+    public event UnityAction<MultiplierCard, List<Stickman>> Used;
 
-    public override void Use(CardActionArea actionArea)
+    public override void Use<T>(List<T> stickmen, Vector3 actionPosition)
     {
-        if (actionArea == null)
-            throw new ArgumentNullException(nameof(actionArea));
+        if (stickmen == null)
+            throw new ArgumentNullException(nameof(stickmen));
 
-        Used?.Invoke(this, actionArea);
+        List<Stickman> selectedStickmen = new List<Stickman>();
+
+        foreach (Stickman stickman in stickmen)
+            selectedStickmen.Add(stickman);
+
+        Used?.Invoke(this, selectedStickmen);
     }
 }

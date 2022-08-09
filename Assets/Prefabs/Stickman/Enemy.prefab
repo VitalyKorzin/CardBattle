@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494f3b6c80c6bf347acaa24354746688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fillingSpeed: 0.02
+  _fillingDuration: 0
   _valueText: {fileID: 4646967478968588905}
   _stickmen: {fileID: -4199843424852320827}
 --- !u!1 &7519272556581048526
@@ -811,6 +811,7 @@ MonoBehaviour:
   _helmetPosition: {fileID: 8447663775718832042}
   _renderer: {fileID: 7585357256914287739}
   _highlightColor: {r: 1, g: 0.30980393, b: 0.29803923, a: 1}
+  _highlightMaterial: {fileID: 2100000, guid: 689676277ef6b0c41b2b5ecfc84dbc27, type: 2}
 --- !u!114 &4412350335030117550
 MonoBehaviour:
   m_ObjectHideFlags: 0

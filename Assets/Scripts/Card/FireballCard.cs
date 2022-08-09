@@ -1,16 +1,12 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class FireballCard : Card
 {
-    public event UnityAction<FireballCard, CardActionArea> Used;
+    public event UnityAction<FireballCard, Vector3> Used;
 
-    public override void Use(CardActionArea actionArea)
-    {
-        if (actionArea == null)
-            throw new ArgumentNullException(nameof(actionArea));
-
-        Used?.Invoke(this, actionArea);
-    }
+    public override void Use<T>(List<T> stickmen, Vector3 actionPosition) 
+        => Used?.Invoke(this, actionPosition);
 }

@@ -64,11 +64,11 @@ public abstract class StickmenSpawner : MonoBehaviour
             multiplierCard.Used += OnMultiplierCardUsed;
     }
 
-    private void OnMultiplierCardUsed(MultiplierCard card, CardActionArea actionArea)
+    private void OnMultiplierCardUsed(MultiplierCard card, List<Stickman> stickmen)
     {
         card.Used -= OnMultiplierCardUsed;
 
-        foreach (var stickman in actionArea.Stickmen)
+        foreach (var stickman in stickmen)
             if (_squad.Stickmen.Contains(stickman))
                 for (var i = 0; i < GetSickmenCount(card); i++)
                     SpawnInNearestPlace(stickman);
