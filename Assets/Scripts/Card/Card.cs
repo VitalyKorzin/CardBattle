@@ -25,6 +25,8 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     [Min(0)]
     [SerializeField] private float _sizeOnSelection;
     [Min(0)]
+    [SerializeField] private float _targetScaleOnFading;
+    [Min(0)]
     [SerializeField] private float _scalingDuration;
     [Min(0)]
     [SerializeField] private float _movementDurationOnSelection;
@@ -100,6 +102,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _icon.DOFade(_fadingEndValue, _fadingDuration);
         _frame.DOFade(_fadingEndValue, _fadingDuration);
         _glow.DOFade(_fadingEndValue, _fadingDuration);
+        _rectTransform.DOScale(_targetScaleOnFading, _fadingDuration);
     }
 
     private void MoveOnSelection()

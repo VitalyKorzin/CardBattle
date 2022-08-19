@@ -169,10 +169,11 @@ MonoBehaviour:
   _selectionOffsetY: 330
   _colorChangeDuration: 0.7
   _movementDuration: 0.27
-  _fadingDuration: 0.2
+  _fadingDuration: 0.35
   _delayBeforeDestroy: 0.2
   _rotationDuration: 0.6
   _sizeOnSelection: 0.9
+  _targetScaleOnFading: 1.1
   _scalingDuration: 0.15
   _movementDurationOnSelection: 0.6
   _offset: {x: 0, y: 95, z: 0}
