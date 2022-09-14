@@ -35,7 +35,7 @@ public class CardsDeck : MonoBehaviour
     {
         _angleBetweenCards = _rangeAngle / (_maximumCount - 1);
         _angleStep = _angleBetweenCards / 2f;
-        _pointerAngle = _angleBetweenCards;
+        _pointerAngle = _angleBetweenCards + _angleStep;
     }
 
     public void Add(Card card)
