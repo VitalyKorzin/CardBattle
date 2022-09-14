@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Locations/Hills/Level_3.unity
     guid: ca401417c929de44c8db872cab5a1feb
+  - enabled: 1
+    path: Assets/Scenes/Locations/Hills/Level_4.unity
+    guid: be9196801776a504391f1dc8991a9715
   m_configObjects: {}
