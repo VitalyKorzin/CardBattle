@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _delay: 1.5
   _blast: {fileID: 817917316081181820, guid: 88e3992eada3d7b44a677c3731c004da, type: 3}
-  _shower: {fileID: 0}
+  _shower: {fileID: 19872788, guid: 039f0809d882b7f44ac9a410a3f7fa26, type: 3}
   _enemiesSquad: {fileID: 0}
   _blastPositions:
   - {fileID: 0}
