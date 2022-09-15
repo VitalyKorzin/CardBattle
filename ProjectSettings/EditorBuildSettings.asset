@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Locations/NorthPole/Level_13.unity
     guid: 683cbcf9f6d80a44cbd58f4aaba08ad1
+  - enabled: 1
+    path: Assets/Scenes/Locations/NorthPole/Level_14.unity
+    guid: c74ea097ba36095428c6f66e057dc071
   m_configObjects: {}
