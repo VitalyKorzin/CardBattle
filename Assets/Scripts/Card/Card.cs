@@ -43,6 +43,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private RectTransform _rectTransform;
     private Image _background;
+    private bool _isSelected;
 
     public event UnityAction<Card> Selected;
     public event UnityAction<Card> Destroyed;
@@ -71,9 +72,13 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (_isSelected)
+            return;
+
         if (transform.parent.parent != null)
             transform.parent = transform.parent.parent;
 
+        _isSelected = true;
         _glow.DOFade(_appearanceEndValue, _colorChangeDuration);
         ChangeColor();
         ChangeSize();

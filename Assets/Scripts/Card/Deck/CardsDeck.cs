@@ -31,11 +31,11 @@ public class CardsDeck : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         _angleBetweenCards = _rangeAngle / (_maximumCount - 1);
         _angleStep = _angleBetweenCards / 2f;
-        _pointerAngle = _angleBetweenCards + _angleStep;
+        _pointerAngle = _angleBetweenCards;
     }
 
     public void Add(Card card)
