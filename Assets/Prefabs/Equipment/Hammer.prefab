@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6580915652984429534}
   - component: {fileID: 7119196857043678779}
   - component: {fileID: 3492492042880838312}
+  - component: {fileID: 9013736109716175992}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -84,3 +85,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9013736109716175992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098831971212959615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d1f1505ea6b5d479554afa29609a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _secondsBetweenAttack: 0.5
+  _transitionRange: 0.75
+  _damage: 20

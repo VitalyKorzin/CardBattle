@@ -97,3 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d1f1505ea6b5d479554afa29609a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _secondsBetweenAttack: 0.5
+  _transitionRange: 0.75
+  _damage: 15

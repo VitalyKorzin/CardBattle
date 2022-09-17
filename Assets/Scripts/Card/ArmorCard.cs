@@ -30,7 +30,13 @@ public class ArmorCard : Card
             throw new ArgumentNullException(nameof(stickmen));
 
         foreach (var stickman in stickmen)
-            stickman.GiveArmor(_shield, _helmet, _additionalHealth, _additionalDamage);
+        {
+            if (stickman.gameObject.TryGetComponent(out Protection protection))
+            {
+                protection.Give(_helmet);
+                protection.Give(_shield);
+            }
+        }
     }
 
     private void Validate()

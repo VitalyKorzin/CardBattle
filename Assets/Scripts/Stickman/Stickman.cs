@@ -2,27 +2,18 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Health), typeof(Protection))]
 public abstract class Stickman : MonoBehaviour
 {
-    [Min(1)]
-    [SerializeField] private int _health;
-    [Min(1)]
-    [SerializeField] private int _damage;
-    [SerializeField] private ParticleSystem[] _bloodParticles;
+    [SerializeField] private Blood _blood;
     [SerializeField] private ParticleSystem _hit;
-    [SerializeField] private ParticleSystem _buff;
-    [SerializeField] private Transform _swordPosition;
-    [SerializeField] private Transform _shieldPosition;
-    [SerializeField] private Transform _helmetPosition;
     [SerializeField] private SkinnedMeshRenderer _renderer;
     [SerializeField] private Material _highlightMaterial;
 
     private Material _defaultMaterial;
+    private Health _health;
+    private Protection _armor;
 
-    public int Health => _health;
-    public int Damage => _damage;
-
-    public event UnityAction<int> HealthChanged;
     public event UnityAction<Stickman> Died;
     public event UnityAction<StickmenSquad> FightStarted;
     public event UnityAction<PlaceInSquad> AddedToSquad;
@@ -40,13 +31,17 @@ public abstract class Stickman : MonoBehaviour
         }
     }
 
-    private void Start() 
-        => _defaultMaterial = _renderer.material;
+    private void Start()
+    {
+        _health = GetComponent<Health>();
+        _armor = GetComponent<Protection>();
+        _defaultMaterial = _renderer.material;
+    }
 
-    public void Select() 
+    public void Select()
         => _renderer.material = _highlightMaterial;
 
-    public void Deselect() 
+    public void Deselect()
         => _renderer.material = _defaultMaterial;
 
     public void AddToSquad(PlaceInSquad place)
@@ -65,101 +60,56 @@ public abstract class Stickman : MonoBehaviour
         FightStarted?.Invoke(enemies);
     }
 
-    public void GiveArmor(Shield shield, Helmet helmet, int additionalHealth, int additionalDamage)
-    {
-        if (shield == null)
-            throw new ArgumentNullException(nameof(shield));
-
-        if (helmet == null)
-            throw new ArgumentNullException(nameof(helmet));
-
-        Instantiate(shield, _shieldPosition);
-        Instantiate(helmet, _helmetPosition);
-        Strengthen(additionalHealth, additionalDamage);
-    }
-
-    public void GiveWeapon(Sword sword, int additionalHealth, int additionalDamage)
-    {
-        if (sword == null)
-            throw new ArgumentNullException(nameof(sword));
-
-        Instantiate(sword, _swordPosition);
-        Strengthen(additionalHealth, additionalDamage);
-    }
-
     public void Apply(int damage)
     {
-        if (_health <= 0)
+        if (_health.Value <= 0)
             return;
 
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
         _hit.Play();
-        _health -= damage;
-        HealthChanged?.Invoke(_health);
+        Take(damage);
 
-        if (_health <= 0)
+        if (_health.Value <= 0)
             Die();
     }
 
-    public void Heal(int value)
+    private void Take(int damage)
     {
-        if (value < 0)
-            throw new ArgumentOutOfRangeException(nameof(value));
-
-        _health += value;
-        HealthChanged?.Invoke(_health);
-    }
-
-    private void Strengthen(int additionalHealth, int additionalDamage)
-    {
-        if (additionalHealth < 0)
-            throw new ArgumentOutOfRangeException(nameof(additionalHealth));
-
-        if (additionalDamage < 0)
-            throw new ArgumentOutOfRangeException(nameof(additionalDamage));
-
-        _buff.Play();
-        Heal(additionalHealth);
-        _damage += additionalDamage;
+        if (_armor.Value <= 0)
+        {
+            _health.Apply(damage);
+        }
+        else if (_armor.Value >= damage)
+        {
+            _armor.Apply(damage);
+        }
+        else
+        {
+            _health.Apply(damage - _armor.Value);
+            _armor.Apply(_armor.Value);
+        }
     }
 
     private void Die()
     {
-        foreach (var blood in _bloodParticles)
-        {
-            blood.transform.parent = null;
-            blood.Play();
-        }
-
+        _blood.Draw();
         Died?.Invoke(this);
     }
 
     private void Validate()
     {
-        if (_bloodParticles == null)
-            throw new InvalidOperationException();
-
-        if (_bloodParticles.Length == 0)
+        if (_blood == null)
             throw new InvalidOperationException();
 
         if (_hit == null)
             throw new InvalidOperationException();
 
-        if (_buff == null)
-            throw new InvalidOperationException();
-
-        if (_swordPosition == null)
-            throw new InvalidOperationException();
-
-        if (_shieldPosition == null)
-            throw new InvalidOperationException();
-
-        if (_helmetPosition == null)
-            throw new InvalidOperationException();
-
         if (_renderer == null)
+            throw new InvalidOperationException();
+
+        if (_highlightMaterial == null)
             throw new InvalidOperationException();
     }
 }
