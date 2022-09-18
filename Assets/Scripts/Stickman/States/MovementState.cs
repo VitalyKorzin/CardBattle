@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,6 +21,7 @@ public class MovementState : MonoBehaviour
     private AttackState _attackState;
     private Coroutine _movementJob;
     private Vector3 _lastPosition;
+    private Weapon _currentWeapon;
 
     public event UnityAction<Stickman> TargetApproached;
     public event UnityAction TargetDied;
@@ -52,6 +54,14 @@ public class MovementState : MonoBehaviour
         _lastPosition = transform.position;
     }
 
+    public void Initialize(Weapon weapon)
+    {
+        if (weapon == null)
+            throw new InvalidOperationException();
+
+        _currentWeapon = weapon;
+    }
+
     private void OnStickmanAddedToSquad(PlaceInSquad placeInSquad)
     {
         _placeInSquad = placeInSquad;
@@ -80,6 +90,8 @@ public class MovementState : MonoBehaviour
 
     private IEnumerator Move(Stickman target)
     {
+        _navMeshAgent.isStopped = false;
+
         while (DidNotReachTo(target))
         {
             Move(target.transform.position);
@@ -87,6 +99,7 @@ public class MovementState : MonoBehaviour
         }
 
         _animator.SetBool(StickmanAnimator.Params.IsRunning, false);
+        _navMeshAgent.isStopped = true;
 
         if (target == null)
             TargetDied?.Invoke();
@@ -96,6 +109,8 @@ public class MovementState : MonoBehaviour
 
     private IEnumerator Move(PlaceInSquad placeInSquad)
     {
+        _navMeshAgent.isStopped = false;
+
         while (DidNotReachTo(placeInSquad))
         {
             Move(placeInSquad.transform.position);
@@ -107,7 +122,7 @@ public class MovementState : MonoBehaviour
     }
 
     private bool DidNotReachTo(Stickman target)
-        => target != null && GetDistanceToTarget(target.transform.position) > _transitionRange;
+        => target != null && GetDistanceToTarget(target.transform.position) > _currentWeapon.TransitionRange;
 
     private bool DidNotReachTo(PlaceInSquad placeInSquad)
         => GetDistanceToTarget(placeInSquad.transform.position) > _neededDistanceToPlaceInSquad;

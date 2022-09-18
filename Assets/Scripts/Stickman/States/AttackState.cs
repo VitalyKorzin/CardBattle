@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(MovementState), typeof(Animator))]
 public class AttackState : MonoBehaviour
 {
+    [SerializeField] private Transform _shotPoint;
+
     private MovementState _movementState;
     private Coroutine _attackJob;
     private Animator _animator;
@@ -49,7 +51,7 @@ public class AttackState : MonoBehaviour
 
         while (TargetInAttackZone(stickman))
         {
-            yield return _currentWeapon.Attack(stickman, _animator);
+            yield return _currentWeapon.Attack(stickman, _animator, _shotPoint);
         }
 
         if (EnemyGone(stickman))

@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Wand : Ranged<MagicBall>
 {
-    protected override void ApplyDamage(Stickman target)
+    protected override void ApplyDamage(Stickman target, Transform shotPoint)
     {
         if (target == null)
             return;
 
-        Projectile projectile = Instantiate(Projectile, ShotPoint.position, Quaternion.identity);
+        Projectile projectile = Instantiate(Projectile, shotPoint.position, Quaternion.identity);
         projectile.StartMove(target);
     }
 

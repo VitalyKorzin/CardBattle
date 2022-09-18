@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdf028e2f08f494ba7aabc2ee08326f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _secondsBetweenAttack: 1
-  _transitionRange: 4
-  _projectile: {fileID: 0}
-  _shotPoint: {fileID: 665913288303103909}
+  _secondsBetweenAttack: 1.8
+  _transitionRange: 8
+  _projectile: {fileID: 5497222790658440298, guid: bc932e46431a1714abfe23d771651678, type: 3}

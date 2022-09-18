@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(AttackState))]
+[RequireComponent(typeof(AttackState), typeof(MovementState))]
 public class Armament : MonoBehaviour
 {
     [SerializeField] private Fists _fists;
@@ -15,6 +15,7 @@ public class Armament : MonoBehaviour
     [SerializeField] private ParticleSystem _buff;
 
     private AttackState _attackState;
+    private MovementState _movementState;
     private Weapon _currentWeapon;
 
     private void OnEnable()
@@ -33,6 +34,7 @@ public class Armament : MonoBehaviour
     private void Awake()
     {
         _attackState = GetComponent<AttackState>();
+        _movementState = GetComponent<MovementState>();
         TryDressWeapon();
     }
 
@@ -70,6 +72,7 @@ public class Armament : MonoBehaviour
 
         _currentWeapon = Instantiate(newWeapon, position);
         _attackState.Initialize(newWeapon);
+        _movementState.Initialize(newWeapon);
     }
 
     private void Dress(Quiver quiver)

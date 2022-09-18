@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Sword : Melee
 {
-    protected override void ApplyDamage(Stickman target)
+    protected override void ApplyDamage(Stickman target, Transform shotPoint)
     {
         if (target == null)
             return;

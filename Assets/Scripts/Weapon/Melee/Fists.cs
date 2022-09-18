@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Fists : Melee
 {
-    protected override void ApplyDamage(Stickman target)
+    protected override void ApplyDamage(Stickman target, Transform shotPoint)
     {
         if (target == null)
             return;
