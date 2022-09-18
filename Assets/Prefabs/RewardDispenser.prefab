@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1507922645327369115}
   - component: {fileID: 1507922645327369114}
+  - component: {fileID: -3499048639734526651}
   m_Layer: 0
   m_Name: RewardDispenser
   m_TagString: Untagged
@@ -46,3 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesSpawner: {fileID: 0}
   _rewardReceivingDisplay: {fileID: 3036440724633008765, guid: e05a704524695be48bceac078f926860, type: 3}
+--- !u!114 &-3499048639734526651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507922645327369117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5595b83c449e1a04c924ebbe96485a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemiesSquad: {fileID: 0}
+  _heroesSquad: {fileID: 0}
+  _displayTempalte: {fileID: 3088113889704007411, guid: e05a704524695be48bceac078f926860, type: 3}

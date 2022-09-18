@@ -86,6 +86,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _Ambient: 0.5
     - _Bevel: 0.5
@@ -161,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: CartoonFontWithOutline_30
   m_EditorClassIdentifier: 
-  hashCode: 1421889926
+  hashCode: 1421890023
   material: {fileID: -3734601616555835439}
-  materialHashCode: -1032546970
+  materialHashCode: -1371294745
   m_Version: 1.1.0
   m_SourceFontFileGUID: c16eb7d7c3953489db00312b8b09df4b
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: c16eb7d7c3953489db00312b8b09df4b, type: 3}
