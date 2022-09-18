@@ -1,22 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(AttackState), typeof(MovementState))]
 public class Armament : MonoBehaviour
 {
-    [SerializeField] private Fists _fists;
-    [SerializeField] private Sword _sword;
-    [SerializeField] private Wand _wand;
-    [SerializeField] private Bow _bow;
+    [SerializeField] private Weapon _weapon;
     [SerializeField] private Quiver _quiver;
     [SerializeField] private Transform _swordPosition;
     [SerializeField] private Transform _bowPosition;
     [SerializeField] private Transform _quiverPosition;
     [SerializeField] private ParticleSystem _buff;
 
-    private AttackState _attackState;
-    private MovementState _movementState;
-    private Weapon _currentWeapon;
+    public event UnityAction<Weapon> WeaponGived;
 
     private void OnEnable()
     {
@@ -31,48 +26,50 @@ public class Armament : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        _attackState = GetComponent<AttackState>();
-        _movementState = GetComponent<MovementState>();
-        TryDressWeapon();
-    }
+    private void Start() => TryDressWeapon();
 
-    public void Give(Sword sword)
+    public void Give(Fists fists, bool buffPlays = true)
     {
-        Give(sword, _swordPosition);
+        Give(fists, _swordPosition, buffPlays);
         TryDestroyCurrentQuiver();
     }
 
-    public void Give(Wand wand)
+    public void Give(Sword sword, bool buffPlays = true)
     {
-        Give(wand, _swordPosition);
+        Give(sword, _swordPosition, buffPlays);
         TryDestroyCurrentQuiver();
     }
 
-    public void Give(Bow bow)
+    public void Give(Wand wand, bool buffPlays = true)
     {
-        Give(bow, _bowPosition);
+        Give(wand, _swordPosition, buffPlays);
+        TryDestroyCurrentQuiver();
+    }
+
+    public void Give(Bow bow, bool buffPlays = true)
+    {
+        Give(bow, _bowPosition, buffPlays);
         Dress(bow.Quiver);
     }
 
-    private void Give<T>(T newWeapon, Transform position) where T: Weapon
+    private void Give<T>(T newWeapon, Transform position, bool buffPlays = true) where T: Weapon
     {
         if (newWeapon == null)
             throw new ArgumentNullException(nameof(newWeapon));
 
         Dress(newWeapon, position);
-        _buff.Play();
+
+        if (buffPlays)
+            _buff.Play();
     }
 
     private void Dress<T>(T newWeapon, Transform position) where T: Weapon
     {
-        if (_currentWeapon != null)
-            Destroy(_currentWeapon.gameObject);
+        if (_weapon != null && _weapon != newWeapon)
+            Destroy(_weapon.gameObject);
 
-        _currentWeapon = Instantiate(newWeapon, position);
-        _attackState.Initialize(newWeapon);
-        _movementState.Initialize(newWeapon);
+        _weapon = Instantiate(newWeapon, position);
+        WeaponGived?.Invoke(_weapon);
     }
 
     private void Dress(Quiver quiver)
@@ -83,19 +80,15 @@ public class Armament : MonoBehaviour
 
     private void TryDressWeapon()
     {
-        if (_fists != null)
-            Dress(_fists, _swordPosition);
-
-        if (_sword != null)
-            Dress(_sword, _swordPosition);
-
-        if (_wand != null)
-            Dress(_wand, _swordPosition);
-
-        if (_bow != null)
+        if (_weapon is Bow bow)
         {
-            Dress(_bow, _bowPosition);
-            Dress(_bow.Quiver);
+            Give(bow, false);
+            Dress(bow.Quiver);
+        }
+        else
+        {
+            if (_weapon != null)
+                Give((dynamic)_weapon, false);
         }
     }
 

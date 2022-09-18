@@ -1,17 +1,17 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Protection : MonoBehaviour
 {
-    [SerializeField] private Helmet _helmet;
-    [SerializeField] private Shield _shield;
+    [SerializeField] private List<Armor> _armors;
     [SerializeField] private Transform _shieldPosition;
     [SerializeField] private Transform _helmetPosition;
     [SerializeField] private ParticleSystem _buff;
 
-    private Helmet _currentHelmet;
-    private Shield _currentShield;
+    private Helmet _helmet;
+    private Shield _shield;
 
     public int Value { get; private set; }
 
@@ -42,30 +42,33 @@ public class Protection : MonoBehaviour
         Changed?.Invoke(Value);
     }
 
-    public void Give(Helmet helmet) 
-        => Give(helmet, _helmetPosition, ref _currentHelmet);
+    public void Give(Helmet helmet, bool buffPlays = true) 
+        => Give(helmet, _helmetPosition, ref _helmet, buffPlays);
 
-    public void Give(Shield shield) 
-        => Give(shield, _shieldPosition, ref _currentShield);
+    public void Give(Shield shield, bool buffPlays = true) 
+        => Give(shield, _shieldPosition, ref _shield, buffPlays);
 
-    private void Give<T>(T newArmor, Transform position, ref T currentArmor) where T: Armor
+    private void Give<T>(T newArmor, Transform position, ref T currentArmor, bool buffPlays = true) where T: Armor
     {
         if (newArmor == null)
             throw new ArgumentNullException(nameof(newArmor));
 
         Dress(newArmor, position, ref currentArmor);
-        _buff.Play();
+
+        if (buffPlays)
+            _buff.Play();
     }
 
     private void Dress<T>(T newArmor, Transform position, ref T currentArmor) where T : Armor
     {
-        if (currentArmor != null)
-            Destroy(currentArmor.gameObject);
-
         if (Value == 0)
             ArmorGived?.Invoke();
 
         currentArmor = Instantiate(newArmor, position);
+
+        if (_armors.Contains(newArmor) == false)
+            _armors.Add(currentArmor);
+
         Strengthen(currentArmor.Value);
     }
 
@@ -77,11 +80,8 @@ public class Protection : MonoBehaviour
 
     private void TryDressArmors()
     {
-        if (_helmet != null)
-            Dress(_helmet, _helmetPosition, ref _currentHelmet);
-
-        if (_shield != null)
-            Dress(_shield, _shieldPosition, ref _currentShield);
+        foreach (Armor armor in _armors)
+            Give((dynamic)armor, false);
     }
 
     private void Validate()

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Stickman), typeof(TargetSearchState), typeof(AttackState))]
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(Armament))]
 public class MovementState : MonoBehaviour
 {
     private readonly float _neededDistanceToPlaceInSquad = 0.1f;
@@ -19,6 +19,7 @@ public class MovementState : MonoBehaviour
     private Coroutine _movementJob;
     private Vector3 _lastPosition;
     private Weapon _currentWeapon;
+    private Armament _armament;
 
     public event UnityAction<Stickman> TargetApproached;
     public event UnityAction TargetDied;
@@ -32,6 +33,7 @@ public class MovementState : MonoBehaviour
         _targetSearchState.Finded -= OnNeedMove;
         _targetSearchState.TargetsDied -= OnNeedMoveToPlaceInSquad;
         _attackState.TargetGone -= OnNeedMove;
+        _armament.WeaponGived -= OnWeaponGived;
     }
 
     private void Awake()
@@ -43,6 +45,8 @@ public class MovementState : MonoBehaviour
         _stickman = GetComponent<Stickman>();
         _targetSearchState = GetComponent<TargetSearchState>();
         _attackState = GetComponent<AttackState>();
+        _armament = GetComponent<Armament>();
+        _armament.WeaponGived += OnWeaponGived;
         _stickman.AddedToSquad += OnStickmanAddedToSquad;
         _stickman.FightStarted += OnStickmanFightStarted;
         _targetSearchState.Finded += OnNeedMove;
@@ -51,13 +55,7 @@ public class MovementState : MonoBehaviour
         _lastPosition = transform.position;
     }
 
-    public void Initialize(Weapon weapon)
-    {
-        if (weapon == null)
-            throw new InvalidOperationException();
-
-        _currentWeapon = weapon;
-    }
+    private void OnWeaponGived(Weapon weapon) => _currentWeapon = weapon;
 
     private void OnStickmanAddedToSquad(PlaceInSquad placeInSquad)
     {

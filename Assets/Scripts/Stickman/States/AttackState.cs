@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(MovementState), typeof(Animator))]
+[RequireComponent(typeof(MovementState), typeof(Animator), typeof(Armament))]
 public class AttackState : MonoBehaviour
 {
     [SerializeField] private Transform _shotPoint;
@@ -12,28 +12,37 @@ public class AttackState : MonoBehaviour
     private Coroutine _attackJob;
     private Animator _animator;
     private Weapon _currentWeapon;
+    private Armament _armament;
 
     public event UnityAction TargetDied;
     public event UnityAction<Transform> TargetAttacked;
     public event UnityAction<Stickman> TargetGone;
 
-    private void OnDisable()
-        => _movementState.TargetApproached -= OnTargetApproached;
+    private void OnEnable()
+    {
+        if (_shotPoint == null)
+        {
+            enabled = false;
+            throw new InvalidOperationException();
+        }
+    }
 
-    private void Start()
+    private void OnDisable()
+    {
+        _movementState.TargetApproached -= OnTargetApproached;
+        _armament.WeaponGived -= OnWeaponGived;
+    }
+
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _movementState = GetComponent<MovementState>();
+        _armament = GetComponent<Armament>();
         _movementState.TargetApproached += OnTargetApproached;
+        _armament.WeaponGived += OnWeaponGived;
     }
 
-    public void Initialize(Weapon weapon)
-    {
-        if (weapon == null)
-            throw new InvalidOperationException();
-
-        _currentWeapon = weapon;
-    }
+    private void OnWeaponGived(Weapon weapon) => _currentWeapon = weapon;
 
     private void OnTargetApproached(Stickman stickman)
     {
@@ -50,9 +59,7 @@ public class AttackState : MonoBehaviour
         TargetAttacked?.Invoke(stickman.transform);
 
         while (TargetInAttackZone(stickman))
-        {
             yield return _currentWeapon.Attack(stickman, _animator, _shotPoint);
-        }
 
         if (EnemyGone(stickman))
         {

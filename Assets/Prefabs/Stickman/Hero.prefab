@@ -1338,7 +1338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dacdab46f8a900468fdea555341eca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionRange: 0.7
 --- !u!114 &1643146202330505666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,7 +1422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac487f2ce889f8e40be7a86d2c2ed176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startValue: 45
+  _value: 45
   _healing: {fileID: 7237870441149853804}
 --- !u!114 &1946676251977230960
 MonoBehaviour:
@@ -1437,8 +1436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea7518b858dd8640b973ac711e49ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _helmet: {fileID: 0}
-  _shield: {fileID: 0}
+  _armors: []
   _shieldPosition: {fileID: 2615174350083446117}
   _helmetPosition: {fileID: 2629839188706359106}
   _buff: {fileID: 7237870441149853804}
@@ -1454,10 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5a2d1768fa3f64c848cfd07e3dee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fists: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
-  _sword: {fileID: 0}
-  _wand: {fileID: 0}
-  _bow: {fileID: 0}
+  _weapon: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
   _quiver: {fileID: 0}
   _swordPosition: {fileID: 7931045913956193252}
   _bowPosition: {fileID: 2615174350083446117}

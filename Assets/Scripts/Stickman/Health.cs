@@ -5,10 +5,10 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [Min(0)]
-    [SerializeField] private int _startValue;
+    [SerializeField] private int _value;
     [SerializeField] private ParticleSystem _healing;
 
-    public int Value { get; private set; }
+    public int Value => _value;
 
     public event UnityAction<int> Changed;
 
@@ -21,15 +21,13 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Awake() => Value = _startValue;
-
     public void Apply(int damage)
     {
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
-        Value = Math.Clamp(Value - damage, 0, Value);
-        Changed?.Invoke(Value);
+        _value = Math.Clamp(_value - damage, 0, _value);
+        Changed?.Invoke(_value);
     }
 
     public void Heal(int value)
@@ -37,8 +35,8 @@ public class Health : MonoBehaviour
         if (value < 0)
             throw new ArgumentOutOfRangeException(nameof(value));
 
-        Value += value;
-        Changed?.Invoke(Value);
+        _value += value;
+        Changed?.Invoke(_value);
         _healing.Play();
     }
 }

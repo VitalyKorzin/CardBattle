@@ -100,14 +100,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2965734156104153959}
-  m_LocalRotation: {x: -0.00000003319393, y: 0.9655862, z: 0.000000017210654, w: 0.26008335}
-  m_LocalPosition: {x: -0.0032811146, y: -0.18920775, z: -0.0030001393}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.319, y: 0.406, z: 0.003}
   m_LocalScale: {x: 2.2222223, y: 2.34, z: 2.222222}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7585357256902421835}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!1 &3206556604371012685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,7 +1097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dacdab46f8a900468fdea555341eca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionRange: 0.7
 --- !u!114 &4412350335030117550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,7 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac487f2ce889f8e40be7a86d2c2ed176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startValue: 40
+  _value: 40
   _healing: {fileID: 4385199450661767819}
 --- !u!114 &2511378931391942394
 MonoBehaviour:
@@ -1196,8 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea7518b858dd8640b973ac711e49ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _helmet: {fileID: 0}
-  _shield: {fileID: 0}
+  _armors: []
   _shieldPosition: {fileID: 8339333906808561359}
   _helmetPosition: {fileID: 8447663775718832042}
   _buff: {fileID: 4385199450661767819}
@@ -1213,10 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5a2d1768fa3f64c848cfd07e3dee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fists: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
-  _sword: {fileID: 0}
-  _wand: {fileID: 0}
-  _bow: {fileID: 0}
+  _weapon: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
   _quiver: {fileID: 0}
   _swordPosition: {fileID: 815336986602579191}
   _bowPosition: {fileID: 8339333906808561359}
