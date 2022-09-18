@@ -8,9 +8,6 @@ using UnityEngine.Events;
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class MovementState : MonoBehaviour
 {
-    [Min(0)]
-    [SerializeField] private float _transitionRange;
-
     private readonly float _neededDistanceToPlaceInSquad = 0.1f;
 
     private Animator _animator;
