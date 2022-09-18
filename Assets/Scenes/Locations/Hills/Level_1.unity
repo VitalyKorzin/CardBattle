@@ -1064,6 +1064,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3499048639734526651, guid: c752f2e3cae501a44873f03961e05dec, type: 3}
+      propertyPath: _heroesSquad
+      value: 
+      objectReference: {fileID: 1747269345}
+    - target: {fileID: -3499048639734526651, guid: c752f2e3cae501a44873f03961e05dec, type: 3}
+      propertyPath: _enemiesSquad
+      value: 
+      objectReference: {fileID: 1564553830}
+    - target: {fileID: 1507922645327369114, guid: c752f2e3cae501a44873f03961e05dec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1507922645327369114, guid: c752f2e3cae501a44873f03961e05dec, type: 3}
       propertyPath: _enemiesSpawner
       value: 
@@ -1114,7 +1126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1507922645327369117, guid: c752f2e3cae501a44873f03961e05dec, type: 3}
       propertyPath: m_Name
-      value: RewardDispenser
+      value: HealthChangingDisplayDispenser
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c752f2e3cae501a44873f03961e05dec, type: 3}
@@ -7458,6 +7470,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3824322853851774256, guid: d78ba5b838c4dcb4db046abea7e43191, type: 3}
+      propertyPath: _stickman
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824322853961247782, guid: d78ba5b838c4dcb4db046abea7e43191, type: 3}
       propertyPath: _stickman
       value: 
       objectReference: {fileID: 0}

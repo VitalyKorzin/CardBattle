@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public int Value => _value;
 
     public event UnityAction<int> Changed;
+    public event UnityAction<Health, int> Healed;
 
     private void OnEnable()
     {
@@ -37,6 +38,7 @@ public class Health : MonoBehaviour
 
         _value += value;
         Changed?.Invoke(_value);
+        Healed?.Invoke(this, value);
         _healing.Play();
     }
 }

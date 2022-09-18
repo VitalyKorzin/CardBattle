@@ -17,6 +17,7 @@ public abstract class Stickman : MonoBehaviour
     public event UnityAction<Stickman> Died;
     public event UnityAction<StickmenSquad> FightStarted;
     public event UnityAction<PlaceInSquad> AddedToSquad;
+    public event UnityAction<Stickman, int> DamageReceived;
 
     private void OnEnable()
     {
@@ -70,6 +71,7 @@ public abstract class Stickman : MonoBehaviour
 
         _hit.Play();
         Take(damage);
+        DamageReceived?.Invoke(this, damage);
 
         if (_health.Value <= 0)
             Die();

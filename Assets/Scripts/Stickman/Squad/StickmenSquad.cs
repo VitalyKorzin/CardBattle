@@ -16,6 +16,7 @@ public abstract class StickmenSquad : MonoBehaviour
     public IReadOnlyList<Stickman> Stickmen => _stickmen;
 
     public event UnityAction Died;
+    public event UnityAction<Stickman> StickmanAdded;
 
     private void OnEnable()
     {
@@ -55,6 +56,7 @@ public abstract class StickmenSquad : MonoBehaviour
         _stickmen.Add(stickman);
         stickman.AddToSquad(place);
         stickman.Died += OnStickmanDied;
+        StickmanAdded?.Invoke(stickman);
     }
 
     private void OnFightStarted()

@@ -4,7 +4,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class RewardReceivingDisplay : MonoBehaviour
+public class HealthChangingDisplay : MonoBehaviour
 {
     [Min(0)]
     [SerializeField] private float _movementSpeed;
@@ -18,7 +18,8 @@ public class RewardReceivingDisplay : MonoBehaviour
 
     private readonly float _fadingEndValue = 0f;
     private readonly float _appearanceEndValue = 1f;
-    private readonly string _currencySymbol = "$";
+    private readonly string _plusSymbol = "+";
+    private readonly string _minusSymbol = "-";
 
     private Camera _camera;
     private float _lifetime;
@@ -31,7 +32,7 @@ public class RewardReceivingDisplay : MonoBehaviour
             throw new InvalidOperationException();
         }
     }
-    
+
     private void Awake()
     {
         _camera = Camera.main;
@@ -44,8 +45,19 @@ public class RewardReceivingDisplay : MonoBehaviour
         Move();
     }
 
-    public void Initialize(int value) 
-        => StartCoroutine(Display(value));
+    public void DisplayDamageReceiving(int value) 
+        => StartDisplay(value, _minusSymbol);
+
+    public void DisplayHealthReceiving(int value) 
+        => StartDisplay(value, _plusSymbol);
+
+    private void StartDisplay(int value, string symbol)
+    {
+        if(value < 0)
+            throw new ArgumentOutOfRangeException(nameof(value));
+
+        StartCoroutine(Display(value, symbol));
+    }
 
     private void LookAtCamera()
     {
@@ -57,9 +69,9 @@ public class RewardReceivingDisplay : MonoBehaviour
     private void Move()
         => transform.Translate(_movementSpeed * Time.deltaTime * Vector3.up);
 
-    private IEnumerator Display(int value)
+    private IEnumerator Display(int value, string symbol)
     {
-        _valueText.text = value.ToString() + _currencySymbol;
+        _valueText.text = symbol + value.ToString();
         _valueText.DOFade(_appearanceEndValue, _appearanceDuration);
         _valueText.DOFade(_fadingEndValue, _fadingDuration).SetDelay(_deleyBeforeFading);
         yield return new WaitForSeconds(_lifetime);
