@@ -27,7 +27,7 @@ public class RewardDispenser : MonoBehaviour
     private void OnDisable()
         => _enemiesSpawner.Spawned -= OnEnemySpawned;
 
-    private void OnEnemySpawned(Stickman stickman)
+    private void OnEnemySpawned(Stickman stickman, PlaceInSquad place)
         => stickman.Died += OnEnemyDied;
 
     private void OnEnemyDied(Stickman stickman)

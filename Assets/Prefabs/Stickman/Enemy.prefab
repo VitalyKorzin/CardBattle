@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5a2d1768fa3f64c848cfd07e3dee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fists: {fileID: 0}
+  _fists: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
   _sword: {fileID: 0}
   _wand: {fileID: 0}
   _bow: {fileID: 0}
