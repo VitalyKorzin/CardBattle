@@ -491,7 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _squad: {fileID: 3824322855097700030}
   _cardsDeck: {fileID: 0}
-  _template: {fileID: -4199843424852320827, guid: d5c8bcc5ae9e7d943bc683360c14e178, type: 3}
+  _template: {fileID: 7221270055200573582, guid: d5c8bcc5ae9e7d943bc683360c14e178, type: 3}
 --- !u!1 &3824322855211469196
 GameObject:
   m_ObjectHideFlags: 0

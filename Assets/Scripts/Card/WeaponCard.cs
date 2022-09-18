@@ -25,6 +25,9 @@ public class WeaponCard : Card
             throw new ArgumentNullException(nameof(stickmen));
 
         foreach (var stickman in stickmen)
-            stickman.GiveWeapon(_template, _additionalHealth, _additionalDamage);
+        {
+            if (stickman.gameObject.TryGetComponent(out Armament armament))
+                armament.Give(_template);
+        }
     }
 }

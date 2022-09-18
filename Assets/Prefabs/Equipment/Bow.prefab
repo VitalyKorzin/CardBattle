@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3176590417434513380}
   - component: {fileID: 5528192010606330992}
   - component: {fileID: 6534341318851001732}
+  - component: {fileID: 8585220761980559345}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721762361166835706}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: -90, z: -90}
 --- !u!33 &5528192010606330992
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84,3 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8585220761980559345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721762361166835706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7b2ae208b82354281bfc7778017944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _secondsBetweenAttack: 1
+  _transitionRange: 6
+  _projectile: {fileID: 7668868927583114810, guid: 2659093a0ae9cba4fa0d9c85ce301cee, type: 3}
+  _quiver: {fileID: 2471491779281764490, guid: bed5f5eec1eed05438f49a07d2e4434f, type: 3}
