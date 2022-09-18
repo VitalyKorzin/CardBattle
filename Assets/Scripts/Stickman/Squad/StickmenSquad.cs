@@ -39,11 +39,21 @@ public abstract class StickmenSquad : MonoBehaviour
         _startFightAnnunciator.FightStarted -= OnFightStarted;
     }
 
-    private void Start() => _spawner.Initialize(_places);
+    private void Start()
+    {
+        _spawner.Initialize(_places);
 
-    private void OnStickmanSpawned(Stickman stickman)
+        foreach (PlaceInSquad place in _places)
+        {
+            if (place.Occupied)
+                OnStickmanSpawned(place.Stickman, place);
+        }
+    }
+
+    private void OnStickmanSpawned(Stickman stickman, PlaceInSquad place)
     {
         _stickmen.Add(stickman);
+        stickman.AddToSquad(place);
         stickman.Died += OnStickmanDied;
     }
 

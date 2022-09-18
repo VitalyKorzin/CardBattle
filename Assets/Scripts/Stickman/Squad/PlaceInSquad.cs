@@ -1,11 +1,19 @@
+using System;
 using UnityEngine;
 
 public class PlaceInSquad : MonoBehaviour
 {
-    [SerializeField] private bool _occupied;
+    [SerializeField] private Stickman _stickman;
 
-    public bool Free => _occupied == false;
-    public bool Occupied => _occupied;
+    public bool Free => _stickman == null;
+    public bool Occupied => _stickman != null;
+    public Stickman Stickman => _stickman;
 
-    public void Occupy() => _occupied = true;
+    public void Occupy(Stickman stickman)
+    {
+        if (stickman == null)
+            throw new ArgumentNullException(nameof(stickman));
+
+        _stickman = stickman;
+    }
 }
