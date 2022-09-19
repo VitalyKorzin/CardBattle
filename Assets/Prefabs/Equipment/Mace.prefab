@@ -813,7 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _secondsBetweenAttack: 0.5
   _transitionRange: 0.75
-  _damage: 20
+  _damage: 13
 --- !u!1 &4871815640767083493
 GameObject:
   m_ObjectHideFlags: 0

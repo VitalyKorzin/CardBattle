@@ -100,4 +100,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _secondsBetweenAttack: 0.5
   _transitionRange: 0.75
-  _damage: 10
+  _damage: 20
