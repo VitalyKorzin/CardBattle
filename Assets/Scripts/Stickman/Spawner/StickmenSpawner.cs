@@ -86,7 +86,6 @@ public abstract class StickmenSpawner : MonoBehaviour
         if (FreePlaces.Count < stickmenCount)
             stickmenCount = FreePlaces.Count;
 
-        Debug.Log(FreePlaces.Count);
         return stickmenCount;
     }
 
