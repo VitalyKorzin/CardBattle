@@ -62,9 +62,15 @@ public abstract class StickmenSpawner : MonoBehaviour
         card.Used -= OnMultiplierCardUsed;
 
         foreach (var stickman in stickmen)
+        {
             if (_squad.Stickmen.Contains(stickman))
-                for (var i = 0; i < GetSickmenCount(card); i++)
+            {
+                var count = GetSickmenCount(card);
+
+                for (var i = 0; i < count; i++)
                     SpawnInNearestPlace(stickman);
+            }
+        }
     }
 
     private void SpawnInNearestPlace(Stickman stickman)
@@ -80,6 +86,7 @@ public abstract class StickmenSpawner : MonoBehaviour
         if (FreePlaces.Count < stickmenCount)
             stickmenCount = FreePlaces.Count;
 
+        Debug.Log(FreePlaces.Count);
         return stickmenCount;
     }
 
