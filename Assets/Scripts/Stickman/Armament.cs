@@ -81,15 +81,19 @@ public class Armament : MonoBehaviour
     private void TryDressWeapon()
     {
         if (_weapon is Bow bow)
-        {
-            Give(bow, false);
-            Dress(bow.Quiver);
-        }
-        else
-        {
-            if (_weapon != null)
-                Give((dynamic)_weapon, false);
-        }
+            GiveBow(bow);
+        else if (_weapon is Fists fists)
+            Give(fists, false);
+        else if (_weapon is Sword sword)
+            Give(sword, false);
+        else if (_weapon is Wand wand)
+            Give(wand, false);
+    }
+
+    private void GiveBow(Bow bow)
+    {
+        Give(bow, false);
+        Dress(bow.Quiver);
     }
 
     private void TryDestroyCurrentQuiver()

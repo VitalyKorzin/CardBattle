@@ -81,7 +81,12 @@ public class Protection : MonoBehaviour
     private void TryDressArmors()
     {
         foreach (Armor armor in _armors)
-            Give((dynamic)armor, false);
+        {
+            if (armor is Helmet helmet)
+                Give(helmet, false);
+            else if (armor is Shield shield)
+                Give(shield, false);
+        }
     }
 
     private void Validate()
