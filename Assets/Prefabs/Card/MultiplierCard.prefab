@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6912061075389713895}
   m_RootOrder: 0
@@ -87,6 +88,10 @@ GameObject:
   - component: {fileID: 5507765349465224728}
   - component: {fileID: 2795451305067796324}
   - component: {fileID: 3676188056938309563}
+  - component: {fileID: 4466448134147318751}
+  - component: {fileID: 630122366147851848}
+  - component: {fileID: 6895857813458332877}
+  - component: {fileID: 7411086707564559814}
   m_Layer: 5
   m_Name: MultiplierCard
   m_TagString: Untagged
@@ -104,6 +109,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3807884966840163525}
   - {fileID: 1013283824814021267}
@@ -166,23 +172,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9db4065af27f843b0fff28135313ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectionOffsetY: 330
-  _colorChangeDuration: 0.7
-  _movementDuration: 0.27
-  _fadingDuration: 0.35
   _delayBeforeDestroy: 0.2
+  _value: 3
+--- !u!114 &4466448134147318751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676188056938309564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be35c112d38fd41a6ab4d26f542d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectionOffsetY: 330
+  _movementDuration: 0.27
+  _movementDurationOnSelection: 0.6
+  _offset: {x: 0, y: 95, z: 0}
+--- !u!114 &630122366147851848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676188056938309564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949c36f8302319e4e922b5cfdb4af439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _rotationDuration: 0.6
+--- !u!114 &6895857813458332877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676188056938309564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db6113708aa09e429b94e0bfdcd22af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _sizeOnSelection: 0.9
   _targetScaleOnFading: 1.1
   _scalingDuration: 0.15
-  _movementDurationOnSelection: 0.6
-  _offset: {x: 0, y: 95, z: 0}
-  _selectionBackgroundColor: {r: 0.050980393, g: 0.6392157, b: 0.7254902, a: 1}
-  _selectionFrameColor: {r: 0.043137256, g: 1, b: 0, a: 1}
+  _fadingDuration: 0.35
+--- !u!114 &7411086707564559814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676188056938309564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8f9eac433310444bbf2ffebef070eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadingDuration: 0.35
+  _colorChangeDuration: 0.7
   _icon: {fileID: 31419113239517713}
   _frame: {fileID: 4575456580396116026}
   _glow: {fileID: 527474772234595161}
-  _value: 3
+  _background: {fileID: 2795451305067796324}
+  _selectionBackgroundColor: {r: 0.050980393, g: 0.6392157, b: 0.7254902, a: 1}
+  _selectionFrameColor: {r: 0.043137256, g: 1, b: 0, a: 1}
 --- !u!1 &6968173493646109559
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +267,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6912061075389713895}
   m_RootOrder: 1
@@ -286,6 +343,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6912061075389713895}
   m_RootOrder: 2

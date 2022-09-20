@@ -26,7 +26,19 @@ public class Armament : MonoBehaviour
         }
     }
 
-    private void Start() => TryDressWeapon();
+    private void Start() => Give(_weapon, false);
+
+    public void Give(Weapon weapon, bool buffPlays = true)
+    {
+        if (weapon is Bow bow)
+            GiveBow(bow, buffPlays);
+        else if (weapon is Fists fists)
+            Give(fists, buffPlays);
+        else if (weapon is Sword sword)
+            Give(sword, buffPlays);
+        else if (weapon is Wand wand)
+            Give(wand, buffPlays);
+    }
 
     public void Give(Fists fists, bool buffPlays = true)
     {
@@ -34,19 +46,19 @@ public class Armament : MonoBehaviour
         TryDestroyCurrentQuiver();
     }
 
-    public void Give(Sword sword, bool buffPlays = true)
+    private void Give(Sword sword, bool buffPlays = true)
     {
         Give(sword, _swordPosition, buffPlays);
         TryDestroyCurrentQuiver();
     }
 
-    public void Give(Wand wand, bool buffPlays = true)
+    private void Give(Wand wand, bool buffPlays = true)
     {
         Give(wand, _swordPosition, buffPlays);
         TryDestroyCurrentQuiver();
     }
 
-    public void Give(Bow bow, bool buffPlays = true)
+    private void Give(Bow bow, bool buffPlays = true)
     {
         Give(bow, _bowPosition, buffPlays);
         Dress(bow.Quiver);
@@ -78,21 +90,9 @@ public class Armament : MonoBehaviour
         _quiver = Instantiate(quiver, _quiverPosition);
     }
 
-    private void TryDressWeapon()
+    private void GiveBow(Bow bow, bool buffPlays = true)
     {
-        if (_weapon is Bow bow)
-            GiveBow(bow);
-        else if (_weapon is Fists fists)
-            Give(fists, false);
-        else if (_weapon is Sword sword)
-            Give(sword, false);
-        else if (_weapon is Wand wand)
-            Give(wand, false);
-    }
-
-    private void GiveBow(Bow bow)
-    {
-        Give(bow, false);
+        Give(bow, buffPlays);
         Dress(bow.Quiver);
     }
 

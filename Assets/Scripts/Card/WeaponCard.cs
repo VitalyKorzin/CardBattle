@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class WeaponCard : Card
 {
-    [Min(0)]
-    [SerializeField] private int _additionalHealth;
-    [Min(0)]
-    [SerializeField] private int _additionalDamage;
-    [SerializeField] private Sword _template;
+    [SerializeField] private Weapon _template;
 
     private void OnEnable()
     {
@@ -28,6 +24,8 @@ public class WeaponCard : Card
         {
             if (stickman.gameObject.TryGetComponent(out Armament armament))
                 armament.Give(_template);
+            else
+                throw new InvalidOperationException();
         }
     }
 }

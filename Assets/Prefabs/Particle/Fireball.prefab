@@ -9592,7 +9592,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 45
-  _speed: 5
+  _speed: 10
+  _explosionFire: {fileID: 6950605604014050711, guid: 0b76de62ac8fa1e4cb3c58b168e83d49, type: 3}
 --- !u!1 &8886265095125916595
 GameObject:
   m_ObjectHideFlags: 0

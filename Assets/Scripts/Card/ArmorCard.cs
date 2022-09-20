@@ -4,23 +4,14 @@ using UnityEngine;
 
 public class ArmorCard : Card
 {
-    [Min(0)]
-    [SerializeField] private int _additionalHealth;
-    [Min(0)]
-    [SerializeField] private int _additionalDamage;
-    [SerializeField] private Shield _shield;
-    [SerializeField] private Helmet _helmet;
+    [SerializeField] private Armor _template;
 
     private void OnEnable()
     {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
+        if (_template == null)
         {
             enabled = false;
-            throw exception;
+            throw new InvalidOperationException();
         }
     }
 
@@ -32,19 +23,9 @@ public class ArmorCard : Card
         foreach (var stickman in stickmen)
         {
             if (stickman.gameObject.TryGetComponent(out Protection protection))
-            {
-                protection.Give(_helmet);
-                protection.Give(_shield);
-            }
+                protection.Give(_template);
+            else
+                throw new InvalidOperationException();
         }
-    }
-
-    private void Validate()
-    {
-        if (_shield == null)
-            throw new InvalidOperationException();
-
-        if (_helmet == null)
-            throw new InvalidOperationException();
     }
 }

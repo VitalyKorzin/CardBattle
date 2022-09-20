@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FireballCard : Card
+public class FireballCard : Card, IAbilityCard
 {
     public event UnityAction<FireballCard, Vector3> Used;
 

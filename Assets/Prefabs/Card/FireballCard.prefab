@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 9019514271269452058}
   - component: {fileID: 1697631869987149926}
   - component: {fileID: 162185220065847457}
+  - component: {fileID: -8455900328667602165}
+  - component: {fileID: 7866752760354860198}
+  - component: {fileID: -6676353153731730210}
+  - component: {fileID: -7477384656031641931}
   m_Layer: 5
   m_Name: FireballCard
   m_TagString: Untagged
@@ -29,6 +33,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8157136889163799392}
   - {fileID: 7680129420358650567}
@@ -91,22 +96,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2777d578fea9c45bd0b53bc28f61f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectionOffsetY: 330
-  _colorChangeDuration: 0.7
-  _movementDuration: 0.27
-  _fadingDuration: 0.35
   _delayBeforeDestroy: 0.2
+--- !u!114 &-8455900328667602165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162185220065847486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be35c112d38fd41a6ab4d26f542d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectionOffsetY: 330
+  _movementDuration: 0.27
+  _movementDurationOnSelection: 0.6
+  _offset: {x: 0, y: 95, z: 0}
+--- !u!114 &7866752760354860198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162185220065847486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949c36f8302319e4e922b5cfdb4af439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _rotationDuration: 0.6
+--- !u!114 &-6676353153731730210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162185220065847486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db6113708aa09e429b94e0bfdcd22af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _sizeOnSelection: 0.9
   _targetScaleOnFading: 1.1
   _scalingDuration: 0.15
-  _movementDurationOnSelection: 0.6
-  _offset: {x: 0, y: 95, z: 0}
-  _selectionBackgroundColor: {r: 0.050980393, g: 0.6392157, b: 0.7254902, a: 1}
-  _selectionFrameColor: {r: 0.043137256, g: 1, b: 0, a: 1}
+  _fadingDuration: 0.35
+--- !u!114 &-7477384656031641931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162185220065847486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8f9eac433310444bbf2ffebef070eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadingDuration: 0.35
+  _colorChangeDuration: 0.7
   _icon: {fileID: 1022645670651931121}
   _frame: {fileID: 2459881235568501058}
   _glow: {fileID: 3185087184802116054}
+  _background: {fileID: 1697631869987149926}
+  _selectionBackgroundColor: {r: 0.050980393, g: 0.6392157, b: 0.7254902, a: 1}
+  _selectionFrameColor: {r: 0.043137256, g: 1, b: 0, a: 1}
 --- !u!1 &1869367955066815686
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +190,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7973854018254930661}
   m_RootOrder: 1
@@ -210,6 +266,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7973854018254930661}
   m_RootOrder: 2
@@ -285,6 +342,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7973854018254930661}
   m_RootOrder: 0

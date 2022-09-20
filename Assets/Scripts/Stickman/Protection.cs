@@ -42,10 +42,18 @@ public class Protection : MonoBehaviour
         Changed?.Invoke(Value);
     }
 
-    public void Give(Helmet helmet, bool buffPlays = true) 
+    public void Give(Armor armor, bool buffPlays = true)
+    {
+        if (armor is Helmet helmet)
+            Give(helmet, buffPlays);
+        else if (armor is Shield shield)
+            Give(shield, buffPlays);
+    }
+
+    private void Give(Helmet helmet, bool buffPlays = true) 
         => Give(helmet, _helmetPosition, ref _helmet, buffPlays);
 
-    public void Give(Shield shield, bool buffPlays = true) 
+    private void Give(Shield shield, bool buffPlays = true) 
         => Give(shield, _shieldPosition, ref _shield, buffPlays);
 
     private void Give<T>(T newArmor, Transform position, ref T currentArmor, bool buffPlays = true) where T: Armor
@@ -81,12 +89,7 @@ public class Protection : MonoBehaviour
     private void TryDressArmors()
     {
         foreach (Armor armor in _armors)
-        {
-            if (armor is Helmet helmet)
-                Give(helmet, false);
-            else if (armor is Shield shield)
-                Give(shield, false);
-        }
+            Give(armor, false);
     }
 
     private void Validate()
