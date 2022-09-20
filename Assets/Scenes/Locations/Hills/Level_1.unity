@@ -6724,6 +6724,10 @@ PrefabInstance:
       propertyPath: _cardsDeck
       value: 
       objectReference: {fileID: 1417291713}
+    - target: {fileID: 1368516275910978929, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
+      propertyPath: _abillityAreaTemplate
+      value: 
+      objectReference: {fileID: 7787244302229095902, guid: 122f602e9138dcc449c6a543da11af07, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
 --- !u!43 &1409063038

@@ -14,6 +14,9 @@ public class CardSlot : MonoBehaviour
 
     public event UnityAction<CardSlot> Destroyed;
 
+    private void Awake() 
+        => _cardPosition = new Vector3(0f, _cardPositionY, 0f);
+
     public void Initialize(Card card)
     {
         if (card == null)
@@ -22,7 +25,6 @@ public class CardSlot : MonoBehaviour
         card.Destroyed += OnCardDestroyed;
         card.Deselected += OnCardDeselected;
         card.transform.parent = transform;
-        _cardPosition = new Vector3(0f, _cardPositionY, 0f);
         card.MoveWithOffset(_cardPosition);
     }
 

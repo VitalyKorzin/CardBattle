@@ -4,7 +4,7 @@ using UnityEngine;
 public class CardActionAreaSpawner : MonoBehaviour
 {
     [SerializeField] private CardsDeck _cardsDeck;
-    [SerializeField] private FireballCardActionArea _fireballAreaTemplate;
+    [SerializeField] private AbillityCardActionArea _abillityAreaTemplate;
     [SerializeField] private PlainCardActionArea _plainAreaTemplate;
 
     private void OnEnable()
@@ -33,8 +33,8 @@ public class CardActionAreaSpawner : MonoBehaviour
 
     private void OnCardSelected(Card card)
     {
-        if (card is FireballCard)
-            InstantiateArea(_fireballAreaTemplate, card);
+        if (card is IAbilityCard)
+            InstantiateArea(_abillityAreaTemplate, card);
         else
             InstantiateArea(_plainAreaTemplate, card);
     }
@@ -53,7 +53,7 @@ public class CardActionAreaSpawner : MonoBehaviour
         if (_cardsDeck == null)
             throw new InvalidOperationException();
 
-        if (_fireballAreaTemplate == null)
+        if (_abillityAreaTemplate == null)
             throw new InvalidOperationException();
 
         if (_plainAreaTemplate == null)

@@ -10,6 +10,8 @@ public class Fireball : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private ParticleSystem _explosionFire;
 
+    private readonly float _delayBeforeDestroing = 2f;
+
     private int _currentWaypointIndex = 0;
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +20,10 @@ public class Fireball : MonoBehaviour
             enemy.Apply(_damage);
 
         if (other.TryGetComponent(out Platform _))
+        {
             Instantiate(_explosionFire, transform.position, Quaternion.identity);
+            StartCoroutine(Destroy());
+        }
     }
 
     public void StartMove(Vector3[] path)
@@ -46,6 +51,12 @@ public class Fireball : MonoBehaviour
             yield return null;
         }
 
+        Destroy(gameObject);
+    }
+
+    private IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(_delayBeforeDestroing);
         Destroy(gameObject);
     }
 }

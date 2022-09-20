@@ -15,9 +15,6 @@ public class CardRotator : MonoBehaviour
         _rectTransform.localRotation = transform.parent.localRotation;
     }
 
-    public void RotateOnSelection()
-        => _rectTransform.DOLocalRotate(Vector3.zero, _rotationDuration);
-
-    public void RotateOnDeselection()
+    public void Rotate()
         => _rectTransform.DOLocalRotate(Vector3.zero, _rotationDuration);
 }

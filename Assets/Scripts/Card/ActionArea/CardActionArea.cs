@@ -56,22 +56,27 @@ public abstract class CardActionArea<T> : MonoBehaviour
 
     private void OnCardDestroyed(Card card)
     {
-        foreach (var stickman in _stickmen)
-            stickman.Deselect();
-
-        card.Destroyed -= OnCardDestroyed;
-        card.Deselected -= OnCardDeselected;
+        DeselectStickmen();
         card.Use(_stickmen, transform.position);
-        Destroy(gameObject);
+        Destroy(card);
     }
 
     private void OnCardDeselected(Card card)
     {
-        foreach (var stickman in _stickmen)
-            stickman.Deselect();
+        DeselectStickmen();
+        Destroy(card);
+    }
 
+    private void Destroy(Card card)
+    {
         card.Destroyed -= OnCardDestroyed;
         card.Deselected -= OnCardDeselected;
         Destroy(gameObject);
+    }
+
+    private void DeselectStickmen()
+    {
+        foreach (var stickman in _stickmen)
+            stickman.Deselect();
     }
 }

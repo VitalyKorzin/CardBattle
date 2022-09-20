@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectricballCard : Card
+public class ElectricballCard : Card, IAbilityCard
 {
-    [SerializeField] private Vector3 _offset;
+    [SerializeField] private Vector3 _spawnPositionOffset;
     [SerializeField] private Electricball _template;
 
     private void OnEnable()
@@ -17,5 +17,5 @@ public class ElectricballCard : Card
     }
 
     public override void Use<T>(List<T> stickmen, Vector3 actionPosition) 
-        => Instantiate(_template, actionPosition + _offset, Quaternion.identity);
+        => Instantiate(_template, actionPosition + _spawnPositionOffset, Quaternion.identity);
 }

@@ -17,6 +17,8 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private CardScaler _scaler;
     private Camera _camera;
     private bool _isSelected;
+    private Ray _ray;
+    private RaycastHit[] _hits;
 
     public event UnityAction<Card> Selected;
     public event UnityAction<Card> Deselected;
@@ -46,14 +48,14 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _view.ChangeColorOnSelection();
         _scaler.ChangeSize();
         _mover.MoveOnSelection();
-        _rotator.RotateOnSelection();
+        _rotator.Rotate();
         Selected?.Invoke(this);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        var _ray = _camera.ScreenPointToRay(eventData.position);
-        var _hits = Physics.RaycastAll(_ray);
+        _ray = _camera.ScreenPointToRay(eventData.position);
+        _hits = Physics.RaycastAll(_ray);
 
         foreach (var hit in _hits)
         {
@@ -76,7 +78,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public void MoveBack(Vector3 targetPosition)
     {
         _mover.MoveOnDeselection(targetPosition);
-        _rotator.RotateOnDeselection();
+        _rotator.Rotate();
         _view.ChangeColorOnDeselection();
     }
 

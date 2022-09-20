@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.9
-  _offset: {x: 0, y: 10, z: 0}
+  _spawnPositionOffset: {x: 0, y: 10, z: 0}
   _template: {fileID: 1164389315988247922, guid: 437867dfb8d07134bbc121c3217416c1, type: 3}
 --- !u!1 &6952800739626469592
 GameObject:
