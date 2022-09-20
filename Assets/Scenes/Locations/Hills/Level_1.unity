@@ -3359,7 +3359,7 @@ PrefabInstance:
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[0]
       value: 
-      objectReference: {fileID: 193585675524927490, guid: 03ed7913e27667e4bbfa13eaed1c37bb, type: 3}
+      objectReference: {fileID: 8903461157430996380, guid: eaf5120a6ff978b478fdbeccf30a575f, type: 3}
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[1]
       value: 
@@ -3371,7 +3371,7 @@ PrefabInstance:
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[4]
       value: 
-      objectReference: {fileID: 4716955547539259629, guid: 3fa10fb3cf58c904f9b25e08ad69f07f, type: 3}
+      objectReference: {fileID: 3676188056938309563, guid: caefc8f6e0fa62b43bd7ff24905edb99, type: 3}
     - target: {fileID: 8481364782015338919, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
