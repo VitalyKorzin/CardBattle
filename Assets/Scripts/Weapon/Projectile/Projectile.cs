@@ -18,6 +18,8 @@ public abstract class Projectile : MonoBehaviour
         StartCoroutine(Move(target));
     }
 
+    protected abstract void DisplayHit();
+
     private IEnumerator Move(Stickman target)
     {
         while (target != null && Vector3.Distance(transform.position, target.transform.position) > _targetDistance)
@@ -28,7 +30,10 @@ public abstract class Projectile : MonoBehaviour
         }
 
         if (target != null)
+        {
             target.Apply(_damage);
+            DisplayHit();
+        }
 
         Destroy(gameObject);
     }
