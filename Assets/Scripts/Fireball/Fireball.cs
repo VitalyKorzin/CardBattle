@@ -8,6 +8,7 @@ public class Fireball : MonoBehaviour
     [SerializeField] private int _damage;
     [Min(0)]
     [SerializeField] private float _speed;
+    [SerializeField] private ParticleSystem _explosionFire;
 
     private int _currentWaypointIndex = 0;
 
@@ -15,6 +16,9 @@ public class Fireball : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
             enemy.Apply(_damage);
+
+        if (other.TryGetComponent(out Platform _))
+            Instantiate(_explosionFire, transform.position, Quaternion.identity);
     }
 
     public void StartMove(Vector3[] path)
