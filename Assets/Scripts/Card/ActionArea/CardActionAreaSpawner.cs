@@ -26,12 +26,13 @@ public class CardActionAreaSpawner : MonoBehaviour
         => _cardsDeck.CardAdded -= OnCardAdded;
 
     private void OnCardAdded(Card card)
-        => card.Selected += OnCardSelected;
+    {
+        card.Selected += OnCardSelected;
+        card.Destroyed += OnCardDestroyed;
+    }
 
     private void OnCardSelected(Card card)
     {
-        card.Selected -= OnCardSelected;
-
         if (card is FireballCard)
             InstantiateArea(_fireballAreaTemplate, card);
         else
@@ -40,6 +41,12 @@ public class CardActionAreaSpawner : MonoBehaviour
 
     private void InstantiateArea<T>(CardActionArea<T> template, Card card) where T: Stickman
         => Instantiate(template, transform.position, Quaternion.identity).Initialize(card);
+
+    private void OnCardDestroyed(Card card)
+    {
+        card.Selected -= OnCardSelected;
+        card.Destroyed -= OnCardDestroyed;
+    }
 
     private void Validate()
     {

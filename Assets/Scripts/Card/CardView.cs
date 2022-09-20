@@ -19,6 +19,9 @@ public class CardView : MonoBehaviour
     private readonly float _appearanceEndValue = 1f;
     private readonly float _fadingEndValue = 0f;
 
+    private Color _defaultBackgroundColor;
+    private Color _defaultFrameColor;
+
     private void OnEnable()
     {
         try
@@ -32,11 +35,24 @@ public class CardView : MonoBehaviour
         }
     }
 
-    public void ChangeColor()
+    private void Start()
+    {
+        _defaultBackgroundColor = _background.color;
+        _defaultFrameColor = _frame.color;
+    }
+
+    public void ChangeColorOnSelection()
     {
         _glow.DOFade(_appearanceEndValue, _colorChangeDuration);
         _background.DOColor(_selectionBackgroundColor, _colorChangeDuration);
         _frame.DOColor(_selectionFrameColor, _colorChangeDuration);
+    }
+
+    public void ChangeColorOnDeselection()
+    {
+        _glow.DOFade(_fadingEndValue, _colorChangeDuration);
+        _background.DOColor(_defaultBackgroundColor, _colorChangeDuration);
+        _frame.DOColor(_defaultFrameColor, _colorChangeDuration);
     }
 
     public void Fade()

@@ -29,4 +29,7 @@ public class CardMover : MonoBehaviour
         var targetPosition = new Vector2(_rectTransform.localPosition.x, targetPositionY);
         _rectTransform.DOAnchorPos(targetPosition, _movementDurationOnSelection);
     }
+
+    public void MoveOnDeselection(Vector3 targetPosition)
+        => _rectTransform.DOAnchorPos(targetPosition, _movementDurationOnSelection);
 }

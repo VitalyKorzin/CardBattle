@@ -15,9 +15,11 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private CardView _view;
     private CardRotator _rotator;
     private CardScaler _scaler;
+    private Camera _camera;
     private bool _isSelected;
 
     public event UnityAction<Card> Selected;
+    public event UnityAction<Card> Deselected;
     public event UnityAction<Card> Destroyed;
 
     private void Awake()
@@ -26,6 +28,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _view = GetComponent<CardView>();
         _rotator = GetComponent<CardRotator>();
         _scaler = GetComponent<CardScaler>();
+        _camera = Camera.main;
     }
 
     public abstract void Use<T>(List<T> stickmen, Vector3 actionPosition)
@@ -40,15 +43,28 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             transform.parent = transform.parent.parent;
 
         _isSelected = true;
-        _view.ChangeColor();
+        _view.ChangeColorOnSelection();
         _scaler.ChangeSize();
         _mover.MoveOnSelection();
-        _rotator.Rotate();
+        _rotator.RotateOnSelection();
         Selected?.Invoke(this);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        var _ray = _camera.ScreenPointToRay(eventData.position);
+        var _hits = Physics.RaycastAll(_ray);
+
+        foreach (var hit in _hits)
+        {
+            if (hit.collider.TryGetComponent(out CardsDeck _))
+            {
+                Deselected?.Invoke(this);
+                _isSelected = false;
+                return;
+            }
+        }
+
         _view.Fade();
         Destroyed?.Invoke(this);
         StartCoroutine(Destroy());
@@ -56,6 +72,13 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void MoveWithOffset(Vector3 targetPosition)
         => _mover.MoveWithOffset(targetPosition);
+
+    public void MoveBack(Vector3 targetPosition)
+    {
+        _mover.MoveOnDeselection(targetPosition);
+        _rotator.RotateOnDeselection();
+        _view.ChangeColorOnDeselection();
+    }
 
     private IEnumerator Destroy()
     {

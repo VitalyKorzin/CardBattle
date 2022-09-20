@@ -39,6 +39,7 @@ public abstract class CardActionArea<T> : MonoBehaviour
             throw new ArgumentNullException(nameof(card));
 
         card.Destroyed += OnCardDestroyed;
+        card.Deselected += OnCardDeselected;
     }
 
     private void SetPosition()
@@ -59,7 +60,18 @@ public abstract class CardActionArea<T> : MonoBehaviour
             stickman.Deselect();
 
         card.Destroyed -= OnCardDestroyed;
+        card.Deselected -= OnCardDeselected;
         card.Use(_stickmen, transform.position);
+        Destroy(gameObject);
+    }
+
+    private void OnCardDeselected(Card card)
+    {
+        foreach (var stickman in _stickmen)
+            stickman.Deselect();
+
+        card.Destroyed -= OnCardDestroyed;
+        card.Deselected -= OnCardDeselected;
         Destroy(gameObject);
     }
 }
