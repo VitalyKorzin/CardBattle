@@ -3363,7 +3363,7 @@ PrefabInstance:
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[1]
       value: 
-      objectReference: {fileID: 162185220065847457, guid: a4829cebb364869468f660a8f54e9ab9, type: 3}
+      objectReference: {fileID: 1624907679027357221, guid: 0de786bff1280dd49b3a382c28cb7b42, type: 3}
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[2]
       value: 
