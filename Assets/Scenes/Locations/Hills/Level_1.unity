@@ -3357,9 +3357,21 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[0]
+      value: 
+      objectReference: {fileID: 193585675524927490, guid: 03ed7913e27667e4bbfa13eaed1c37bb, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[1]
+      value: 
+      objectReference: {fileID: -544894150322752232, guid: 16d00592d2144664fb1c3296e64b4c3f, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[2]
       value: 
       objectReference: {fileID: 2384095660904175291, guid: b9fad3d83f4321341a6c57dfceabebff, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[4]
+      value: 
+      objectReference: {fileID: 4716955547539259629, guid: 3fa10fb3cf58c904f9b25e08ad69f07f, type: 3}
     - target: {fileID: 8481364782015338919, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
