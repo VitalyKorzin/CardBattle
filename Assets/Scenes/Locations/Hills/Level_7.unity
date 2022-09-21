@@ -8803,6 +8803,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[0]
+      value: 
+      objectReference: {fileID: 1624907679027357221, guid: 0de786bff1280dd49b3a382c28cb7b42, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[2]
+      value: 
+      objectReference: {fileID: 8257200078618652247, guid: 10624fc03cc23ff4487f7b8a7414a725, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 4716955547539259629, guid: 3fa10fb3cf58c904f9b25e08ad69f07f, type: 3}
     - target: {fileID: 8481364782191983239, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _stickmenSquad
       value: 
@@ -12021,11 +12033,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.363594
+      value: 14.31
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.06
+      value: -19.71
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalRotation.w

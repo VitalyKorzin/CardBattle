@@ -2408,11 +2408,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.10555506
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.3898444
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2459,7 +2459,7 @@ PrefabInstance:
     - target: {fileID: 7493789948945788898, guid: 7529b842a8a82b04fbfcb3e97aa95a2f, type: 3}
       propertyPath: _weapon
       value: 
-      objectReference: {fileID: 1160227332012546725, guid: e84d4c6bf0423d84db89249548999cb0, type: 3}
+      objectReference: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
     - target: {fileID: 7834544874936533066, guid: 7529b842a8a82b04fbfcb3e97aa95a2f, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -2576,7 +2576,7 @@ PrefabInstance:
     - target: {fileID: 7493789948945788898, guid: 7529b842a8a82b04fbfcb3e97aa95a2f, type: 3}
       propertyPath: _weapon
       value: 
-      objectReference: {fileID: 1160227332012546725, guid: e84d4c6bf0423d84db89249548999cb0, type: 3}
+      objectReference: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
     - target: {fileID: 7834544874936533066, guid: 7529b842a8a82b04fbfcb3e97aa95a2f, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -6831,6 +6831,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[0]
+      value: 
+      objectReference: {fileID: 1624907679027357221, guid: 0de786bff1280dd49b3a382c28cb7b42, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[1]
+      value: 
+      objectReference: {fileID: -544894150322752232, guid: 16d00592d2144664fb1c3296e64b4c3f, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[2]
+      value: 
+      objectReference: {fileID: 8257200078618652247, guid: 10624fc03cc23ff4487f7b8a7414a725, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 3676188056938309563, guid: caefc8f6e0fa62b43bd7ff24905edb99, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[4]
+      value: 
+      objectReference: {fileID: 162185220065847457, guid: a4829cebb364869468f660a8f54e9ab9, type: 3}
     - target: {fileID: 8481364782191983239, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _stickmenSquad
       value: 

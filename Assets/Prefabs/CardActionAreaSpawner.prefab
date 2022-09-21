@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsDeck: {fileID: 0}
-  _fireballAreaTemplate: {fileID: 7787244302229095902, guid: 122f602e9138dcc449c6a543da11af07, type: 3}
+  _abillityAreaTemplate: {fileID: 7787244302229095902, guid: 122f602e9138dcc449c6a543da11af07, type: 3}
   _plainAreaTemplate: {fileID: 2183494211860035085, guid: d798436d4bf99bb46b0bd34339af004d, type: 3}

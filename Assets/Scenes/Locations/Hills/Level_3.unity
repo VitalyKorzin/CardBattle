@@ -3790,7 +3790,7 @@ PrefabInstance:
     - target: {fileID: 7493789948945788898, guid: 7529b842a8a82b04fbfcb3e97aa95a2f, type: 3}
       propertyPath: _weapon
       value: 
-      objectReference: {fileID: 8585220761980559345, guid: 2c18e9aa7b5371e478addc21318b1b62, type: 3}
+      objectReference: {fileID: 3713094533254568450, guid: e865f24fce6df4e49bc27610a0356145, type: 3}
     - target: {fileID: 7834544874936533066, guid: 7529b842a8a82b04fbfcb3e97aa95a2f, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -6496,11 +6496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.68
+      value: 6.04
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.46
+      value: -11.29
       objectReference: {fileID: 0}
     - target: {fileID: 1655848391820171887, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12719,6 +12719,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[0]
+      value: 
+      objectReference: {fileID: 2384095660904175291, guid: b9fad3d83f4321341a6c57dfceabebff, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[1]
+      value: 
+      objectReference: {fileID: 8903461157430996380, guid: eaf5120a6ff978b478fdbeccf30a575f, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[2]
+      value: 
+      objectReference: {fileID: 193585675524927490, guid: 03ed7913e27667e4bbfa13eaed1c37bb, type: 3}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 3676188056938309563, guid: caefc8f6e0fa62b43bd7ff24905edb99, type: 3}
     - target: {fileID: 8481364782015338919, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -550
