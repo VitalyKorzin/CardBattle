@@ -1228,6 +1228,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3741206692469675174, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_text
+      value: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C 2"
+      objectReference: {fileID: 0}
     - target: {fileID: 3965335649328450922, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_FillAmount
       value: 1
