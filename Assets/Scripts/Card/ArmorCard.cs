@@ -15,7 +15,7 @@ public class ArmorCard : Card
         }
     }
 
-    public override void Use<T>(List<T> stickmen, Vector3 actionPosition)
+    public override void Use(IReadOnlyList<Stickman> stickmen, Vector3 actionPosition)
     {
         if (stickmen == null)
             throw new ArgumentNullException(nameof(stickmen));

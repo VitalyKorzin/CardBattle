@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3420071007406694666}
   - component: {fileID: 1321825423031676714}
   - component: {fileID: 2334007800701543643}
-  - component: {fileID: 7787244302229095902}
+  - component: {fileID: 1032976922512496357}
   m_Layer: 0
-  m_Name: AbillityCardActionArea
+  m_Name: CardActionArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7787244302229095902
+--- !u!114 &1032976922512496357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,6 +125,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7787244302229095903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e4442eb0e2a2244a7c761930a76ecf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e3eb6e5ae0faa440baaab2eb682f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

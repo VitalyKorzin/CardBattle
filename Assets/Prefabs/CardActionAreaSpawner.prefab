@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1368516275910978928}
   - component: {fileID: 1368516275910978929}
+  - component: {fileID: 2408763672119378698}
   m_Layer: 0
   m_Name: CardActionAreaSpawner
   m_TagString: Untagged
@@ -45,5 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsDeck: {fileID: 0}
-  _abillityAreaTemplate: {fileID: 7787244302229095902, guid: 122f602e9138dcc449c6a543da11af07, type: 3}
-  _plainAreaTemplate: {fileID: 2183494211860035085, guid: d798436d4bf99bb46b0bd34339af004d, type: 3}
+  _template: {fileID: 1032976922512496357, guid: 122f602e9138dcc449c6a543da11af07, type: 3}
+--- !u!114 &2408763672119378698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368516275910978926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01ac929d43e19d40bafdfb3d0129439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _template: {fileID: 2534378345065486038, guid: b42e62837638b234baea29a1002d8f18, type: 3}

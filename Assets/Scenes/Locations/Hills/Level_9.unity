@@ -11241,6 +11241,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5705820697490762593, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _heroesSquad
+      value: 
+      objectReference: {fileID: 5829509580666699762}
+    - target: {fileID: 5705820697490762593, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _enemiesSquad
+      value: 
+      objectReference: {fileID: 3824322854559241265}
+    - target: {fileID: 5758814516937575718, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _areaSpawner
+      value: 
+      objectReference: {fileID: 2010101789}
+    - target: {fileID: 5758814516937575718, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _valueBehaviour
+      value: 
+      objectReference: {fileID: 4340576604360209450, guid: b916ff214bab2794c805bb656cebedfb, type: 3}
     - target: {fileID: 8481364781001171176, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -15108,6 +15124,17 @@ PrefabInstance:
       objectReference: {fileID: 1592065295}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
+--- !u!114 &2010101789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2408763672119378698, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
+  m_PrefabInstance: {fileID: 2010101788}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01ac929d43e19d40bafdfb3d0129439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2047654725
 PrefabInstance:
   m_ObjectHideFlags: 0
