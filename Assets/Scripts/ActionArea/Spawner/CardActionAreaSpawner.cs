@@ -4,8 +4,7 @@ using UnityEngine;
 public class CardActionAreaSpawner : MonoBehaviour
 {
     [SerializeField] private CardsDeck _cardsDeck;
-    [SerializeField] private AbillityCardActionArea _abillityAreaTemplate;
-    [SerializeField] private PlainCardActionArea _plainAreaTemplate;
+    [SerializeField] private CardActionArea _template;
 
     private void OnEnable()
     {
@@ -31,16 +30,8 @@ public class CardActionAreaSpawner : MonoBehaviour
         card.Destroyed += OnCardDestroyed;
     }
 
-    private void OnCardSelected(Card card)
-    {
-        if (card is IAbilityCard)
-            InstantiateArea(_abillityAreaTemplate, card);
-        else
-            InstantiateArea(_plainAreaTemplate, card);
-    }
-
-    private void InstantiateArea<T>(CardActionArea<T> template, Card card) where T: Stickman
-        => Instantiate(template, transform.position, Quaternion.identity).Initialize(card);
+    private void OnCardSelected(Card card) 
+        => Instantiate(_template, transform.position, Quaternion.identity).Initialize(card);
 
     private void OnCardDestroyed(Card card)
     {
@@ -51,12 +42,6 @@ public class CardActionAreaSpawner : MonoBehaviour
     private void Validate()
     {
         if (_cardsDeck == null)
-            throw new InvalidOperationException();
-
-        if (_abillityAreaTemplate == null)
-            throw new InvalidOperationException();
-
-        if (_plainAreaTemplate == null)
             throw new InvalidOperationException();
     }
 }

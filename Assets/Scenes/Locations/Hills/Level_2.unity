@@ -1042,6 +1042,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6611565493232828283, guid: c5d7b0d360b73164f821db55a3e1a1b3, type: 3}
   m_PrefabInstance: {fileID: 146866986}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &195110692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2408763672119378698, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
+  m_PrefabInstance: {fileID: 1268590597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01ac929d43e19d40bafdfb3d0129439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &196784010
 Mesh:
   m_ObjectHideFlags: 0
@@ -1213,6 +1224,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 285614145872405081, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965335649328450922, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705820697490762593, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _heroesSquad
+      value: 
+      objectReference: {fileID: 5829509580054583686}
+    - target: {fileID: 5705820697490762593, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _enemiesSquad
+      value: 
+      objectReference: {fileID: 3824322854163149597}
+    - target: {fileID: 5758814516937575718, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _areaSpawner
+      value: 
+      objectReference: {fileID: 195110692}
+    - target: {fileID: 5758814516937575718, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _valueBehaviour
+      value: 
+      objectReference: {fileID: 4340576604360209450, guid: b916ff214bab2794c805bb656cebedfb, type: 3}
+    - target: {fileID: 6001084571492515013, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481364780899176725, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -84.899994

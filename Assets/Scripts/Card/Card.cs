@@ -33,8 +33,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         _camera = Camera.main;
     }
 
-    public abstract void Use<T>(List<T> stickmen, Vector3 actionPosition)
-        where T : Stickman;
+    public abstract void Use(IReadOnlyList<Stickman> stickmen, Vector3 actionPosition);
 
     public void OnPointerDown(PointerEventData eventData)
     {
