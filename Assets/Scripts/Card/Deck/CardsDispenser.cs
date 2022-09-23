@@ -8,6 +8,7 @@ public class CardsDispenser : MonoBehaviour
     [SerializeField] private float _secondsBetweenDispensing;
     [SerializeField] private Card[] _cards;
     [SerializeField] private CardsDeck _cardsDeck;
+    [SerializeField] private Menu _menu;
 
     private void OnEnable()
     {
@@ -20,9 +21,13 @@ public class CardsDispenser : MonoBehaviour
             enabled = false;
             throw exception;
         }
+
+        _menu.GameBegun += OnGameBegun;
     }
 
-    public void Start() => StartCoroutine(Dispense());
+    private void OnDisable() => _menu.GameBegun -= OnGameBegun;
+
+    public void OnGameBegun() => StartCoroutine(Dispense());
 
     private IEnumerator Dispense()
     {
