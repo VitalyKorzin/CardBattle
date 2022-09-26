@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _price: 25
   _name: Shield
   _template: {fileID: 1089316688090340570, guid: e44a2009906de66439765197d13194c3, type: 3}
 --- !u!114 &3538270276990499957

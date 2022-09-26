@@ -390,5 +390,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _price: 30
   _name: Hammer
   _template: {fileID: 9013736109716175992, guid: cc00a104ada24934a999932353e9709b, type: 3}
