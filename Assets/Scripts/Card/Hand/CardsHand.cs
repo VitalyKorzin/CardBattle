@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CardsDeck : MonoBehaviour
+public class CardsHand : MonoBehaviour
 {
     [Min(0)]
     [SerializeField] private int _maximumCount;
     [Min(0)]
     [SerializeField] private float _rangeAngle;
     [SerializeField] private CardSlot _cardSlot;
+    [SerializeField] private CardsDispenser _dispenser;
 
     private readonly List<CardSlot> _slots = new List<CardSlot>();
 
@@ -84,7 +85,7 @@ public class CardsDeck : MonoBehaviour
     {
         _pointerAngle += angleStep;
 
-        if (_slots.Count == _maximumCount)
+        if (_slots.Count == _dispenser.CardsCount)
             _pointerAngle -= _angleBetweenCards;
     }
 }

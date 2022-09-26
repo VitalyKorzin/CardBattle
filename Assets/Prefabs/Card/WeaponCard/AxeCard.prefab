@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _name: Axe
   _template: {fileID: 3361024006390218774, guid: e4a9a8ec3ed71f14984626b0536d196c, type: 3}
 --- !u!1 &6631331538583580082
 GameObject:

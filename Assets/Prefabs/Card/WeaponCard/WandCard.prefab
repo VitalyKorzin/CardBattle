@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _name: Wand
   _template: {fileID: 1160227332012546725, guid: e84d4c6bf0423d84db89249548999cb0, type: 3}
 --- !u!1 &4964874353327726012
 GameObject:
