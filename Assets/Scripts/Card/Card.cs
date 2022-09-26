@@ -10,6 +10,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 {
     [Min(0)]
     [SerializeField] private float _delayBeforeDestroy;
+    [SerializeField] private string _name;
 
     private CardMover _mover;
     private CardView _view;
@@ -19,6 +20,8 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private bool _isSelected;
     private Ray _ray;
     private RaycastHit[] _hits;
+
+    public string Name => _name;
 
     public event UnityAction<Card> Selected;
     public event UnityAction<Card> Deselected;
@@ -58,7 +61,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
         foreach (var hit in _hits)
         {
-            if (hit.collider.TryGetComponent(out CardsDeck _))
+            if (hit.collider.TryGetComponent(out CardsHand _))
             {
                 Deselected?.Invoke(this);
                 _isSelected = false;

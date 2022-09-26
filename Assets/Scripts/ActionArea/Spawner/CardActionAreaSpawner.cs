@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CardActionAreaSpawner : MonoBehaviour
 {
-    [SerializeField] private CardsDeck _cardsDeck;
+    [SerializeField] private CardsHand _cardsHand;
     [SerializeField] private CardActionArea _template;
 
     private void OnEnable()
@@ -18,11 +18,11 @@ public class CardActionAreaSpawner : MonoBehaviour
             throw exception;
         }
 
-        _cardsDeck.CardAdded += OnCardAdded;
+        _cardsHand.CardAdded += OnCardAdded;
     }
 
     private void OnDisable()
-        => _cardsDeck.CardAdded -= OnCardAdded;
+        => _cardsHand.CardAdded -= OnCardAdded;
 
     private void OnCardAdded(Card card)
     {
@@ -41,7 +41,7 @@ public class CardActionAreaSpawner : MonoBehaviour
 
     private void Validate()
     {
-        if (_cardsDeck == null)
+        if (_cardsHand == null)
             throw new InvalidOperationException();
     }
 }

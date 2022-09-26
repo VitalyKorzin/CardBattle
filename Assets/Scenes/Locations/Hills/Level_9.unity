@@ -11241,9 +11241,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 480225325161839037, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 480225325161839037, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 480225325161839037, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 480225325161839037, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701151868070714106, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701151868070714106, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3741206692469675174, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_text
       value: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C 9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209117700588902303, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209117700588902303, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5705820697490762593, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _heroesSquad
@@ -11261,6 +11293,22 @@ PrefabInstance:
       propertyPath: _valueBehaviour
       value: 
       objectReference: {fileID: 4340576604360209450, guid: b916ff214bab2794c805bb656cebedfb, type: 3}
+    - target: {fileID: 5966540867583891270, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966540867583891270, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185836955969542791, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185836955969542791, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481364781001171176, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11414,6 +11462,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1592065295}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[1]
       value: 
       objectReference: {fileID: 5540516103840439208, guid: 95986a79b4465f441b44fe91f91c6284, type: 3}
@@ -11485,6 +11537,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8481364782969676796, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1592065295}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2237920038786c74c8b10cb83245688e, type: 3}
 --- !u!114 &1592065295 stripped
@@ -14082,6 +14138,10 @@ PrefabInstance:
       propertyPath: _cardsDeck
       value: 
       objectReference: {fileID: 1592065295}
+    - target: {fileID: 1655848391820171880, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1592065295}
     - target: {fileID: 1655848391820171881, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_Name
       value: FireballShooter
@@ -15126,6 +15186,10 @@ PrefabInstance:
       propertyPath: _cardsDeck
       value: 
       objectReference: {fileID: 1592065295}
+    - target: {fileID: 1368516275910978929, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1592065295}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
 --- !u!114 &2010101789 stripped
@@ -15831,7 +15895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _squad: {fileID: 3824322854559241265}
-  _cardsDeck: {fileID: 1592065295}
+  _cardsHand: {fileID: 1592065295}
 --- !u!114 &3824322854559241265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16262,7 +16326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _squad: {fileID: 5829509580666699762}
-  _cardsDeck: {fileID: 1592065295}
+  _cardsHand: {fileID: 1592065295}
 --- !u!1 &5829509581223951625
 GameObject:
   m_ObjectHideFlags: 0

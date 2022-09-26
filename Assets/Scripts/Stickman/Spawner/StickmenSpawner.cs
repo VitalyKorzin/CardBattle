@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public abstract class StickmenSpawner : MonoBehaviour
 {
     [SerializeField] private StickmenSquad _squad;
-    [SerializeField] private CardsDeck _cardsDeck;
+    [SerializeField] private CardsHand _cardsHand;
 
     private List<PlaceInSquad> _places;
 
@@ -27,11 +27,11 @@ public abstract class StickmenSpawner : MonoBehaviour
             throw exception;
         }
 
-        _cardsDeck.CardAdded += OnCardAdded;
+        _cardsHand.CardAdded += OnCardAdded;
     }
 
     private void OnDisable()
-        => _cardsDeck.CardAdded -= OnCardAdded;
+        => _cardsHand.CardAdded -= OnCardAdded;
 
     public void Initialize(List<PlaceInSquad> places)
     {
@@ -113,7 +113,7 @@ public abstract class StickmenSpawner : MonoBehaviour
         if (_squad == null)
             throw new InvalidOperationException();
 
-        if (_cardsDeck == null)
+        if (_cardsHand == null)
             throw new InvalidOperationException();
     }
 }

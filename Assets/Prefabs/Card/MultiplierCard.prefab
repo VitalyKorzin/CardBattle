@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _name: Multiplier
   _value: 3
 --- !u!114 &4466448134147318751
 MonoBehaviour:

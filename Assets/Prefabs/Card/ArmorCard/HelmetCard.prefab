@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _name: Helmet
   _template: {fileID: 5404295783389211618, guid: 8aed81cf32033b247b94c69abc9503dd, type: 3}
 --- !u!1 &4926823342210625548
 GameObject:

@@ -5,7 +5,7 @@ public class FireballShooter : MonoBehaviour
 {
     [Min(0)]
     [SerializeField] private float _shotAngle;
-    [SerializeField] private CardsDeck _cardsDeck;
+    [SerializeField] private CardsHand _cardsHand;
     [SerializeField] private Transform _shotPoint;
     [SerializeField] private Fireball _template;
 
@@ -24,12 +24,12 @@ public class FireballShooter : MonoBehaviour
             throw exception;
         }
 
-        _cardsDeck.CardAdded += OnCardAdded;
+        _cardsHand.CardAdded += OnCardAdded;
     }
 
     private void OnDisable()
     {
-        _cardsDeck.CardAdded -= OnCardAdded;
+        _cardsHand.CardAdded -= OnCardAdded;
     }
 
     private void OnCardAdded(Card card)
@@ -77,7 +77,7 @@ public class FireballShooter : MonoBehaviour
 
     private void Validate()
     {
-        if (_cardsDeck == null)
+        if (_cardsHand == null)
             throw new InvalidOperationException();
 
         if (_shotPoint == null)
