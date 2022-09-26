@@ -43,10 +43,12 @@ public class CardViewInDeck : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         foreach (var item in result)
         {
             if (item.gameObject.TryGetComponent(out SelectedCardSlot slot))
+            {
+                transform.parent = _canvas.transform;
                 slot.Remove();
+            }
         }
 
-        transform.parent = _canvas.transform;
         OnDrag(eventData);
     }
 
@@ -74,8 +76,11 @@ public class CardViewInDeck : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
     }
 
-    public void Move(Vector2 delta) 
-        => _rectTransform.anchoredPosition += delta / _canvas.scaleFactor;
+    public void Move(Vector2 delta)
+    {
+        if (transform.parent == _canvas.transform)
+            _rectTransform.anchoredPosition += delta / _canvas.scaleFactor;
+    }
 
     private void Draw()
     {
