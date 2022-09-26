@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _price: 80
   _name: Sword
   _template: {fileID: -177911796279842825, guid: 707572be1130c0d40a09c13c8ae32631, type: 3}
 --- !u!114 &8393856209645690289

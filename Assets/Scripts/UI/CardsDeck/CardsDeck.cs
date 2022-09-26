@@ -9,8 +9,13 @@ public class CardsDeck : Window
     [SerializeField] private CardsSet _cardsSetTemplate;
     [SerializeField] private Transform _content;
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private Shop _shop;
 
     private readonly List<CardsSet> _sets = new List<CardsSet>();
+
+    private void OnEnable() => _shop.CardBought += OnCardBought;
+
+    private void OnDisable() => _shop.CardBought -= OnCardBought;
 
     protected override void Awake()
     {
@@ -65,4 +70,6 @@ public class CardsDeck : Window
         cardsSet = _sets.FirstOrDefault(cardsSet => cardsSet.CardsName == cardName);
         return cardsSet != null;
     }
+
+    private void OnCardBought(Card card) => Add(card);
 } 

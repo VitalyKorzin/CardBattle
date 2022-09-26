@@ -10,6 +10,8 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 {
     [Min(0)]
     [SerializeField] private float _delayBeforeDestroy;
+    [Min(0)]
+    [SerializeField] private int _price;
     [SerializeField] private string _name;
 
     private CardMover _mover;
@@ -22,6 +24,7 @@ public abstract class Card : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private RaycastHit[] _hits;
 
     public string Name => _name;
+    public int Price => _price;
 
     public event UnityAction<Card> Selected;
     public event UnityAction<Card> Deselected;

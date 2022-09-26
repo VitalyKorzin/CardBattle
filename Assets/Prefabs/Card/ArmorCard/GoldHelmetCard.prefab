@@ -390,5 +390,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _price: 100
   _name: GoldHelmet
   _template: {fileID: 8145839674644776066, guid: 2f87dc8f4b40a8c4fa68ac49e2ffed02, type: 3}
