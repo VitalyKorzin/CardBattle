@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _name: GoldShield
   _template: {fileID: 9010793881746909393, guid: bda170eec1228744d8dec19002ed3412, type: 3}
 --- !u!114 &3050518284340792338
 MonoBehaviour:
