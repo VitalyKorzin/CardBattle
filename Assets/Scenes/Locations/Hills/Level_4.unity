@@ -3137,6 +3137,10 @@ PrefabInstance:
       propertyPath: _cardsDeck
       value: 
       objectReference: {fileID: 1938766094}
+    - target: {fileID: 1368516275910978929, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1938766094}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a283805f07b6244d838fbd07506ce40, type: 3}
 --- !u!114 &848706006 stripped
@@ -6832,6 +6836,10 @@ PrefabInstance:
       propertyPath: _cardsDeck
       value: 
       objectReference: {fileID: 1938766094}
+    - target: {fileID: 1655848391820171880, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1938766094}
     - target: {fileID: 1655848391820171881, guid: 3359f0e953dcea54b82770eda0007088, type: 3}
       propertyPath: m_Name
       value: FireballShooter
@@ -7276,6 +7284,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C 4"
       objectReference: {fileID: 0}
+    - target: {fileID: 5209117700588902303, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209117700588902303, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5705820697490762593, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _heroesSquad
       value: 
@@ -7292,6 +7308,14 @@ PrefabInstance:
       propertyPath: _valueBehaviour
       value: 
       objectReference: {fileID: 4340576604360209450, guid: b916ff214bab2794c805bb656cebedfb, type: 3}
+    - target: {fileID: 5966540867583891270, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966540867583891270, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8481364780899176725, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -84.899994
@@ -7449,6 +7473,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1938766094}
+    - target: {fileID: 8481364782015338918, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: _cards.Array.data[3]
       value: 
       objectReference: {fileID: 2384095660904175291, guid: b9fad3d83f4321341a6c57dfceabebff, type: 3}
@@ -7516,6 +7544,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8481364782969676796, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: _cardsHand
+      value: 
+      objectReference: {fileID: 1938766094}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2237920038786c74c8b10cb83245688e, type: 3}
 --- !u!43 &1620143714
@@ -11029,7 +11061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _squad: {fileID: 3824322854575830064}
-  _cardsDeck: {fileID: 1938766094}
+  _cardsHand: {fileID: 1938766094}
 --- !u!1 &3824322854664434434
 GameObject:
   m_ObjectHideFlags: 0
@@ -11425,7 +11457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _squad: {fileID: 5829509580781379698}
-  _cardsDeck: {fileID: 1938766094}
+  _cardsHand: {fileID: 1938766094}
 --- !u!1 &5829509581030286096
 GameObject:
   m_ObjectHideFlags: 0

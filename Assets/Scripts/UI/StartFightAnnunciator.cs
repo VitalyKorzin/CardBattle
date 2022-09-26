@@ -8,7 +8,7 @@ public class StartFightAnnunciator : MonoBehaviour
     [Min(0)]
     [SerializeField] private float _secondsBetweenFightStart;
     [SerializeField] private StartFightTextDisplay _textDisplay;
-    [SerializeField] private CardsDeck _cardsDeck;
+    [SerializeField] private CardsHand _cardsHand;
 
     public event UnityAction FightStarted;
 
@@ -24,11 +24,11 @@ public class StartFightAnnunciator : MonoBehaviour
             throw exception;
         }
 
-        _cardsDeck.Ended += OnCardsDeckEnded;
+        _cardsHand.Ended += OnCardsDeckEnded;
     }
 
     private void OnDisable()
-        => _cardsDeck.Ended -= OnCardsDeckEnded;
+        => _cardsHand.Ended -= OnCardsDeckEnded;
 
     private void OnCardsDeckEnded()
         => StartCoroutine(Annunce());
@@ -43,7 +43,7 @@ public class StartFightAnnunciator : MonoBehaviour
 
     private void Validate()
     {
-        if (_cardsDeck == null)
+        if (_cardsHand == null)
             throw new InvalidOperationException();
 
         if (_textDisplay == null)

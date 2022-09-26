@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
+  _name: Bow
   _template: {fileID: 8585220761980559345, guid: 2c18e9aa7b5371e478addc21318b1b62, type: 3}
 --- !u!1 &3469232081457668225
 GameObject:

@@ -22,6 +22,12 @@ public class CardView : MonoBehaviour
     private Color _defaultBackgroundColor;
     private Color _defaultFrameColor;
 
+    public Sprite Icon => _icon.sprite;
+    public Sprite Background => _background.sprite;
+    public Sprite Frame => _frame.sprite;
+    public Color BackgroundColor => _background.color;
+    public Color FrameColor => _frame.color;
+
     private void OnEnable()
     {
         try

@@ -14,7 +14,10 @@ public class Menu : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameBegun?.Invoke();
-        _raycastTarget.raycastTarget = false;
+        if (_raycastTarget.raycastTarget)
+        {
+            GameBegun?.Invoke();
+            _raycastTarget.raycastTarget = false;
+        }
     }
 }
