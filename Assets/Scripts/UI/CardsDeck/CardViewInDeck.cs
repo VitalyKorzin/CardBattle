@@ -56,6 +56,9 @@ public class CardViewInDeck : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (transform.parent != _canvas.transform)
+            return;
+
         var result = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, result);
 
