@@ -40,7 +40,7 @@ public class AdditionalRewardDisplay : ResultDisplayElement
         _text.DOFade(endValue, duration);
     }
 
-    private void OnRewardMultiplied(int multiplier)
+    private void OnRewardMultiplied(int multiplier) 
         => _text.text = _symbol + (_battleReward.Value * multiplier).ToString();
 
     private void Validate()
