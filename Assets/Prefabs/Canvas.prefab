@@ -4076,6 +4076,7 @@ GameObject:
   - component: {fileID: 8481364781001171177}
   - component: {fileID: 8481364781001171182}
   - component: {fileID: 8481364781001171183}
+  - component: {fileID: 4261307615733415620}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4170,6 +4171,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4261307615733415620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481364781001171180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312e52f06bd3c4f44ba148d09778209a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8481364781026021837
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,9 +4233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9d0d66f24417542ba2119ac9a2e6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayBeforeRotation: 3.8
-  _rotationDuration: 1
+  _rotationDuration: 0.5
   _targetRotation: {x: 0, y: 0, z: -45}
+  _sdkYandex: {fileID: 4261307615733415620}
 --- !u!1 &8481364781094418089
 GameObject:
   m_ObjectHideFlags: 0
@@ -4321,6 +4334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9c1758e91b9774c96c6014aeecd3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sdkYandex: {fileID: 4261307615733415620}
 --- !u!1 &8481364781239028848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,6 +4548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 20
   _text: {fileID: 8481364781239093714}
+  _sdkYandex: {fileID: 4261307615733415620}
+  _wallet: {fileID: 1883082001777266183}
+  _pointer: {fileID: 0}
 --- !u!1 &8481364781276931326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5160,7 +5177,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8481364781762850768}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4261307615733415620}
+        m_TargetAssemblyTypeName: SdkYandex, Assembly-CSharp
+        m_MethodName: OnShowVideoButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8481364781762850770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5176,6 +5205,7 @@ MonoBehaviour:
   _pulsationSpeed: 1
   _pulsationEndValue: 1.08
   _text: {fileID: 8481364782656541876}
+  _sdkYandex: {fileID: 4261307615733415620}
 --- !u!1 &8481364781802178341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5630,7 +5660,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8481364781917832323}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8481364782918053220}
+        m_TargetAssemblyTypeName: BattleReward, Assembly-CSharp
+        m_MethodName: ReplenishWallet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8481364781917832381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6159,7 +6201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8481364782254997514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8481364781239093715}
+        m_TargetAssemblyTypeName: BattleReward, Assembly-CSharp
+        m_MethodName: ReplenishWallet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8481364782254997512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6175,6 +6229,7 @@ MonoBehaviour:
   _pulsationSpeed: 1
   _pulsationEndValue: 1.08
   _text: {fileID: 8481364781506660733}
+  _sdkYandex: {fileID: 4261307615733415620}
 --- !u!1 &8481364782271578962
 GameObject:
   m_ObjectHideFlags: 0
@@ -7265,6 +7320,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 50
   _text: {fileID: 8481364782918053226}
+  _sdkYandex: {fileID: 4261307615733415620}
+  _wallet: {fileID: 1883082001777266183}
+  _pointer: {fileID: 8481364782271578958}
 --- !u!1 &8481364782969676739
 GameObject:
   m_ObjectHideFlags: 0
