@@ -8671,6 +8671,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 710028288571452270, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 710028288571452270, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1701151868070714106, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8700,6 +8708,10 @@ PrefabInstance:
       value: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C 7"
       objectReference: {fileID: 0}
     - target: {fileID: 4674557162226023388, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041490307827251078, guid: 2237920038786c74c8b10cb83245688e, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -9051,6 +9063,14 @@ PrefabInstance:
       propertyPath: _cardsHand
       value: 
       objectReference: {fileID: 779101621}
+    - target: {fileID: 9110254833074289922, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110254833074289922, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2237920038786c74c8b10cb83245688e, type: 3}
 --- !u!114 &779101621 stripped
@@ -15127,6 +15147,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ef8f88a97e4304b927dc41d740a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1969703330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8400936871029148395, guid: 2237920038786c74c8b10cb83245688e, type: 3}
+  m_PrefabInstance: {fileID: 779101620}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f30f64e70432cb4c9e92431430202a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1980429699
 Mesh:
   m_ObjectHideFlags: 0
@@ -15402,6 +15433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7895e85bc74183d4ca4ed3e62711e2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sdkYandex: {fileID: 779101623}
+  _leaderboard: {fileID: 1969703330}
 --- !u!4 &2029541087
 Transform:
   m_ObjectHideFlags: 0
