@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3622809650797477008}
   - component: {fileID: 7680157760837375016}
   - component: {fileID: 2129056128704402592}
+  - component: {fileID: 916471923503148800}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -66,9 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Buy
-
-'
+  m_text: Buy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a6ecc61712ce224a9da952b5a12266c, type: 2}
   m_sharedMaterial: {fileID: -3734601616555835439, guid: 8a6ecc61712ce224a9da952b5a12266c, type: 2}
@@ -95,12 +94,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 65
   m_fontSizeBase: 80
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 65
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -137,6 +136,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &916471923503148800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629188154124022634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c91121c6a89144db459d9fef195c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: {fileID: 2129056128704402592}
 --- !u!1 &3284684664409347854
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,3 +886,4 @@ MonoBehaviour:
   _cardViewIcon: {fileID: 2449036823358774029}
   _sellButton: {fileID: 1476056318454949409}
   _price: {fileID: 1143518295183515655}
+  _buyButtonText: {fileID: 916471923503148800}

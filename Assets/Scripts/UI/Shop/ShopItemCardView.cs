@@ -10,6 +10,7 @@ public class ShopItemCardView : MonoBehaviour
     [SerializeField] private Image _cardViewIcon;
     [SerializeField] private Button _sellButton;
     [SerializeField] private TMP_Text _price;
+    [SerializeField] private BuyButtonTextDispaly _buyButtonText;
 
     private Card _card;
 
@@ -21,12 +22,13 @@ public class ShopItemCardView : MonoBehaviour
     private void OnDisable() 
         => _sellButton.onClick.RemoveListener(OnSellButtonClick);
 
-    public void Initialize(Card card)
+    public void Initialize(Card card, Language language)
     {
         if (card == null)
             throw new ArgumentNullException(nameof(card));
 
         _card = card;
+        _buyButtonText.Initialize(language);
         Draw();
     }
 
