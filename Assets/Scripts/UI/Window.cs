@@ -19,6 +19,7 @@ public class Window : MonoBehaviour
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
         _raycastTargetMenu.raycastTarget = false;
+        LoadData();
     }
 
     public void Close()
@@ -28,4 +29,6 @@ public class Window : MonoBehaviour
         _canvasGroup.blocksRaycasts = false;
         _raycastTargetMenu.raycastTarget = true;
     }
+
+    protected virtual void LoadData() { }
 }

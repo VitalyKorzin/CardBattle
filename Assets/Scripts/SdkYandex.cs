@@ -15,7 +15,16 @@ public class SdkYandex : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter
         yield break;
 #endif
 
-        yield return YandexGamesSdk.Initialize();
+        yield return YandexGamesSdk.Initialize(OnYandexSDKInitialize);
+    }
+
+    public void OnSceneLoaded(CompletedLevelsCounter argument)
+    {
+        if (argument.CanShowInterstitialAd)
+        {
+            InterstitialAd.Show();
+            argument.Clear();
+        }
     }
 
     public void OnShowVideoButtonClick() 
@@ -27,12 +36,9 @@ public class SdkYandex : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter
     private void OnRewardedCallback() 
         => Rewarded?.Invoke();
 
-    public void OnSceneLoaded(CompletedLevelsCounter argument)
+    private void OnYandexSDKInitialize()
     {
-        if (argument.CanShowInterstitialAd)
-        {
-            InterstitialAd.Show();
-            argument.Clear();
-        }
+        if (PlayerAccount.IsAuthorized == false)
+            PlayerAccount.Authorize();
     }
 }
