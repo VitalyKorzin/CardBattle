@@ -5046,7 +5046,7 @@ MonoBehaviour:
   _sdkYandex: {fileID: 4261307615733415620}
   _entryViewTemplate: {fileID: 95349586267540584, guid: bbe741c285408434f90bc950585d16af, type: 3}
   _content: {fileID: 5041490307827251078}
-  _name: Test
+  _name: Players
 --- !u!1 &8223911172476915199
 GameObject:
   m_ObjectHideFlags: 0

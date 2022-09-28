@@ -3,18 +3,7 @@ using IJunior.TypedScenes;
 
 public class FourthLevel : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter>
 {
-    [SerializeField] private SdkYandex _sdkYandex;
-    [SerializeField] private Leaderboard _leaderboard;
-
-    private readonly int _number = 4;
-
     private CompletedLevelsCounter _counter;
-
-    private void OnEnable()
-        => _sdkYandex.Initialized += OnSdkYandexInitialized;
-
-    private void OnDisable()
-        => _sdkYandex.Initialized -= OnSdkYandexInitialized;
 
     public void Restart() => Level_4.Load(_counter);
 
@@ -25,6 +14,4 @@ public class FourthLevel : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCount
         _counter = argument;
         _counter.Increase();
     }
-
-    private void OnSdkYandexInitialized() => _leaderboard.Set(_number);
 }
