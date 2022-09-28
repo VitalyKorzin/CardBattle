@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Leaderboard : Window
 {
-    [SerializeField] private SdkYandex _sdkYandex;
     [SerializeField] private EntryView _entryViewTemplate;
     [SerializeField] private Transform _content;
     [SerializeField] private string _name;
