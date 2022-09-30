@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CardsDeck : Window
 {
@@ -12,6 +13,8 @@ public class CardsDeck : Window
     [SerializeField] private Shop _shop;
 
     private readonly List<CardsSet> _sets = new List<CardsSet>();
+
+    public event UnityAction Added;
 
     private void OnEnable() => _shop.CardBought += OnCardBought;
 
@@ -41,6 +44,8 @@ public class CardsDeck : Window
             set.Initialize(_canvas, this, card);
             _sets.Add(set);
         }
+
+        Added?.Invoke();
     }
 
     public void Remove(Card card)

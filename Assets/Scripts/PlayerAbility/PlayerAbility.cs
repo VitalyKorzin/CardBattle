@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -16,6 +17,8 @@ public class PlayerAbility : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private Ray _ray;
     private RaycastHit[] _hits;
     private Camera _camera;
+
+    public event UnityAction Used;
 
     private void OnValidate()
     {
@@ -49,6 +52,7 @@ public class PlayerAbility : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             _actionArea = _areaSpawner.Spawn();
             _isSelected = true;
+            Used?.Invoke();
         }
     }
 
