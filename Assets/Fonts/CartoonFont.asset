@@ -120,8 +120,8 @@ MonoBehaviour:
   material: {fileID: -6918276761755464713}
   materialHashCode: -372134599
   m_Version: 1.1.0
-  m_SourceFontFileGUID: c16eb7d7c3953489db00312b8b09df4b
-  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: c16eb7d7c3953489db00312b8b09df4b, type: 3}
+  m_SourceFontFileGUID: 7a9506cbcaba4e6488a923ba4bde5925
+  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 7a9506cbcaba4e6488a923ba4bde5925, type: 3}
   m_SourceFontFile: {fileID: 0}
   m_AtlasPopulationMode: 0
   m_FaceInfo:

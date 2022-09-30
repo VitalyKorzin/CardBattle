@@ -16,9 +16,10 @@ public class SelectedCardSlot : MonoBehaviour
 
     private void Start()
     {
-        if (_startCard != null)
-            Added?.Invoke(_startCard);
+        if (_startCard == null)
+            return;
 
+        Added?.Invoke(_startCard);
         _cardView = Instantiate(_cardViewTemplate, transform);
         _cardView.Initialize(_canvas, _startCard);
     }
