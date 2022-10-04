@@ -15,7 +15,7 @@ public class SdkYandex : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter
         yield break;
 #endif
 
-        yield return YandexGamesSdk.Initialize(OnYandexSDKInitialize);
+        yield return YandexGamesSdk.Initialize();
     }
 
     public void OnSceneLoaded(CompletedLevelsCounter argument)
@@ -35,10 +35,4 @@ public class SdkYandex : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter
 
     private void OnRewardedCallback() 
         => Rewarded?.Invoke();
-
-    private void OnYandexSDKInitialize()
-    {
-        if (PlayerAccount.IsAuthorized == false)
-            PlayerAccount.Authorize();
-    }
 }

@@ -12,7 +12,7 @@ public class Leaderboard : Window
 
     public void SetScore()
     {
-        if (PlayerAccount.IsAuthorized == false)
+        if (YandexGamesSdk.IsInitialized == false || PlayerAccount.IsAuthorized == false)
             return;
 
         Agava.YandexGames.Leaderboard.GetPlayerEntry(_name, (result) =>
@@ -28,6 +28,11 @@ public class Leaderboard : Window
     {
         if (YandexGamesSdk.IsInitialized == false)
             return;
+
+        PlayerAccount.RequestPersonalProfileDataPermission();
+
+        if (PlayerAccount.IsAuthorized == false)
+            PlayerAccount.Authorize();
 
         ClearLeaderboard();
 
