@@ -6,9 +6,6 @@ public class MeteoriteFall : MonoBehaviour, IPlayerAbility
 {
     [SerializeField] private Vector3 _spawnPositionOffset;
     [SerializeField] private Meteorite _template;
-    [SerializeField] private Sprite _icon;
-
-    public Sprite Icon => _icon;
 
     private void OnEnable()
     {

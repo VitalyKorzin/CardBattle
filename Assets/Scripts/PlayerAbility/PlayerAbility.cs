@@ -1,14 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-[RequireComponent(typeof(AccessTimer))]
+[RequireComponent(typeof(AccessTimer), typeof(PlayerAbilityView))]
 public class PlayerAbility : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private MonoBehaviour _valueBehaviour;
     [SerializeField] private AbilityActionAreaSpawner _areaSpawner;
-    [SerializeField] private Image _icon;
 
     private IPlayerAbility _value;
     private AccessTimer _accessTimer;
@@ -17,6 +15,7 @@ public class PlayerAbility : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private Ray _ray;
     private RaycastHit[] _hits;
     private Camera _camera;
+    private PlayerAbilityView _view;
 
     public event UnityAction Used;
 
@@ -39,8 +38,8 @@ public class PlayerAbility : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         _value = (IPlayerAbility)_valueBehaviour;
         _accessTimer = GetComponent<AccessTimer>();
+        _view = GetComponent<PlayerAbilityView>();
         _camera = Camera.main;
-        _icon.sprite = _value.Icon;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -52,6 +51,7 @@ public class PlayerAbility : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             _actionArea = _areaSpawner.Spawn();
             _isSelected = true;
+            _view.Select();
             Used?.Invoke();
         }
     }
@@ -68,15 +68,20 @@ public class PlayerAbility : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             if (hit.collider.TryGetComponent(out PlayerAbility _))
             {
-                Destroy(_actionArea.gameObject);
-                _isSelected = false;
+                Deselect();
                 return;
             }
         }
 
         _actionArea.Use(_value);
-        Destroy(_actionArea.gameObject);
         _accessTimer.StartCountingDown();
+        Deselect();
+    }
+
+    private void Deselect()
+    {
+        Destroy(_actionArea.gameObject);
         _isSelected = false;
+        _view.Deselect();
     }
 }
