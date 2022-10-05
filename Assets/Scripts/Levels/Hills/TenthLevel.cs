@@ -7,7 +7,10 @@ public class TenthLevel : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounte
 
     public void Restart() => Level_10.Load(_counter);
 
-    public void LoadNextLevel() => Level_11.Load();
+    public void LoadNextLevel()
+    {
+
+    }
 
     public void OnSceneLoaded(CompletedLevelsCounter argument)
     {
