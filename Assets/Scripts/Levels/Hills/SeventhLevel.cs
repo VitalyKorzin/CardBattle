@@ -1,17 +1,12 @@
-using UnityEngine;
 using IJunior.TypedScenes;
 
-public class SeventhLevel : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter>
+public class SeventhLevel : Level
 {
-    private CompletedLevelsCounter _counter;
+    protected override void Restart(CompletedLevelsCounter counter)
+        => Level_7.Load(counter);
 
-    public void Restart() => Level_7.Load(_counter);
+    protected override void LoadNextLevel(CompletedLevelsCounter counter)
+        => Level_8.Load(counter);
 
-    public void LoadNextLevel() => Level_8.Load(_counter);
-
-    public void OnSceneLoaded(CompletedLevelsCounter argument)
-    {
-        _counter = argument;
-        _counter.Increase();
-    }
+    protected override int GetIndex() => 7;
 }
