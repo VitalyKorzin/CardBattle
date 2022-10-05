@@ -25,10 +25,10 @@ public class CardsDeck : Window
         base.Awake();
 
         foreach (Card card in _cards)
-            Add(card);
+            Add(card, false);
     }
 
-    public void Add(Card card)
+    public void Add(Card card, bool notifyWhenAdded = true)
     {
         if (card == null)
             throw new ArgumentNullException(nameof(card));
@@ -45,7 +45,8 @@ public class CardsDeck : Window
             _sets.Add(set);
         }
 
-        Added?.Invoke();
+        if (notifyWhenAdded)
+            Added?.Invoke();
     }
 
     public void Remove(Card card)

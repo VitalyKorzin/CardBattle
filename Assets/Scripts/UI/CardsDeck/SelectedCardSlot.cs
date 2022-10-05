@@ -12,6 +12,7 @@ public class SelectedCardSlot : MonoBehaviour
     private CardViewInDeck _cardView;
 
     public event UnityAction<Card> Added;
+    public event UnityAction Selected;
     public event UnityAction<Card> Removed;
 
     private void Start()
@@ -40,6 +41,7 @@ public class SelectedCardSlot : MonoBehaviour
         cardView.transform.localPosition = Vector3.zero;
         _cardView = cardView;
         Added?.Invoke(_cardView.Card);
+        Selected?.Invoke();
     }
 
     public void Remove()

@@ -17,6 +17,7 @@ public class Protection : MonoBehaviour
 
     public event UnityAction<int> Changed;
     public event UnityAction ArmorGived;
+    public event UnityAction TookDamage;
 
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class Protection : MonoBehaviour
 
         Value = Math.Clamp(Value - damage, 0, Value);
         Changed?.Invoke(Value);
+        TookDamage?.Invoke();
     }
 
     public void Give(Armor armor, bool buffPlays = true)

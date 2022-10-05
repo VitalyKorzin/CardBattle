@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _transitionRange;
 
     public float TransitionRange => _transitionRange;
+
+    public event UnityAction Used;
 
     private void OnEnable()
     {
@@ -29,6 +32,7 @@ public abstract class Weapon : MonoBehaviour
         PlayAnimation(animator);
         yield return new WaitForSeconds(_secondsBetweenAttack); ;
         ApplyDamage(target, shotPoint);
+        Used?.Invoke();
     }
 
     protected abstract void PlayAnimation(Animator animator);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class ResultScreen<T> : MonoBehaviour
         where T : StickmenSquad
@@ -12,6 +13,8 @@ public abstract class ResultScreen<T> : MonoBehaviour
     [SerializeField] private T _stickmenSquad;
     [SerializeField] private ResultScreenBackgroundDisplay _backgroundDisplay;
     [SerializeField] private ResultDisplay _resultDisplay;
+
+    public event UnityAction Showed;
 
     private void OnEnable()
     {
@@ -42,6 +45,7 @@ public abstract class ResultScreen<T> : MonoBehaviour
         _backgroundDisplay.Display();
         yield return new WaitForSeconds(_delayBeforeResultShowing);
         _resultDisplay.Display();
+        Showed?.Invoke();
     }
 
     private void Validate()

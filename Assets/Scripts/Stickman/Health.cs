@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
 
     public event UnityAction<int> Changed;
     public event UnityAction<Health, int> Healed;
+    public event UnityAction TookDamage;
 
     private void OnEnable()
     {
@@ -29,6 +30,7 @@ public class Health : MonoBehaviour
 
         _value = Math.Clamp(_value - damage, 0, _value);
         Changed?.Invoke(_value);
+        TookDamage?.Invoke();
     }
 
     public void Heal(int value)

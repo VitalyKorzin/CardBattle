@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -22,6 +23,8 @@ public class CardsSet : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public string CardsName => _card.Name;
     public int Count { get; private set; }
+
+    public event UnityAction CardSelected;
 
     public void Initialize(Canvas canvas, CardsDeck deck, Card card)
     {
@@ -67,6 +70,7 @@ public class CardsSet : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         _cardViewInDeck = Instantiate(_cardViewTemplate, transform.position, transform.rotation, _canvas.transform);
         _cardViewInDeck.Initialize(_canvas, _card);
+        CardSelected?.Invoke();
         OnDrag(eventData);
     }
 

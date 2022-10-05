@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Confetti : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Confetti : MonoBehaviour
     [SerializeField] private ParticleSystem _shower;
     [SerializeField] private EnemiesSquad _enemiesSquad;
     [SerializeField] private Transform[] _blastPositions;
+
+    public event UnityAction Blasted;
 
     private void OnEnable()
     {
@@ -39,6 +42,7 @@ public class Confetti : MonoBehaviour
         foreach (var blastPosition in _blastPositions)
             Instantiate(_blast, blastPosition);
 
+        Blasted?.Invoke();
         _shower.Play();
     }
 
