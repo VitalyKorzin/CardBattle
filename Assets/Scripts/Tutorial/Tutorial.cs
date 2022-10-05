@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
+    [Min(0)]
+    [SerializeField] private int _startWalletBalance;
+    [SerializeField] private WalletSaver _walletSaver;
     [SerializeField] private LearningStage _firstStage;
     [SerializeField] private StartFightAnnunciator _annunciator;
     [SerializeField] private UsingPlayerAbility _usingPlayerAbility;
@@ -18,6 +21,9 @@ public class Tutorial : MonoBehaviour
 
     private void OnDisable() 
         => _annunciator.FightStarted -= OnFightStarted;
+
+    private void Awake()
+        => _walletSaver.SaveBalance(_startWalletBalance);
 
     private void OnStageEnded()
     {

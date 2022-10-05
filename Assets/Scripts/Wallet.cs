@@ -4,14 +4,14 @@ using UnityEngine.Events;
 
 public class Wallet : MonoBehaviour
 {
-    [Min(0)]
-    [SerializeField] private int _startBalance;
+    [SerializeField] private WalletSaver _saver;
 
     public int Balance { get; private set; }
 
     public event UnityAction<int> Changed;
 
-    private void Awake() => Balance = _startBalance;
+    private void Start()
+        => Balance = _saver.LoadBalance();
 
     public void Withdraw(int price)
     {
@@ -23,6 +23,7 @@ public class Wallet : MonoBehaviour
 
         Balance -= price;
         Changed?.Invoke(Balance);
+        _saver.SaveBalance(Balance);
     }
 
     public bool CheckSolvency(int price)
@@ -40,5 +41,6 @@ public class Wallet : MonoBehaviour
 
         Balance += value;
         Changed?.Invoke(Balance);
+        _saver.SaveBalance(Balance);
     }
 }
