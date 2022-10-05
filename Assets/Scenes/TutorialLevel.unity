@@ -12851,7 +12851,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5966540868697104939}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9901902
+  m_Size: 0.9931763
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16873,7 +16873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00037751856, y: -0.0001259157}
+  m_AnchoredPosition: {x: 0.00037751856, y: 0.0005909739}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &8185836954721365994
@@ -18908,6 +18908,7 @@ GameObject:
   - component: {fileID: 4261307614564846505}
   - component: {fileID: 7306003008081727445}
   - component: {fileID: 8481364782118573446}
+  - component: {fileID: 8481364782118573447}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -19102,6 +19103,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8481364782118573447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481364782118573441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7357fc0fe9ecf9a48839c8714657bb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8481364782126621856
 GameObject:
   m_ObjectHideFlags: 0
