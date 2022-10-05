@@ -4,10 +4,10 @@ public class LevelSaver : Saver
 
     private readonly int _defaultIndex = 0;
 
-    public void SaveLevel(int index)
+    public void Save(int index)
         => SaveIntegerValue(CurrentLevel, index);
 
-    public int LoadLevel()
+    public int LoadLevelIndex()
     {
         if (TryLoadIntegerValue(CurrentLevel, out int index))
             return index;

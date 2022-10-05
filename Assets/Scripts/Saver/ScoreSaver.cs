@@ -4,10 +4,10 @@ public class ScoreSaver : Saver
 
     private readonly int _defaultValue = 0;
 
-    public void Save(int newValue)
-        => SaveIntegerValue(Score, newValue);
+    public void Save(int score)
+        => SaveIntegerValue(Score, score);
 
-    public int Load()
+    public int LoadScore()
     {
         if (TryLoadIntegerValue(Score, out int score))
             return score;

@@ -4,8 +4,8 @@ public class WalletSaver : Saver
 {
     private const string Balance = nameof(Balance);
 
-    public void SaveBalance(int value)
-        => SaveIntegerValue(Balance, value);
+    public void Save(int balance)
+        => SaveIntegerValue(Balance, balance);
 
     public int LoadBalance()
     {

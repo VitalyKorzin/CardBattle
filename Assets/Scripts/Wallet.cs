@@ -23,7 +23,7 @@ public class Wallet : MonoBehaviour
 
         Balance -= price;
         Changed?.Invoke(Balance);
-        _saver.SaveBalance(Balance);
+        _saver.Save(Balance);
     }
 
     public bool CheckSolvency(int price)
@@ -41,6 +41,6 @@ public class Wallet : MonoBehaviour
 
         Balance += value;
         Changed?.Invoke(Balance);
-        _saver.SaveBalance(Balance);
+        _saver.Save(Balance);
     }
 }

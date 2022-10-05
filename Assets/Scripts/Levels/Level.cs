@@ -11,7 +11,7 @@ public abstract class Level : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCo
     public int Index => GetIndex();
 
     private void Start() 
-        => _saver.SaveLevel(Index);
+        => _saver.Save(Index);
 
     public void Initialize(CompletedLevelsCounter counter)
     {

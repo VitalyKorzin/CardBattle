@@ -9,7 +9,7 @@ public class ScenesLoader : MonoBehaviour
     {
         CompletedLevelsCounter counter = new CompletedLevelsCounter();
 
-        switch (_saver.LoadLevel())
+        switch (_saver.LoadLevelIndex())
         {
             case 0:
                 IJunior.TypedScenes.TutorialLevel.Load(counter);

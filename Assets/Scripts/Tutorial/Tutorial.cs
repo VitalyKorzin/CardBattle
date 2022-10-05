@@ -23,7 +23,7 @@ public class Tutorial : MonoBehaviour
         => _annunciator.FightStarted -= OnFightStarted;
 
     private void Awake()
-        => _walletSaver.SaveBalance(_startWalletBalance);
+        => _walletSaver.Save(_startWalletBalance);
 
     private void OnStageEnded()
     {

@@ -35,7 +35,7 @@ public class NextButton : ResultDisplayElement
 
     private void OnButtonClick()
     {
-        int currentScore = _saver.Load();
+        int currentScore = _saver.LoadScore();
         _saver.Save(currentScore + _score);
     }
 }

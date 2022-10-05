@@ -49,7 +49,7 @@ public class Leaderboard : Window
         if (PlayerAccount.IsAuthorized == false)
             return;
 
-        Agava.YandexGames.Leaderboard.SetScore(_name, _saver.Load());
+        Agava.YandexGames.Leaderboard.SetScore(_name, _saver.LoadScore());
     }
 
     private void ClearLeaderboard()
