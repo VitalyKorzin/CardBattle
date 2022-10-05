@@ -6,7 +6,8 @@ using IJunior.TypedScenes;
 
 public class SdkYandex : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter>
 {
-    public event UnityAction VideoAdOpend;
+    public event UnityAction VideoAdOpened;
+    public event UnityAction VideoAdClosed;
     public event UnityAction Rewarded;
 
     private IEnumerator Start()
@@ -28,11 +29,14 @@ public class SdkYandex : MonoBehaviour, ISceneLoadHandler<CompletedLevelsCounter
     }
 
     public void OnShowVideoButtonClick() 
-        => VideoAd.Show(OnOpenVideoAdCallback, OnRewardedCallback);
+        => VideoAd.Show(OnOpenVideoAdCallback, OnRewardedCallback, OnCloseAdVideoCallback);
 
     private void OnOpenVideoAdCallback() 
-        => VideoAdOpend?.Invoke();
+        => VideoAdOpened?.Invoke();
 
     private void OnRewardedCallback() 
         => Rewarded?.Invoke();
+
+    private void OnCloseAdVideoCallback()
+        => VideoAdClosed?.Invoke();
 }

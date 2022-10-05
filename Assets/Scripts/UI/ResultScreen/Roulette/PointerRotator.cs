@@ -15,12 +15,12 @@ public class PointerRotator : MonoBehaviour
 
     private void OnEnable()
     {
-        _sdkYandex.VideoAdOpend += OnVideoAdOpend;
+        _sdkYandex.VideoAdOpened += OnVideoAdOpend;
         Rotate();
     }
 
     private void OnDisable() 
-        => _sdkYandex.VideoAdOpend -= OnVideoAdOpend;
+        => _sdkYandex.VideoAdOpened -= OnVideoAdOpend;
 
     private void Awake()
     {
