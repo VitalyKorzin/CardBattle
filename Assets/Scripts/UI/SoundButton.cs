@@ -14,8 +14,11 @@ public class SoundButton : MonoBehaviour
 
     public event UnityAction<bool> Click;
 
-    private void OnEnable() 
-        => _button.onClick.AddListener(OnButtonClick);
+    private void OnEnable()
+    {
+        _button.onClick.AddListener(OnButtonClick);
+        SetCurrentState(AudioListener.volume == 1);
+    }
 
     private void OnDisable()
         => _button.onClick.RemoveListener(OnButtonClick);
@@ -25,8 +28,13 @@ public class SoundButton : MonoBehaviour
 
     private void OnButtonClick()
     {
-        IsSoundOn = !IsSoundOn;
+        SetCurrentState(!IsSoundOn);
         Click?.Invoke(IsSoundOn);
-        _button.image.sprite = IsSoundOn ? _soundOn : _soundOff;
+    }
+
+    private void SetCurrentState(bool isSoundOn)
+    {
+        _button.image.sprite = isSoundOn ? _soundOn : _soundOff;
+        IsSoundOn = isSoundOn;
     }
 }
