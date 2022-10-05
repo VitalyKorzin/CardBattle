@@ -9047,6 +9047,7 @@ GameObject:
   - component: {fileID: 1692886847}
   - component: {fileID: 1692886846}
   - component: {fileID: 1692886848}
+  - component: {fileID: 1692886849}
   m_Layer: 5
   m_Name: Savers
   m_TagString: Untagged
@@ -9096,6 +9097,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18884b988dbb22e448a6a616506cefa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1692886849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692886845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adec97ee1fe31b640bc794dc7ab619dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1696067946
@@ -17079,7 +17092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00037751856, y: -0.000102595244}
+  m_AnchoredPosition: {x: 0.00037751856, y: -0.0001113509}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &8109144978546227065
@@ -17270,9 +17283,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raycastTargetMenu: {fileID: 6421040138601953846}
+  _saver: {fileID: 1692886849}
   _entryViewTemplate: {fileID: 95349586267540584, guid: bbe741c285408434f90bc950585d16af, type: 3}
   _content: {fileID: 5041490306711995115}
-  _name: Players
+  _name: AllPlayers
 --- !u!114 &8404577591120146004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20391,6 +20405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1ba89369309d9439e316e713a92995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 30
+  _saver: {fileID: 1692886849}
 --- !u!114 &8481364782811869649
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,36 +4,20 @@ using System.Collections.Generic;
 
 public class Leaderboard : Window
 {
+    [SerializeField] private ScoreSaver _saver;
     [SerializeField] private EntryView _entryViewTemplate;
     [SerializeField] private Transform _content;
     [SerializeField] private string _name;
 
     private List<EntryView> _entryViews = new List<EntryView>();
 
-    public void SetScore()
-    {
-        if (YandexGamesSdk.IsInitialized == false || PlayerAccount.IsAuthorized == false)
-            return;
-
-        Agava.YandexGames.Leaderboard.GetPlayerEntry(_name, (result) =>
-        {
-            if (result == null)
-                Agava.YandexGames.Leaderboard.SetScore(_name, 30);
-            else
-                Agava.YandexGames.Leaderboard.SetScore(_name, result.score + 30);
-        });
-    }
-
     protected override void LoadData()
     {
         if (YandexGamesSdk.IsInitialized == false)
             return;
 
-        PlayerAccount.RequestPersonalProfileDataPermission();
-
-        if (PlayerAccount.IsAuthorized == false)
-            PlayerAccount.Authorize();
-
+        Authorize();
+        SetScore();
         ClearLeaderboard();
 
         Agava.YandexGames.Leaderboard.GetEntries(_name, (result) =>
@@ -50,6 +34,22 @@ public class Leaderboard : Window
                 _entryViews.Add(entryView);
             }
         });
+    }
+
+    private void Authorize()
+    {
+        PlayerAccount.RequestPersonalProfileDataPermission();
+
+        if (PlayerAccount.IsAuthorized == false)
+            PlayerAccount.Authorize();
+    }
+
+    private void SetScore()
+    {
+        if (PlayerAccount.IsAuthorized == false)
+            return;
+
+        Agava.YandexGames.Leaderboard.SetScore(_name, _saver.Load());
     }
 
     private void ClearLeaderboard()
