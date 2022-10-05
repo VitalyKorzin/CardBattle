@@ -6,8 +6,10 @@ public class SelectedCardSlot : MonoBehaviour
 {
     [SerializeField] private CardsDeck _cardsDeck;
     [SerializeField] private CardViewInDeck _cardViewTemplate;
-    [SerializeField] private Card _startCard;
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private CardsDeckFiller _filler;
+    [SerializeField] private CardsDeckSaver _saver;
+    [SerializeField] private string _name;
 
     private CardViewInDeck _cardView;
 
@@ -17,12 +19,14 @@ public class SelectedCardSlot : MonoBehaviour
 
     private void Start()
     {
-        if (_startCard == null)
+        Card card = _filler.GetCard(_name);
+
+        if (card == null)
             return;
 
-        Added?.Invoke(_startCard);
+        Added?.Invoke(card);
         _cardView = Instantiate(_cardViewTemplate, transform);
-        _cardView.Initialize(_canvas, _startCard);
+        _cardView.Initialize(_canvas, card);
     }
 
     public void Set(CardViewInDeck cardView)
@@ -42,6 +46,7 @@ public class SelectedCardSlot : MonoBehaviour
         _cardView = cardView;
         Added?.Invoke(_cardView.Card);
         Selected?.Invoke();
+        _saver.SaveSelectedCard(_name, cardView.Card.Name);
     }
 
     public void Remove()
@@ -51,5 +56,6 @@ public class SelectedCardSlot : MonoBehaviour
 
         Removed?.Invoke(_cardView.Card);
         _cardView = null;
+        _saver.SaveSelectedCard(_name, "");
     }
 }

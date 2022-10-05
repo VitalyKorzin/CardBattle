@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 3062320568673933759}
   - component: {fileID: 8439362608924229296}
   - component: {fileID: 1541681234227816989}
+  - component: {fileID: 2360802754722097695}
   m_Layer: 5
   m_Name: CardsDeck
   m_TagString: Untagged
@@ -268,20 +269,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raycastTargetMenu: {fileID: 6421040137620033371}
-  _cards:
-  - {fileID: 1624907679027357221, guid: 0de786bff1280dd49b3a382c28cb7b42, type: 3}
-  - {fileID: 4716955547539259629, guid: 3fa10fb3cf58c904f9b25e08ad69f07f, type: 3}
-  - {fileID: 8257200078618652247, guid: 10624fc03cc23ff4487f7b8a7414a725, type: 3}
-  - {fileID: -544894150322752232, guid: 16d00592d2144664fb1c3296e64b4c3f, type: 3}
-  - {fileID: 8903461157430996380, guid: eaf5120a6ff978b478fdbeccf30a575f, type: 3}
-  - {fileID: 193585675524927490, guid: 03ed7913e27667e4bbfa13eaed1c37bb, type: 3}
-  - {fileID: 5540516103840439208, guid: 95986a79b4465f441b44fe91f91c6284, type: 3}
-  - {fileID: 1838595411830990490, guid: cf66df6cd4b3de147b0c1070f2390239, type: 3}
-  - {fileID: 4768868073557060419, guid: 537ab0dcff3d6f74088a3a080b119062, type: 3}
   _cardsSetTemplate: {fileID: 4619751829250335819, guid: 77e3c2fa0a1335f4284b66c5c3e282ea, type: 3}
   _content: {fileID: 8095070859671870792}
   _canvas: {fileID: 8481364781001171177}
   _shop: {fileID: 8415957953937071878}
+  _saver: {fileID: 164572785954962680}
+  _filler: {fileID: 2360802754722097695}
 --- !u!225 &3062320568673933759
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -402,6 +395,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94e2c03bbde624db585449b2483b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2360802754722097695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664464484685918462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e26280294a8f348bea1b7da1fd4496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _saver: {fileID: 164572785954962680}
+  _cards:
+  - {fileID: 1624907679027357221, guid: 0de786bff1280dd49b3a382c28cb7b42, type: 3}
+  - {fileID: 162185220065847457, guid: a4829cebb364869468f660a8f54e9ab9, type: 3}
+  - {fileID: 3676188056938309563, guid: caefc8f6e0fa62b43bd7ff24905edb99, type: 3}
+  - {fileID: -544894150322752232, guid: 16d00592d2144664fb1c3296e64b4c3f, type: 3}
+  - {fileID: 8903461157430996380, guid: eaf5120a6ff978b478fdbeccf30a575f, type: 3}
+  - {fileID: 8268600768780021675, guid: a690f69fac0d4454b9bdf5054f789d66, type: 3}
+  - {fileID: 193585675524927490, guid: 03ed7913e27667e4bbfa13eaed1c37bb, type: 3}
+  - {fileID: 5540516103840439208, guid: 95986a79b4465f441b44fe91f91c6284, type: 3}
+  - {fileID: 1838595411830990490, guid: cf66df6cd4b3de147b0c1070f2390239, type: 3}
+  - {fileID: 4768868073557060419, guid: 537ab0dcff3d6f74088a3a080b119062, type: 3}
+  - {fileID: 4716955547539259629, guid: 3fa10fb3cf58c904f9b25e08ad69f07f, type: 3}
+  - {fileID: 8257200078618652247, guid: 10624fc03cc23ff4487f7b8a7414a725, type: 3}
+  - {fileID: 2384095660904175291, guid: b9fad3d83f4321341a6c57dfceabebff, type: 3}
+  - {fileID: 8578330602566699610, guid: 8372d392eb4f00a498b38bb5d8b05171, type: 3}
 --- !u!1 &823337843750597405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,8 +1031,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsDeck: {fileID: 366568529822800300}
   _cardViewTemplate: {fileID: 4632360793360859848, guid: 722a2f0d30c02c1499d037371159bd0c, type: 3}
-  _startCard: {fileID: 8268600768780021675, guid: a690f69fac0d4454b9bdf5054f789d66, type: 3}
   _canvas: {fileID: 8481364781001171177}
+  _filler: {fileID: 2360802754722097695}
+  _saver: {fileID: 164572785954962680}
+  _name: 5
 --- !u!82 &3983163022703534407
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1740,8 +1763,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsDeck: {fileID: 366568529822800300}
   _cardViewTemplate: {fileID: 4632360793360859848, guid: 722a2f0d30c02c1499d037371159bd0c, type: 3}
-  _startCard: {fileID: 8578330602566699610, guid: 8372d392eb4f00a498b38bb5d8b05171, type: 3}
   _canvas: {fileID: 8481364781001171177}
+  _filler: {fileID: 2360802754722097695}
+  _saver: {fileID: 164572785954962680}
+  _name: 4
 --- !u!82 &207939669275286588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1939,6 +1964,7 @@ GameObject:
   - component: {fileID: 7104569837380444172}
   - component: {fileID: 8212674558552256472}
   - component: {fileID: 4849440493721294907}
+  - component: {fileID: 164572785954962680}
   m_Layer: 5
   m_Name: Savers
   m_TagString: Untagged
@@ -2000,6 +2026,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adec97ee1fe31b640bc794dc7ab619dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &164572785954962680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181299057444058628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738fce7ec00030045a92b0a246dc3fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3539506341197138784
@@ -2172,8 +2210,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsDeck: {fileID: 366568529822800300}
   _cardViewTemplate: {fileID: 4632360793360859848, guid: 722a2f0d30c02c1499d037371159bd0c, type: 3}
-  _startCard: {fileID: 3676188056938309563, guid: caefc8f6e0fa62b43bd7ff24905edb99, type: 3}
   _canvas: {fileID: 8481364781001171177}
+  _filler: {fileID: 2360802754722097695}
+  _saver: {fileID: 164572785954962680}
+  _name: 2
 --- !u!82 &911870013764313994
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5656,8 +5696,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsDeck: {fileID: 366568529822800300}
   _cardViewTemplate: {fileID: 4632360793360859848, guid: 722a2f0d30c02c1499d037371159bd0c, type: 3}
-  _startCard: {fileID: 162185220065847457, guid: a4829cebb364869468f660a8f54e9ab9, type: 3}
   _canvas: {fileID: 8481364781001171177}
+  _filler: {fileID: 2360802754722097695}
+  _saver: {fileID: 164572785954962680}
+  _name: 1
 --- !u!82 &2966301896355004467
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10439,8 +10481,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsDeck: {fileID: 366568529822800300}
   _cardViewTemplate: {fileID: 4632360793360859848, guid: 722a2f0d30c02c1499d037371159bd0c, type: 3}
-  _startCard: {fileID: 2384095660904175291, guid: b9fad3d83f4321341a6c57dfceabebff, type: 3}
   _canvas: {fileID: 8481364781001171177}
+  _filler: {fileID: 2360802754722097695}
+  _saver: {fileID: 164572785954962680}
+  _name: 3
 --- !u!82 &605297829381686098
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10960,6 +11004,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac4f09ef4ddbf842be8fc60ae0c0b2c, type: 3}
+--- !u!224 &792315328863943522 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 75117862363488496, guid: 7ac4f09ef4ddbf842be8fc60ae0c0b2c, type: 3}
+  m_PrefabInstance: {fileID: 861315472090356626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5758814516937575718 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4908759291606013620, guid: 7ac4f09ef4ddbf842be8fc60ae0c0b2c, type: 3}
@@ -10971,8 +11020,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2607991e22e914ebafa0867430ed42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &792315328863943522 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 75117862363488496, guid: 7ac4f09ef4ddbf842be8fc60ae0c0b2c, type: 3}
-  m_PrefabInstance: {fileID: 861315472090356626}
-  m_PrefabAsset: {fileID: 0}
