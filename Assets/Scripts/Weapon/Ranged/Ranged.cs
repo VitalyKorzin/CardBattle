@@ -8,12 +8,4 @@ public abstract class Ranged<T> : Weapon
 
     protected T Projectile => _projectile;
     protected Transform ShotPoint { get; private set; }
-
-    protected override void Validate()
-    {
-        base.Validate();
-
-        if (_projectile == null)
-            throw new InvalidOperationException();
-    }
 }

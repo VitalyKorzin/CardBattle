@@ -18,15 +18,6 @@ public class AttackState : MonoBehaviour
     public event UnityAction<Transform> TargetAttacked;
     public event UnityAction<Stickman> TargetGone;
 
-    private void OnEnable()
-    {
-        if (_shotPoint == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
     private void OnDisable()
     {
         _movementState.TargetApproached -= OnTargetApproached;

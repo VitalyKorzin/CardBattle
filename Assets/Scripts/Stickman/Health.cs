@@ -14,15 +14,6 @@ public class Health : MonoBehaviour
     public event UnityAction<Health, int> Healed;
     public event UnityAction TookDamage;
 
-    private void OnEnable()
-    {
-        if (_healing == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
     public void Apply(int damage)
     {
         if (damage < 0)

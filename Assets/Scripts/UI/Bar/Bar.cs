@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -11,20 +10,7 @@ public abstract class Bar : MonoBehaviour
     private Coroutine _fillingJob;
     private int _currentTextValue;
 
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        SubscribeToEvents();
-    }
+    private void OnEnable() => SubscribeToEvents();
 
     private void OnDisable() => UnsubscribeFromEvents();
 
@@ -42,12 +28,6 @@ public abstract class Bar : MonoBehaviour
     protected abstract void UnsubscribeFromEvents();
 
     protected abstract int GetCurrentValue();
-
-    protected virtual void Validate()
-    {
-        if (_valueText == null)
-            throw new InvalidOperationException();
-    }
 
     protected virtual void TryDisableIcon() { }
 

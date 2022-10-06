@@ -20,19 +20,6 @@ public class ResultDisplay : MonoBehaviour
 
     private float _scalingDuration;
 
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-    }
-
     private void Start()
     {
         transform.localScale = new Vector3(_startSize, _startSize, _startSize);
@@ -58,17 +45,5 @@ public class ResultDisplay : MonoBehaviour
 
         foreach (var element in _elements)
             element.Appear(_appearanceEndValue, _appearanceDuration);
-    }
-
-    private void Validate()
-    {
-        if (_label == null)
-            throw new InvalidOperationException();
-
-        if (_elements == null)
-            throw new InvalidOperationException();
-
-        if (_elements.Length == 0)
-            throw new InvalidOperationException();
     }
 }

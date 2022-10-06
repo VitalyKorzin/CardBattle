@@ -13,24 +13,10 @@ public class FireballShooter : MonoBehaviour
     private readonly float _timeStep = 0.1f;
 
     private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        _cardsHand.CardAdded += OnCardAdded;
-    }
+        => _cardsHand.CardAdded += OnCardAdded;
 
     private void OnDisable()
-    {
-        _cardsHand.CardAdded -= OnCardAdded;
-    }
+        => _cardsHand.CardAdded -= OnCardAdded;
 
     private void OnCardAdded(Card card)
     {
@@ -73,17 +59,5 @@ public class FireballShooter : MonoBehaviour
         }
 
         return path;
-    }
-
-    private void Validate()
-    {
-        if (_cardsHand == null)
-            throw new InvalidOperationException();
-
-        if (_shotPoint == null)
-            throw new InvalidOperationException();
-
-        if (_template == null)
-            throw new InvalidOperationException();
     }
 }

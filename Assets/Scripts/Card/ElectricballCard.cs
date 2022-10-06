@@ -7,15 +7,6 @@ public class ElectricballCard : Card
     [SerializeField] private Vector3 _spawnPositionOffset;
     [SerializeField] private Electricball _template;
 
-    private void OnEnable()
-    {
-        if (_template == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
     public override void Use(IReadOnlyList<Stickman> stickmen, Vector3 actionPosition) 
         => Instantiate(_template, actionPosition + _spawnPositionOffset, Quaternion.identity);
 }

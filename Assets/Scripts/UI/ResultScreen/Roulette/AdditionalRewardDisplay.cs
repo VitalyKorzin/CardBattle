@@ -12,19 +12,7 @@ public class AdditionalRewardDisplay : ResultDisplayElement
     private readonly string _symbol = "+";
 
     private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        _pointer.RewardMultiplied += OnRewardMultiplied;
-    }
+        => _pointer.RewardMultiplied += OnRewardMultiplied;
 
     private void OnDisable() 
         => _pointer.RewardMultiplied -= OnRewardMultiplied;
@@ -42,16 +30,4 @@ public class AdditionalRewardDisplay : ResultDisplayElement
 
     private void OnRewardMultiplied(int multiplier) 
         => _text.text = _symbol + (_battleReward.Value * multiplier).ToString();
-
-    private void Validate()
-    {
-        if (_battleReward == null)
-            throw new InvalidOperationException();
-
-        if (_pointer == null)
-            throw new InvalidOperationException();
-
-        if (_text == null)
-            throw new InvalidOperationException();
-    }
 }

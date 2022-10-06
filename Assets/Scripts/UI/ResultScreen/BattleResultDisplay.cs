@@ -9,15 +9,6 @@ public class BattleResultDisplay : ResultDisplayElement
 {
     [SerializeField] private Image _background;
 
-    private void OnEnable()
-    {
-        if (_background == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
     public override void Appear(float endValue, float duration)
     {
         if (endValue < 0)

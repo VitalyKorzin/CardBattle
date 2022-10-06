@@ -23,15 +23,6 @@ public class CardsHand : MonoBehaviour
     public event UnityAction<Card> CardAdded;
     public event UnityAction Ended;
 
-    private void OnEnable()
-    {
-        if (_cardSlot == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
     private void Awake()
     {
         _angleBetweenCards = _rangeAngle / (_maximumCount - 1);

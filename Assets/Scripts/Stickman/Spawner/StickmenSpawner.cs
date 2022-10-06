@@ -16,19 +16,7 @@ public abstract class StickmenSpawner : MonoBehaviour
     public event UnityAction<Stickman, PlaceInSquad> Spawned;
 
     private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        _cardsHand.CardAdded += OnCardAdded;
-    }
+        => _cardsHand.CardAdded += OnCardAdded;
 
     private void OnDisable()
         => _cardsHand.CardAdded -= OnCardAdded;
@@ -106,14 +94,5 @@ public abstract class StickmenSpawner : MonoBehaviour
         }
 
         return nearestFreePlace;
-    }
-
-    private void Validate()
-    {
-        if (_squad == null)
-            throw new InvalidOperationException();
-
-        if (_cardsHand == null)
-            throw new InvalidOperationException();
     }
 }

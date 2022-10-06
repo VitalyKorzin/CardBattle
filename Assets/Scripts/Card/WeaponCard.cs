@@ -6,15 +6,6 @@ public class WeaponCard : Card
 {
     [SerializeField] private Weapon _template;
 
-    private void OnEnable()
-    {
-        if (_template == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
     public override void Use(IReadOnlyList<Stickman> stickmen, Vector3 actionPosition)
     {
         if (stickmen == null)

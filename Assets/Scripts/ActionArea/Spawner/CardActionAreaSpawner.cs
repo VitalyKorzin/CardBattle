@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class CardActionAreaSpawner : MonoBehaviour
@@ -7,19 +6,7 @@ public class CardActionAreaSpawner : MonoBehaviour
     [SerializeField] private CardActionArea _template;
 
     private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        _cardsHand.CardAdded += OnCardAdded;
-    }
+        => _cardsHand.CardAdded += OnCardAdded;
 
     private void OnDisable()
         => _cardsHand.CardAdded -= OnCardAdded;
@@ -37,11 +24,5 @@ public class CardActionAreaSpawner : MonoBehaviour
     {
         card.Selected -= OnCardSelected;
         card.Destroyed -= OnCardDestroyed;
-    }
-
-    private void Validate()
-    {
-        if (_cardsHand == null)
-            throw new InvalidOperationException();
     }
 }

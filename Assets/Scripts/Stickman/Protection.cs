@@ -19,19 +19,6 @@ public class Protection : MonoBehaviour
     public event UnityAction ArmorGived;
     public event UnityAction TookDamage;
 
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-    }
-
     private void Start() => TryDressArmors();
 
     public void Apply(int damage)
@@ -92,17 +79,5 @@ public class Protection : MonoBehaviour
     {
         foreach (Armor armor in _armors)
             Give(armor, false);
-    }
-
-    private void Validate()
-    {
-        if (_shieldPosition == null)
-            throw new InvalidOperationException();
-
-        if (_helmetPosition == null)
-            throw new InvalidOperationException();
-
-        if (_buff == null)
-            throw new InvalidOperationException();
     }
 }

@@ -12,12 +12,4 @@ public class HealthBar : Bar
 
     protected override void UnsubscribeFromEvents() 
         => _health.Changed -= OnValueChanged;
-
-    protected override void Validate()
-    {
-        base.Validate();
-
-        if (_health == null)
-            throw new InvalidOperationException();
-    }
 }

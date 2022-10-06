@@ -24,15 +24,6 @@ public class HealthChangingDisplay : MonoBehaviour
     private Camera _camera;
     private float _lifetime;
 
-    private void OnEnable()
-    {
-        if (_valueText == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
     private void Awake()
     {
         _camera = Camera.main;

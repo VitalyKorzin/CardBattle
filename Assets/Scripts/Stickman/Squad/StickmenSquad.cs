@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,16 +19,6 @@ public abstract class StickmenSquad : MonoBehaviour
 
     private void OnEnable()
     {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
         _spawner.Spawned += OnStickmanSpawned;
         _startFightAnnunciator.FightStarted += OnFightStarted;
     }
@@ -75,26 +64,5 @@ public abstract class StickmenSquad : MonoBehaviour
 
         if (_stickmen.Count == 0)
             Died?.Invoke();
-    }
-
-    private void Validate()
-    {
-        if (_startFightAnnunciator == null)
-            throw new InvalidOperationException();
-
-        if (_enemies == null)
-            throw new InvalidOperationException();
-
-        if (_spawner == null)
-            throw new InvalidOperationException();
-
-        if (_places == null)
-            throw new InvalidOperationException();
-
-        if (_places.Count == 0)
-            throw new InvalidOperationException();
-
-        if (_celebrationPlace == null)
-            throw new InvalidOperationException();
     }
 }

@@ -23,12 +23,4 @@ public class Bow : Ranged<Arrow>
 
         animator.SetTrigger(StickmanAnimator.Params.IsArchery);
     }
-
-    protected override void Validate()
-    {
-        base.Validate();
-
-        if (_quiver == null)
-            throw new InvalidOperationException();
-    }
 }

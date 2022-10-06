@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,19 +14,7 @@ public class Confetti : MonoBehaviour
     public event UnityAction Blasted;
 
     private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        _enemiesSquad.Died += OnEnemiesSquadDied;
-    }
+        => _enemiesSquad.Died += OnEnemiesSquadDied;
 
     private void OnDisable() 
         => _enemiesSquad.Died -= OnEnemiesSquadDied;
@@ -44,23 +31,5 @@ public class Confetti : MonoBehaviour
 
         Blasted?.Invoke();
         _shower.Play();
-    }
-
-    private void Validate()
-    {
-        if (_blast == null)
-            throw new InvalidOperationException();
-
-        if (_shower == null)
-            throw new InvalidOperationException();
-
-        if (_enemiesSquad == null)
-            throw new InvalidOperationException();
-
-        if (_blastPositions == null)
-            throw new InvalidOperationException();
-
-        if (_blastPositions.Length == 0)
-            throw new InvalidOperationException();
     }
 }

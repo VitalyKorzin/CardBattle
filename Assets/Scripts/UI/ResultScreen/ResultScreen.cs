@@ -18,16 +18,6 @@ public abstract class ResultScreen<T> : MonoBehaviour
 
     private void OnEnable()
     {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
         _stickmenSquad.Died += OnStickmenSquadDied;
         _backgroundDisplay.gameObject.SetActive(false);
     }
@@ -46,17 +36,5 @@ public abstract class ResultScreen<T> : MonoBehaviour
         yield return new WaitForSeconds(_delayBeforeResultShowing);
         _resultDisplay.Display();
         Showed?.Invoke();
-    }
-
-    private void Validate()
-    {
-        if (_stickmenSquad == null)
-            throw new InvalidOperationException();
-
-        if (_backgroundDisplay == null)
-            throw new InvalidOperationException();
-
-        if (_resultDisplay == null)
-            throw new InvalidOperationException();
     }
 }

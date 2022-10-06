@@ -19,19 +19,6 @@ public abstract class Stickman : MonoBehaviour
     public event UnityAction<PlaceInSquad> AddedToSquad;
     public event UnityAction<Stickman, int> DamageReceived;
 
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-    }
-
     private void Start()
     {
         _health = GetComponent<Health>();
@@ -98,20 +85,5 @@ public abstract class Stickman : MonoBehaviour
     {
         _blood.Draw();
         Died?.Invoke(this);
-    }
-
-    private void Validate()
-    {
-        if (_blood == null)
-            throw new InvalidOperationException();
-
-        if (_hit == null)
-            throw new InvalidOperationException();
-
-        if (_renderer == null)
-            throw new InvalidOperationException();
-
-        if (_highlightMaterial == null)
-            throw new InvalidOperationException();
     }
 }

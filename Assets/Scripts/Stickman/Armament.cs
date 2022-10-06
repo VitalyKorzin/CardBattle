@@ -13,19 +13,6 @@ public class Armament : MonoBehaviour
 
     public event UnityAction<Weapon> WeaponGived;
 
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-    }
-
     private void Start() => Give(_weapon, false);
 
     public void Give(Weapon weapon, bool buffPlays = true)
@@ -100,20 +87,5 @@ public class Armament : MonoBehaviour
     {
         if (_quiver != null)
             Destroy(_quiver.gameObject);
-    }
-
-    private void Validate()
-    {
-        if (_swordPosition == null)
-            throw new InvalidOperationException();
-
-        if (_bowPosition == null)
-            throw new InvalidOperationException();
-
-        if (_quiverPosition == null)
-            throw new InvalidOperationException();
-
-        if (_buff == null)
-            throw new InvalidOperationException();
     }
 }

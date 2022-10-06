@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,17 +18,6 @@ public class ArmorBar : Bar
     {
         _protection.Changed -= OnValueChanged;
         _protection.ArmorGived -= OnArmorGived;
-    }
-
-    protected override void Validate()
-    {
-        base.Validate();
-
-        if (_protection == null)
-            throw new InvalidOperationException();
-
-        if (_icon == null)
-            throw new InvalidOperationException();
     }
 
     protected override void TryDisableIcon()

@@ -28,19 +28,6 @@ public class CardView : MonoBehaviour
     public Color BackgroundColor => _background.color;
     public Color FrameColor => _frame.color;
 
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-    }
-
     private void Start()
     {
         _defaultBackgroundColor = _background.color;
@@ -67,26 +54,5 @@ public class CardView : MonoBehaviour
         _icon.DOFade(_fadingEndValue, _fadingDuration);
         _frame.DOFade(_fadingEndValue, _fadingDuration);
         _glow.DOFade(_fadingEndValue, _fadingDuration);
-    }
-
-    private void Validate()
-    {
-        if (_icon == null)
-            throw new InvalidOperationException();
-
-        if (_frame == null)
-            throw new InvalidOperationException();
-
-        if (_glow == null)
-            throw new InvalidOperationException();
-
-        if (_background == null)
-            throw new InvalidOperationException();
-
-        if (_selectionBackgroundColor == null)
-            throw new InvalidOperationException();
-
-        if (_selectionFrameColor == null)
-            throw new InvalidOperationException();
     }
 }

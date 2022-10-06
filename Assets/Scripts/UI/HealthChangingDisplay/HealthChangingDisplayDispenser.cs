@@ -9,16 +9,6 @@ public class HealthChangingDisplayDispenser : MonoBehaviour
 
     private void OnEnable()
     {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
         _enemiesSquad.StickmanAdded += OnStickmanAdded;
         _heroesSquad.StickmanAdded += OnStickmanAdded;
     }
@@ -61,16 +51,4 @@ public class HealthChangingDisplayDispenser : MonoBehaviour
 
     private HealthChangingDisplay CreateDisplay(Vector3 position)
         => Instantiate(_displayTempalte, position, Quaternion.identity);
-
-    private void Validate()
-    {
-        if (_enemiesSquad == null)
-            throw new InvalidOperationException();
-
-        if (_heroesSquad == null)
-            throw new InvalidOperationException();
-
-        if (_displayTempalte == null)
-            throw new InvalidOperationException();
-    }
 }
