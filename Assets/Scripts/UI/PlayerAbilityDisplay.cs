@@ -7,6 +7,8 @@ public class PlayerAbilityDisplay : MonoBehaviour
     [SerializeField] private EnemiesSquad _enemiesSquad;
     [SerializeField] private PlayerAbility _value;
 
+    private bool _enemiesDied;
+
     private void OnEnable()
     {
         _annunciator.FightStarted += OnFightStarted;
@@ -21,7 +23,15 @@ public class PlayerAbilityDisplay : MonoBehaviour
         _enemiesSquad.Died -= OnSquadDied;
     }
 
-    private void OnFightStarted() => _value.gameObject.SetActive(true);
+    private void OnFightStarted()
+    {
+        if (_enemiesDied == false)
+            _value.gameObject.SetActive(true);
+    }
 
-    private void OnSquadDied() => _value.gameObject.SetActive(false);
+    private void OnSquadDied()
+    {
+        _value.gameObject.SetActive(false);
+        _enemiesDied = true;
+    }
 }
