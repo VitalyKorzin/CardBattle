@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBeforeDestroy: 0.2
-  _price: 100
+  _price: 200
   _name: Fireball
 --- !u!114 &-8455900328667602165
 MonoBehaviour:

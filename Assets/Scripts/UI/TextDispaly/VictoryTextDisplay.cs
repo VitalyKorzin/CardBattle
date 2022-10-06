@@ -2,7 +2,7 @@ public class VictoryTextDisplay : TextDisplay
 {
     protected override string GetEnglishText() => "YOU WIN!";
 
-    protected override string GetRussianText() => "论 论擅欣巳!";
+    protected override string GetRussianText() => "论 论让欣巳!";
 
     protected override string GetTurkishText() => "KAZANDIN!";
 }
