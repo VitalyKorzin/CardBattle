@@ -1,15 +1,13 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Stickman), typeof(TargetSearchState), typeof(AttackState))]
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(Armament))]
 public class MovementState : MonoBehaviour
 {
-    [Min(0)]
-    [SerializeField] private float _transitionRange;
-
     private readonly float _neededDistanceToPlaceInSquad = 0.1f;
 
     private Animator _animator;
@@ -20,6 +18,8 @@ public class MovementState : MonoBehaviour
     private AttackState _attackState;
     private Coroutine _movementJob;
     private Vector3 _lastPosition;
+    private Weapon _currentWeapon;
+    private Armament _armament;
 
     public event UnityAction<Stickman> TargetApproached;
     public event UnityAction TargetDied;
@@ -33,6 +33,7 @@ public class MovementState : MonoBehaviour
         _targetSearchState.Finded -= OnNeedMove;
         _targetSearchState.TargetsDied -= OnNeedMoveToPlaceInSquad;
         _attackState.TargetGone -= OnNeedMove;
+        _armament.WeaponGived -= OnWeaponGived;
     }
 
     private void Awake()
@@ -44,6 +45,8 @@ public class MovementState : MonoBehaviour
         _stickman = GetComponent<Stickman>();
         _targetSearchState = GetComponent<TargetSearchState>();
         _attackState = GetComponent<AttackState>();
+        _armament = GetComponent<Armament>();
+        _armament.WeaponGived += OnWeaponGived;
         _stickman.AddedToSquad += OnStickmanAddedToSquad;
         _stickman.FightStarted += OnStickmanFightStarted;
         _targetSearchState.Finded += OnNeedMove;
@@ -51,6 +54,8 @@ public class MovementState : MonoBehaviour
         _attackState.TargetGone += OnNeedMove;
         _lastPosition = transform.position;
     }
+
+    private void OnWeaponGived(Weapon weapon) => _currentWeapon = weapon;
 
     private void OnStickmanAddedToSquad(PlaceInSquad placeInSquad)
     {
@@ -80,6 +85,8 @@ public class MovementState : MonoBehaviour
 
     private IEnumerator Move(Stickman target)
     {
+        _navMeshAgent.isStopped = false;
+
         while (DidNotReachTo(target))
         {
             Move(target.transform.position);
@@ -87,6 +94,7 @@ public class MovementState : MonoBehaviour
         }
 
         _animator.SetBool(StickmanAnimator.Params.IsRunning, false);
+        _navMeshAgent.isStopped = true;
 
         if (target == null)
             TargetDied?.Invoke();
@@ -96,6 +104,8 @@ public class MovementState : MonoBehaviour
 
     private IEnumerator Move(PlaceInSquad placeInSquad)
     {
+        _navMeshAgent.isStopped = false;
+
         while (DidNotReachTo(placeInSquad))
         {
             Move(placeInSquad.transform.position);
@@ -107,7 +117,7 @@ public class MovementState : MonoBehaviour
     }
 
     private bool DidNotReachTo(Stickman target)
-        => target != null && GetDistanceToTarget(target.transform.position) > _transitionRange;
+        => target != null && GetDistanceToTarget(target.transform.position) > _currentWeapon.TransitionRange;
 
     private bool DidNotReachTo(PlaceInSquad placeInSquad)
         => GetDistanceToTarget(placeInSquad.transform.position) > _neededDistanceToPlaceInSquad;

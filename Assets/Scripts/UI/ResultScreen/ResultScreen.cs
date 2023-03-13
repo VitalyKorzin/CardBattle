@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class ResultScreen<T> : MonoBehaviour
         where T : StickmenSquad
@@ -13,18 +14,10 @@ public abstract class ResultScreen<T> : MonoBehaviour
     [SerializeField] private ResultScreenBackgroundDisplay _backgroundDisplay;
     [SerializeField] private ResultDisplay _resultDisplay;
 
+    public event UnityAction Showed;
+
     private void OnEnable()
     {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
         _stickmenSquad.Died += OnStickmenSquadDied;
         _backgroundDisplay.gameObject.SetActive(false);
     }
@@ -42,17 +35,6 @@ public abstract class ResultScreen<T> : MonoBehaviour
         _backgroundDisplay.Display();
         yield return new WaitForSeconds(_delayBeforeResultShowing);
         _resultDisplay.Display();
-    }
-
-    private void Validate()
-    {
-        if (_stickmenSquad == null)
-            throw new InvalidOperationException();
-
-        if (_backgroundDisplay == null)
-            throw new InvalidOperationException();
-
-        if (_resultDisplay == null)
-            throw new InvalidOperationException();
+        Showed?.Invoke();
     }
 }

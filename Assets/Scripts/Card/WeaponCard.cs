@@ -4,27 +4,19 @@ using UnityEngine;
 
 public class WeaponCard : Card
 {
-    [Min(0)]
-    [SerializeField] private int _additionalHealth;
-    [Min(0)]
-    [SerializeField] private int _additionalDamage;
-    [SerializeField] private Sword _template;
+    [SerializeField] private Weapon _template;
 
-    private void OnEnable()
-    {
-        if (_template == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
-
-    public override void Use<T>(List<T> stickmen, Vector3 actionPosition)
+    public override void Use(IReadOnlyList<Stickman> stickmen, Vector3 actionPosition)
     {
         if (stickmen == null)
             throw new ArgumentNullException(nameof(stickmen));
 
         foreach (var stickman in stickmen)
-            stickman.GiveWeapon(_template, _additionalHealth, _additionalDamage);
+        {
+            if (stickman.gameObject.TryGetComponent(out Armament armament))
+                armament.Give(_template);
+            else
+                throw new InvalidOperationException();
+        }
     }
 }

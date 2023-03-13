@@ -7,32 +7,19 @@ using UnityEngine.Events;
 public abstract class StickmenSpawner : MonoBehaviour
 {
     [SerializeField] private StickmenSquad _squad;
-    [SerializeField] private CardsDeck _cardsDeck;
-    [SerializeField] private Stickman _template;
+    [SerializeField] private CardsHand _cardsHand;
 
     private List<PlaceInSquad> _places;
 
     public IReadOnlyList<PlaceInSquad> FreePlaces => _places.Where(place => place.Free).ToList();
 
-    public event UnityAction<Stickman> Spawned;
+    public event UnityAction<Stickman, PlaceInSquad> Spawned;
 
     private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        _cardsDeck.CardAdded += OnCardAdded;
-    }
+        => _cardsHand.CardAdded += OnCardAdded;
 
     private void OnDisable()
-        => _cardsDeck.CardAdded -= OnCardAdded;
+        => _cardsHand.CardAdded -= OnCardAdded;
 
     public void Initialize(List<PlaceInSquad> places)
     {
@@ -43,19 +30,13 @@ public abstract class StickmenSpawner : MonoBehaviour
             throw new ArgumentOutOfRangeException(nameof(places));
 
         _places = places;
-
-        foreach (var place in places)
-        {
-            if (place.Occupied)
-                Spawn(place.transform.position, place);
-        }
     }
 
-    private void Spawn(Vector3 spawnPoint, PlaceInSquad place)
+    private void Spawn(Stickman template, Vector3 spawnPoint, PlaceInSquad place)
     {
-        var stickman = Instantiate(_template, spawnPoint, place.transform.rotation);
-        stickman.AddToSquad(place);
-        Spawned?.Invoke(stickman);
+        var stickman = Instantiate(template, spawnPoint, place.transform.rotation);
+        place.Occupy(stickman);
+        Spawned?.Invoke(stickman, place);
     }
 
     private void OnCardAdded(Card card)
@@ -69,16 +50,21 @@ public abstract class StickmenSpawner : MonoBehaviour
         card.Used -= OnMultiplierCardUsed;
 
         foreach (var stickman in stickmen)
+        {
             if (_squad.Stickmen.Contains(stickman))
-                for (var i = 0; i < GetSickmenCount(card); i++)
+            {
+                var count = GetSickmenCount(card);
+
+                for (var i = 0; i < count; i++)
                     SpawnInNearestPlace(stickman);
+            }
+        }
     }
 
     private void SpawnInNearestPlace(Stickman stickman)
     {
         PlaceInSquad freePlace = GetNearestFreePlace(stickman.transform.position);
-        freePlace.Occupy();
-        Spawn(stickman.transform.position, freePlace);
+        Spawn(stickman, stickman.transform.position, freePlace);
     }
 
     private int GetSickmenCount(MultiplierCard card)
@@ -108,17 +94,5 @@ public abstract class StickmenSpawner : MonoBehaviour
         }
 
         return nearestFreePlace;
-    }
-
-    private void Validate()
-    {
-        if (_squad == null)
-            throw new InvalidOperationException();
-
-        if (_cardsDeck == null)
-            throw new InvalidOperationException();
-
-        if (_template == null)
-            throw new InvalidOperationException();
     }
 }

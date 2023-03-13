@@ -1,34 +1,39 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(MovementState), typeof(Stickman), typeof(Animator))]
+[RequireComponent(typeof(MovementState), typeof(Animator), typeof(Armament))]
 public class AttackState : MonoBehaviour
 {
-    [Min(0)]
-    [SerializeField] private float _secondsBetweenAttack;
-    [Min(0)]
-    [SerializeField] private float _transitionRange;
+    [SerializeField] private Transform _shotPoint;
 
     private MovementState _movementState;
-    private Stickman _stickman;
     private Coroutine _attackJob;
     private Animator _animator;
+    private Weapon _currentWeapon;
+    private Armament _armament;
 
     public event UnityAction TargetDied;
     public event UnityAction<Transform> TargetAttacked;
     public event UnityAction<Stickman> TargetGone;
 
     private void OnDisable()
-        => _movementState.TargetApproached -= OnTargetApproached;
+    {
+        _movementState.TargetApproached -= OnTargetApproached;
+        _armament.WeaponGived -= OnWeaponGived;
+    }
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _movementState = GetComponent<MovementState>();
-        _stickman = GetComponent<Stickman>();
+        _armament = GetComponent<Armament>();
         _movementState.TargetApproached += OnTargetApproached;
+        _armament.WeaponGived += OnWeaponGived;
     }
+
+    private void OnWeaponGived(Weapon weapon) => _currentWeapon = weapon;
 
     private void OnTargetApproached(Stickman stickman)
     {
@@ -42,15 +47,10 @@ public class AttackState : MonoBehaviour
 
     private IEnumerator Attack(Stickman stickman)
     {
-        var delay = new WaitForSeconds(_secondsBetweenAttack);
         TargetAttacked?.Invoke(stickman.transform);
 
         while (TargetInAttackZone(stickman))
-        {
-            _animator.SetTrigger(StickmanAnimator.Params.IsAttacking);
-            yield return delay;
-            stickman.Apply(_stickman.Damage);
-        }
+            yield return _currentWeapon.Attack(stickman, _animator, _shotPoint);
 
         if (EnemyGone(stickman))
         {
@@ -66,10 +66,10 @@ public class AttackState : MonoBehaviour
     }
 
     private bool TargetInAttackZone(Stickman stickman)
-        => stickman != null && GetDistanceToTarget(stickman.transform) < _transitionRange;
+        => stickman != null && GetDistanceToTarget(stickman.transform) < _currentWeapon.TransitionRange;
 
     private bool EnemyGone(Stickman stickman)
-        => stickman != null && GetDistanceToTarget(stickman.transform) > _transitionRange;
+        => stickman != null && GetDistanceToTarget(stickman.transform) > _currentWeapon.TransitionRange;
 
     private float GetDistanceToTarget(Transform target)
         => Vector3.Distance(transform.position, target.position);

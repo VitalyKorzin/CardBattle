@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Confetti : MonoBehaviour
 {
@@ -11,20 +11,10 @@ public class Confetti : MonoBehaviour
     [SerializeField] private EnemiesSquad _enemiesSquad;
     [SerializeField] private Transform[] _blastPositions;
 
-    private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
+    public event UnityAction Blasted;
 
-        _enemiesSquad.Died += OnEnemiesSquadDied;
-    }
+    private void OnEnable()
+        => _enemiesSquad.Died += OnEnemiesSquadDied;
 
     private void OnDisable() 
         => _enemiesSquad.Died -= OnEnemiesSquadDied;
@@ -39,24 +29,7 @@ public class Confetti : MonoBehaviour
         foreach (var blastPosition in _blastPositions)
             Instantiate(_blast, blastPosition);
 
+        Blasted?.Invoke();
         _shower.Play();
-    }
-
-    private void Validate()
-    {
-        if (_blast == null)
-            throw new InvalidOperationException();
-
-        if (_shower == null)
-            throw new InvalidOperationException();
-
-        if (_enemiesSquad == null)
-            throw new InvalidOperationException();
-
-        if (_blastPositions == null)
-            throw new InvalidOperationException();
-
-        if (_blastPositions.Length == 0)
-            throw new InvalidOperationException();
     }
 }

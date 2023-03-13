@@ -12,17 +12,15 @@ public class ClaimButton : ResultDisplayElement
     [Min(0)]
     [SerializeField] private float _pulsationEndValue;
     [SerializeField] private TMP_Text _text;
+    [SerializeField] private SdkYandex _sdkYandex;
 
     private readonly int _loops = -1;
 
     private void OnEnable()
-    {
-        if (_text == null)
-        {
-            enabled = false;
-            throw new InvalidOperationException();
-        }
-    }
+        => _sdkYandex.Rewarded += OnRewarded;
+
+    private void OnDisable()
+        => _sdkYandex.Rewarded -= OnRewarded;
 
     public override void Appear(float endValue, float duration)
     {
@@ -39,5 +37,7 @@ public class ClaimButton : ResultDisplayElement
 
     private void Pulsate()
         => transform.DOScale(_pulsationEndValue, _pulsationSpeed).SetLoops(_loops, LoopType.Yoyo);
+
+    private void OnRewarded() => gameObject.SetActive(false);
 
 }

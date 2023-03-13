@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,27 +7,15 @@ public class StartFightAnnunciator : MonoBehaviour
     [Min(0)]
     [SerializeField] private float _secondsBetweenFightStart;
     [SerializeField] private StartFightTextDisplay _textDisplay;
-    [SerializeField] private CardsDeck _cardsDeck;
+    [SerializeField] private CardsHand _cardsHand;
 
     public event UnityAction FightStarted;
 
     private void OnEnable()
-    {
-        try
-        {
-            Validate();
-        }
-        catch (Exception exception)
-        {
-            enabled = false;
-            throw exception;
-        }
-
-        _cardsDeck.Ended += OnCardsDeckEnded;
-    }
+        => _cardsHand.Ended += OnCardsDeckEnded;
 
     private void OnDisable()
-        => _cardsDeck.Ended -= OnCardsDeckEnded;
+        => _cardsHand.Ended -= OnCardsDeckEnded;
 
     private void OnCardsDeckEnded()
         => StartCoroutine(Annunce());
@@ -39,14 +26,5 @@ public class StartFightAnnunciator : MonoBehaviour
         yield return new WaitForSeconds(_secondsBetweenFightStart);
         _textDisplay.Fade();
         FightStarted?.Invoke();
-    }
-
-    private void Validate()
-    {
-        if (_cardsDeck == null)
-            throw new InvalidOperationException();
-
-        if (_textDisplay == null)
-            throw new InvalidOperationException();
     }
 }
